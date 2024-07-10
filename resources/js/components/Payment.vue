@@ -290,6 +290,7 @@
                                         type="text"
                                         class="mt-2 form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                         required
+                                        v-model="this.data.name"
                                     />
                                 </div>
                             </div>
@@ -318,6 +319,7 @@
                                         type="text"
                                         class="mt-2 form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                         required
+                                        v-model="this.data.dep"
                                     />
                                 </div>
                             </div>
@@ -345,7 +347,7 @@
                                     <input
                                         type="text"
                                         class="mt-2 form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                                        required
+                                        v-model="this.data.vat"
                                     />
                                 </div>
                             </div>
@@ -374,6 +376,7 @@
                                         type="text"
                                         class="mt-2 form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                         required
+                                        v-model="this.data.address"
                                     ></textarea>
                                 </div>
                             </div>
@@ -406,13 +409,14 @@
                                                 class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 cursor-pointer"
                                                 aria-labelledby="country-option-1"
                                                 aria-describedby="country-option-1"
-                                        
+                                                v-model="this.data.recieve"
                                             />
                                             <label
                                                 for="country-option-1"
                                                 class="text-sm font-medium text-gray-900 ml-2 block"
                                             >
-                                            รับใบเสร็จหน้างาน (วันที่ 10 มกราคม 2567)
+                                                รับใบเสร็จหน้างาน (วันที่ 10
+                                                มกราคม 2567)
                                             </label>
                                         </div>
 
@@ -423,16 +427,78 @@
                                                 class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 cursor-pointer"
                                                 aria-labelledby="country-option-2"
                                                 aria-describedby="country-option-2"
-                                   
+                                                v-model="this.data.recieve"
                                             />
                                             <label
                                                 for="country-option-2"
                                                 class="text-sm font-medium text-gray-900 ml-2 block"
                                             >
-                                            จัดส่งทางไปรษณีย์
+                                                จัดส่งทางไปรษณีย์
                                             </label>
-                                        </div>                                     
+                                        </div>
                                     </fieldset>
+                                    <transition name="fade" mode="out-in">
+                                        <textarea
+                                            type="text"
+                                            class="mt-2 rounded-lg form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                            v-model="this.data.comment"
+                                            v-if="this.data.recieve === '2'"
+                                        ></textarea>
+                                    </transition>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white px-4 pb-4">
+                            <div class="col-span-3 sm:flex sm:items-start">
+                                <div
+                                    class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 sm:mx-0 sm:h-10 sm:w-10"
+                                >
+                                    <box-icon
+                                        name="upload"
+                                        color="white"
+                                    ></box-icon>
+                                </div>
+                                <div
+                                    class="mt-0 text-center sm:mt-0 sm:ml-4 sm:text-left w-full"
+                                >
+                                    <label
+                                        id="listbox-label"
+                                        class="block text-sm font-medium leading-6 text-gray-900"
+                                    >
+                                        แนบสลิป</label
+                                    >
+                                    <label
+                                        for="uploadFile1"
+                                        class="bg-white text-gray-500 font-semibold text-base rounded max-w-md h-auto p-4 flex flex-col items-center justify-center cursor-pointer border-2 border-gray-300 border-dotted mx-auto"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="w-8 mb-2 fill-gray-500"
+                                            viewBox="0 0 32 32"
+                                        >
+                                            <path
+                                                d="M23.75 11.044a7.99 7.99 0 0 0-15.5-.009A8 8 0 0 0 9 27h3a1 1 0 0 0 0-2H9a6 6 0 0 1-.035-12 1.038 1.038 0 0 0 1.1-.854 5.991 5.991 0 0 1 11.862 0A1.08 1.08 0 0 0 23 13a6 6 0 0 1 0 12h-3a1 1 0 0 0 0 2h3a8 8 0 0 0 .75-15.956z"
+                                                data-original="#000000"
+                                            />
+                                            <path
+                                                d="M20.293 19.707a1 1 0 0 0 1.414-1.414l-5-5a1 1 0 0 0-1.414 0l-5 5a1 1 0 0 0 1.414 1.414L15 16.414V29a1 1 0 0 0 2 0V16.414z"
+                                                data-original="#000000"
+                                            />
+                                        </svg>
+                                        <p class="font-semibold">Upload File</p>
+
+                                        <input
+                                            type="file"
+                                            id="uploadFile1"
+                                            class="hidden"
+                                        />
+                                        <p
+                                            class="text-xs font-medium text-gray-400 mt-2"
+                                        >
+                                            PNG & JPG
+                                        </p>
+                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -469,6 +535,15 @@ export default {
         return {
             qr: "/img/qr.png",
             isShowModal: false,
+            data: {
+                name: "",
+                dep: "",
+                vat: "",
+                address: "",
+                recieve: "",
+                comment: "",
+                slip: "",
+            },
         };
     },
     methods: {

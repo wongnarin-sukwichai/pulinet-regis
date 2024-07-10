@@ -3,7 +3,6 @@ import { createRouter, createWebHistory } from "vue-router";
 import Welcome from "../components/Welcome.vue";
 import Login from "../components/Login.vue";
 import Home from "../components/Home.vue";
-import Dashboard from "../components/Dashboard.vue";
 import Payment from "../components/Payment.vue";
 import Intro from "../components/Intro.vue";
 import Regis from "../components/Regis.vue";
@@ -39,23 +38,7 @@ const routes = [
     {
         path: "/home",
         name: "home",
-        component: Home,
-        redirect: {
-            name: "dashboard",
-        },
-        meta: {
-            guard: "auth",
-        },
-        children: [
-            {
-                path: "/dashboard",
-                name: "dashboard",
-                component: Dashboard,
-                meta: {
-                    guard: "auth",
-                },
-            },         
-        ],
+        component: Home,     
     },
 ];
 

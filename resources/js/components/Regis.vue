@@ -127,7 +127,7 @@
                                     >อีเมล</label
                                 >
                                 <input
-                                    type="text"
+                                    type="email"
                                     class="w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-1 focus:border-sky-500 block p-2.5"
                                     required
                                     v-model="this.data.email"
@@ -157,7 +157,7 @@
                                     class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 cursor-pointer"
                                     aria-labelledby="country-option-1"
                                     aria-describedby="country-option-1"
-                                    v-model="this.data.reg"
+                                    v-model="this.data.member"
                                 />
                                 <label
                                     class="text-gray-900 ml-2 block sm:text-md md:text-md lg:text-md"
@@ -173,7 +173,7 @@
                                     class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 cursor-pointer"
                                     aria-labelledby="country-option-2"
                                     aria-describedby="country-option-2"
-                                    v-model="this.data.reg"
+                                    v-model="this.data.member"
                                 />
                                 <label class="text-md text-gray-900 ml-2 block">
                                     ไม่ใช่สมาชิก PULINET/PULINET PLUS
@@ -181,7 +181,7 @@
                             </div>
                         </fieldset>
 
-                        <div class="grid grid-cols-2 gap-6 mt-6">
+                        <div class="grid grid-cols-3 gap-6 mt-6">
                             <div>
                                 <label
                                     for="company"
@@ -218,32 +218,28 @@
                                 <label
                                     for="company"
                                     class="block mb-2 text-md text-left"
-                                    >หน่วยงาน</label
+                                    >คณะ/หน่วยงาน</label
                                 >
-                                <div class="relative">
-                                    <select
-                                        class="text-sm p-3 cursor-pointer block appearance-none w-full bg-white border border-gray-200 text-gray-700 rounded-lg leading-tight focus:outline-none focus:bg-white focus:border-sky-500"
-                                        required
-                                    >
-                                        <option disabled value="">
-                                            กรุณาเลือก...
-                                        </option>
-                                        <option></option>
-                                    </select>
-                                    <div
-                                        class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-                                    >
-                                        <svg
-                                            class="fill-current h-4 w-4"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 0 20 20"
-                                        >
-                                            <path
-                                                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                                            />
-                                        </svg>
-                                    </div>
-                                </div>
+                                <input
+                                    type="text"
+                                    class="w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-1 focus:border-sky-500 block p-2.5"
+                                    required
+                                    v-model="this.data.dep"
+                                />
+                            </div>
+
+                            <div>
+                                <label
+                                    for="company"
+                                    class="block text-md mb-2 text-left"
+                                    >สาขา</label
+                                >
+                                <input
+                                    type="text"
+                                    class="w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-1 focus:border-sky-500 block p-2.5"
+                                    required
+                                    v-model="this.data.branch"
+                                />
                             </div>
                         </div>
                     </div>
@@ -271,7 +267,7 @@
                                     class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 cursor-pointer"
                                     aria-labelledby="country-option-1"
                                     aria-describedby="country-option-1"
-                                    v-model="this.data.reg"
+                                    v-model="this.data.dinner"
                                 />
                                 <label
                                     for="country-option-1"
@@ -288,7 +284,7 @@
                                     class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 cursor-pointer"
                                     aria-labelledby="country-option-2"
                                     aria-describedby="country-option-2"
-                                    v-model="this.data.reg"
+                                    v-model="this.data.dinner"
                                 />
                                 <label
                                     for="country-option-2"
@@ -322,7 +318,7 @@
                                     class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 cursor-pointer"
                                     aria-labelledby="country-option-1"
                                     aria-describedby="country-option-1"
-                                    v-model="this.data.reg"
+                                    v-model="this.data.tour"
                                 />
                                 <label
                                     for="country-option-1"
@@ -339,7 +335,7 @@
                                     class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 cursor-pointer"
                                     aria-labelledby="country-option-2"
                                     aria-describedby="country-option-2"
-                                    v-model="this.data.reg"
+                                    v-model="this.data.tour"
                                 />
                                 <label
                                     for="country-option-2"
@@ -368,7 +364,7 @@
                                     class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 cursor-pointer"
                                     aria-labelledby="country-option-1"
                                     aria-describedby="country-option-1"
-                                    v-model="this.data.reg"
+                                    v-model="this.data.food"
                                 />
                                 <label
                                     for="country-option-1"
@@ -385,7 +381,7 @@
                                     class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 cursor-pointer"
                                     aria-labelledby="country-option-2"
                                     aria-describedby="country-option-2"
-                                    v-model="this.data.reg"
+                                    v-model="this.data.food"
                                 />
                                 <label
                                     for="country-option-2"
@@ -398,14 +394,14 @@
                             <div class="flex items-center mr-4">
                                 <input
                                     type="radio"
-                                    value="1"
+                                    value="3"
                                     class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 cursor-pointer"
-                                    aria-labelledby="country-option-1"
-                                    aria-describedby="country-option-1"
-                                    v-model="this.data.reg"
+                                    aria-labelledby="country-option-3"
+                                    aria-describedby="country-option-3"
+                                    v-model="this.data.food"
                                 />
                                 <label
-                                    for="country-option-1"
+                                    for="country-option-3"
                                     class="text-md font-medium text-gray-900 ml-2 block"
                                 >
                                     อาหารมังสวิรัติ
@@ -415,20 +411,29 @@
                             <div class="flex items-center">
                                 <input
                                     type="radio"
-                                    value="2"
+                                    value="4"
                                     class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 cursor-pointer"
-                                    aria-labelledby="country-option-2"
-                                    aria-describedby="country-option-2"
-                                    v-model="this.data.reg"
+                                    aria-labelledby="country-option-4"
+                                    aria-describedby="country-option-4"
+                                    v-model="this.data.food"
                                 />
                                 <label
-                                    for="country-option-2"
+                                    for="country-option-4"
                                     class="text-md font-medium text-gray-900 ml-2 block"
                                 >
                                     อื่นๆ
                                 </label>
                             </div>
                         </fieldset>
+
+                        <transition name="fade" mode="out-in">
+                            <textarea
+                                type="text"
+                                class="mt-2 rounded-lg form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                v-model="this.data.comment"
+                                v-if="this.data.food === '4'"
+                            ></textarea>
+                        </transition>
                     </div>
                 </div>
 
@@ -454,7 +459,7 @@
                                     class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 cursor-pointer"
                                     aria-labelledby="country-option-1"
                                     aria-describedby="country-option-1"
-                                    v-model="this.data.reg"
+                                    v-model="this.data.trip"
                                 />
                                 <label
                                     for="country-option-1"
@@ -473,7 +478,7 @@
                                     class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 cursor-pointer"
                                     aria-labelledby="country-option-2"
                                     aria-describedby="country-option-2"
-                                    v-model="this.data.reg"
+                                    v-model="this.data.trip"
                                 />
                                 <label
                                     for="country-option-2"
@@ -492,7 +497,7 @@
                                     class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 cursor-pointer"
                                     aria-labelledby="country-option-2"
                                     aria-describedby="country-option-2"
-                                    v-model="this.data.reg"
+                                    v-model="this.data.trip"
                                 />
                                 <label
                                     for="country-option-2"
@@ -507,11 +512,9 @@
 
                 <div class="grid grid-cols-2">
                     <div>
-                        <router-link
-                        to="intro"
-                        >
+                        <router-link to="intro">
                             <button
-                                class="flex mt-8 rounded-xl border px-5 py-3 text-base font-medium transition duration-200 hover:shadow-lg hover:bg-gray-50"
+                                class="flex mt-4 rounded-xl border px-5 py-3 text-base font-medium transition duration-200 hover:shadow-lg hover:bg-gray-50"
                             >
                                 กลับหน้าหลัก
                             </button>
@@ -519,7 +522,7 @@
                     </div>
                     <div class="flex justify-end">
                         <button
-                            class="mt-8 rounded-xl bg-gradient-to-br from-[#6025F5] to-[#FF5555] px-5 py-3 text-base font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-[#6025F5]/50"
+                            class="mt-4 rounded-xl bg-gradient-to-br from-[#6025F5] to-[#FF5555] px-5 py-3 text-base font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-[#6025F5]/50"
                             @click="send()"
                         >
                             ยืนยันข้อมูล
@@ -536,6 +539,7 @@ export default {
     mounted() {},
     data() {
         return {
+            isShowFood: false,
             data: {
                 reg: "",
                 intro: "",
@@ -547,12 +551,16 @@ export default {
                 member: "",
                 uni: "",
                 dep: "",
+                branch: "",
                 dinner: "",
                 tour: "",
                 food: "",
+                comment: "",
                 trip: "",
             },
         };
     },
+    methods: {},
+    computed: {},
 };
 </script>

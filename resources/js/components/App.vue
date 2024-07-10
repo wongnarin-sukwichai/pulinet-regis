@@ -1,5 +1,7 @@
 <template>
-    <header class="absolute inset-x-0 top-0 z-50 shadow-lg bg-gradient-to-r from-blue-800 to-indigo-900">
+    <header
+        class="absolute inset-x-0 top-0 z-50 shadow-lg bg-gradient-to-r from-blue-800 to-indigo-900"
+    >
         <nav
             class="flex items-center justify-between p-6 lg:px-8"
             aria-label="Global"
@@ -7,11 +9,7 @@
             <div class="flex lg:flex-1">
                 <router-link to="/">
                     <span class="sr-only">Your Company</span>
-                    <img
-                        class="h-16 w-auto"
-                        :src="logo"
-                        alt=""
-                    />
+                    <img class="h-16 w-auto" :src="logo" alt="" />
                 </router-link>
             </div>
             <div class="flex lg:hidden">
@@ -20,9 +18,8 @@
                     class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 cursor-pointer"
                     @click="isShowMenu()"
                 >
-                    <span class="sr-only">Open main menu</span>
                     <svg
-                        class="h-6 w-6"
+                        class="h-6 w-6 text-white"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke-width="1.5"
@@ -38,7 +35,7 @@
                 </button>
             </div>
             <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                <router-link to="login">
+                <router-link to="login" v-if="!user">
                     <button
                         class="flex p-2 bg-indigo-700 hover:bg-indigo-800 cursor-pointer rounded-lg text-normal text-white text-sm shadow-lg"
                     >
@@ -52,6 +49,22 @@
                         ></box-icon>
                     </button>
                 </router-link>
+                <div class="flex items-center" v-else>
+                    <p class="px-2 text-white">@ {{ fullname }} |</p>
+                    <button
+                        class="flex p-2 bg-indigo-700 hover:bg-indigo-800 cursor-pointer rounded-lg text-normal text-white text-sm shadow-lg"
+                        @click="logout()"
+                    >
+                        <p class="pr-1">ออกจากระบบ</p>
+                        <box-icon
+                            name="down-arrow"
+                            type="solid"
+                            size="xs"
+                            color="white"
+                            class="flex items-center"
+                        ></box-icon>
+                    </button>
+                </div>
             </div>
         </nav>
 
@@ -66,25 +79,19 @@
                 <!-- Background backdrop, show/hide based on slide-over state. -->
                 <div class="fixed inset-0 z-50"></div>
                 <div
-                    class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+                    class="bg-gradient-to-r from-blue-800 to-indigo-900 fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
                 >
                     <div class="flex items-center justify-between">
-                        <a href="#" class="-m-1.5 p-1.5">
-                            <span class="sr-only">Your Company</span>
-                            <img
-                                class="h-8 w-auto"
-                                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                                alt=""
-                            />
-                        </a>
+                        <router-link to="/" class="-m-1.5 p-1.5">
+                            <img class="h-8 w-auto" :src="logo" alt="" />
+                        </router-link>
                         <button
                             type="button"
                             class="-m-2.5 rounded-md p-2.5 text-gray-700 cursor-pointer"
                             @click="isShowMenu()"
                         >
-                            <span class="sr-only">Close menu</span>
                             <svg
-                                class="h-6 w-6"
+                                class="h-6 w-6 text-white"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke-width="1.5"
@@ -100,11 +107,12 @@
                         </button>
                     </div>
                     <div class="mt-6 flow-root border-t-2 border-gray-300">
-                        <div class="-my-6 divide-y divide-gray-500/10 mt-0.5">
+                        <div class="-my-6 divide-y mt-0.5">
                             <div class="py-6">
-                                <router-link
-                                    class="flex grid grid-cols-2 p-3 cursor-pointer text-normal border rounded-full shadow-lg text-white bg-gradient-to-r from-blue-500 to-indigo-600"
-                                    to="login"
+                                <div
+                                    class="flex p-3 cursor-pointer text-normal border rounded-full shadow-lg text-black bg-gradient-to-r from-gray-50 to-gray-100"
+                                    @click="link()"
+                                    v-if="!user"
                                 >
                                     <p class="pl-1 text-sm">เข้าสู่ระบบ</p>
                                     <div class="flex justify-end">
@@ -113,11 +121,31 @@
                                             name="chevrons-right"
                                             type="solid"
                                             size="xs"
-                                            color="white"
-                                            animation="fade-right"
+                                            color="black"
                                         ></box-icon>
                                     </div>
-                                </router-link>
+                                </div>
+
+                                <div v-else>
+                                    <p class="px-2 text-white mb-4">
+                                        @ {{ fullname }} |
+                                    </p>
+                                    <div
+                                        class="flex p-3 cursor-pointer text-normal border rounded-full shadow-lg text-black bg-gradient-to-r from-gray-50 to-gray-100"
+                                        @click="logout()"
+                                    >
+                                        <p class="pl-1 text-sm">ออกจากระบบ</p>
+                                        <div class="flex justify-end">
+                                            <box-icon
+                                                class="mr-4"
+                                                name="chevrons-down"
+                                                type="solid"
+                                                size="xs"
+                                                color="black"
+                                            ></box-icon>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -164,8 +192,31 @@ export default {
     mounted() {},
     data() {
         return {
-            logo: "/img/logo.png"
-        }
-    }
+            logo: "/img/logo.png",
+            showMenu: false,
+        };
+    },
+    methods: {
+        isShowMenu() {
+            this.showMenu = !this.showMenu;
+        },
+        link() {
+            this.isShowMenu();
+            this.$router.push("login");
+        },
+        async logout() {
+            this.isShowMenu();
+            await this.$store.dispatch("logout");
+            this.$router.push("login");
+        },
+    },
+    computed: {
+        user() {
+            return this.$store.getters.user;
+        },
+        fullname() {
+            return this.$store.getters.fullname;
+        },
+    },
 };
 </script>
