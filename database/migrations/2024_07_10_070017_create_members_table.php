@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('pos');
             $table->string('email')->nullable();
             $table->string('tel')->nullable();
-            $table->integer('member');
-            $table->integer('uni');
+            $table->string('member');
+            $table->string('uni');
             $table->string('dep');
             $table->string('branch')->nullable();
             $table->integer('dinner');
@@ -29,6 +29,13 @@ return new class extends Migration
             $table->integer('food');
             $table->string('comment')->nullable();
             $table->integer('trip');
+            $table->string('step_1')->nullable()->comment('ลงทะเบียน');
+            $table->string('step_2')->nullable()->comment('ชำระ');
+            $table->integer('price')->nullable()->comment('ยอดเงิน');
+            $table->integer('pay')->nullable()->comment('ชำระเงิน');
+            $table->string('img')->nullable()->comment('รูปถ่าย');
+            $table->integer('step_3')->nullable()->comment('เจ้าหน้าที่ยืนยัน');
+            $table->string('confirmed_by')->nullable();
             $table->timestamps();
         });
     }

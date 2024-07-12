@@ -290,7 +290,7 @@
                                         type="text"
                                         class="mt-2 form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                         required
-                                        v-model="this.data.name"
+                                        v-model="this.data.title"
                                     />
                                 </div>
                             </div>
@@ -536,7 +536,7 @@ export default {
             qr: "/img/qr.png",
             isShowModal: false,
             data: {
-                name: "",
+                title: "",
                 dep: "",
                 vat: "",
                 address: "",

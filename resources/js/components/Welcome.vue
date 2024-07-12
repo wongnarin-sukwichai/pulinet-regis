@@ -180,6 +180,13 @@
                                                 scope="col"
                                                 class="px-4 py-3.5 text-sm font-normal text-gray-500 border-r"
                                             >
+                                                มหาวิทยาลัย
+                                            </th>
+
+                                            <th
+                                                scope="col"
+                                                class="px-4 py-3.5 text-sm font-normal text-gray-500 border-r"
+                                            >
                                                 หน่วยงาน
                                             </th>
 
@@ -209,6 +216,177 @@
                                     <tbody
                                         class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900"
                                     >
+                                        <tr
+                                            v-for="(member, index) in memList"
+                                            :key="index"
+                                        >
+                                            <td
+                                                class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
+                                            >
+                                                <div
+                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                >
+                                                    {{ member.id }}
+                                                </div>
+                                            </td>
+                                            <td
+                                                class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
+                                            >
+                                                <div
+                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                >
+                                                    {{ member.name }}
+                                                    {{ member.surname }}
+                                                </div>
+                                            </td>
+                                            <td
+                                                class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
+                                            >
+                                                <div
+                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                >
+                                                    {{ member.pos }}
+                                                </div>
+                                            </td>
+                                            <td
+                                                class="px-4 py-4 text-sm whitespace-nowrap border-r"
+                                            >
+                                                <div
+                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                >
+                                                    {{ member.uni }}
+                                                </div>
+                                            </td>
+                                            <td
+                                                class="px-4 py-4 text-sm whitespace-nowrap border-r"
+                                            >
+                                                <div
+                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                >
+                                                    {{ member.dep }}
+                                                </div>
+                                            </td>
+                                            <td
+                                                class="px-4 py-4 text-sm whitespace-nowrap border-r text-center"
+                                            >
+                                                <div
+                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                >
+                                                    <p
+                                                        v-if="
+                                                            member.member ===
+                                                            '1'
+                                                        "
+                                                    >
+                                                        ผู้เข้าร่วมประชุม
+                                                    </p>
+                                                    <p v-else>
+                                                        ผู้เข้าร่วมประชุมและนำเสนอผลงาน
+                                                    </p>
+                                                </div>
+                                            </td>
+
+                                            <td
+                                                class="px-4 py-4 text-sm whitespace-nowrap"
+                                            >
+                                                <div
+                                                    class="flex items-center pr-1"
+                                                    v-if="member.step_1 === '1'"
+                                                >
+                                                    <span
+                                                        class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 bg-gray-200"
+                                                    >
+                                                        1
+                                                    </span>
+                                                    <span class="text-gray-600"
+                                                        >ลงทะเบียน</span
+                                                    >
+                                                    <svg
+                                                        class="w-3 h-3 ms-2 sm:ms-1 text-gray-400"
+                                                        aria-hidden="true"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        fill="none"
+                                                        viewBox="0 0 12 10"
+                                                    >
+                                                        <path
+                                                            stroke="currentColor"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="m7 9 4-4-4-4M1 9l4-4-4-4"
+                                                        />
+                                                    </svg>
+                                                </div>
+                                            </td>
+
+                                            <td
+                                                class="px-4 py-4 text-sm whitespace-nowrap"
+                                            >
+                                                <div
+                                                    class="flex items-center pr-1"
+                                                    v-if="member.step_2 === '1'"
+                                                >
+                                                    <span
+                                                        class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 text-white bg-blue-600"
+                                                    >
+                                                        2
+                                                    </span>
+                                                    <span class="text-blue-600"
+                                                        >ชำระค่าลงทะเบียน</span
+                                                    >
+                                                    <svg
+                                                        class="w-3 h-3 ms-2 sm:ms-1 text-blue-600"
+                                                        aria-hidden="true"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        fill="none"
+                                                        viewBox="0 0 12 10"
+                                                    >
+                                                        <path
+                                                            stroke="currentColor"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="m7 9 4-4-4-4M1 9l4-4-4-4"
+                                                        />
+                                                    </svg>
+                                                </div>
+                                            </td>
+
+                                            <td
+                                                class="px-4 py-4 text-sm whitespace-nowrap border-r"
+                                            >
+                                                <div
+                                                    class="flex items-center"
+                                                    v-if="member.step_3 === '1'"
+                                                >
+                                                    <span
+                                                        class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 text-white bg-green-600"
+                                                    >
+                                                        3
+                                                    </span>
+                                                    <span class="text-green-600"
+                                                        >เสร็จสิ้น</span
+                                                    >
+                                                </div>
+                                            </td>
+
+                                            <td
+                                                class="flex justify-center px-4 py-4 text-sm whitespace-nowrap"
+                                            >
+                                                <button
+                                                    class="px-1 py-1 text-gray-500 transition-colors duration-200 rounded-lg border-2 border-dotted hover:bg-gray-100"
+                                                v-if="member.step_3 === null"
+                                                    >
+                                                    <box-icon
+                                                        name="arrow-to-bottom"
+                                                        color="#f87171"
+                                                        @click="toPayment(2)"
+                                                    ></box-icon>
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Fake Data -->
                                         <tr>
                                             <td
                                                 class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
@@ -229,7 +407,7 @@
                                                 </div>
                                             </td>
                                             <td
-                                                class="px-12 py-4 text-sm font-medium whitespace-nowrap border-r"
+                                                class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
                                             >
                                                 <div
                                                     class="inline px-3 py-1 text-sm font-normal rounded-full"
@@ -243,8 +421,16 @@
                                                 <div
                                                     class="inline px-3 py-1 text-sm font-normal rounded-full"
                                                 >
-                                                    สำนักวิทยบริการ
                                                     มหาวิทยาลัยมหาสารคาม
+                                                </div>
+                                            </td>
+                                            <td
+                                                class="px-4 py-4 text-sm whitespace-nowrap border-r"
+                                            >
+                                                <div
+                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                >
+                                                    สำนักวิทยบริการ
                                                 </div>
                                             </td>
                                             <td
@@ -361,7 +547,7 @@
                                                 </div>
                                             </td>
                                             <td
-                                                class="px-12 py-4 text-sm font-medium whitespace-nowrap border-r"
+                                                class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
                                             >
                                                 <div
                                                     class="inline px-3 py-1 text-sm font-normal rounded-full"
@@ -375,8 +561,16 @@
                                                 <div
                                                     class="inline px-3 py-1 text-sm font-normal rounded-full"
                                                 >
-                                                    สำนักวิทยบริการ
                                                     มหาวิทยาลัยมหาสารคาม
+                                                </div>
+                                            </td>
+                                            <td
+                                                class="px-4 py-4 text-sm whitespace-nowrap border-r"
+                                            >
+                                                <div
+                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                >
+                                                    สำนักวิทยบริการ
                                                 </div>
                                             </td>
                                             <td
@@ -515,10 +709,13 @@
 import "boxicons";
 
 export default {
-    mounted() {},
+    mounted() {
+        this.getMemList();
+    },
     data() {
         return {
             showMenu: false,
+            memList: "",
         };
     },
     methods: {
@@ -527,6 +724,14 @@ export default {
         },
         toPayment(id) {
             this.$router.push("/payment/" + id);
+        },
+        getMemList() {
+            axios
+                .get("/api/memlist")
+                .then((response) => {
+                    this.memList = response.data;
+                })
+                .catch((err) => {});
         },
     },
 };

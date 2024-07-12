@@ -188,7 +188,7 @@
                                 </div>
                             </fieldset>
 
-                            <div class="grid md:grid-cols-3 gap-6 mt-6">
+                            <div class="grid grid-cols-3 gap-6 mt-6">
                                 <transition name="fade" mode="out-in">
                                     <div v-if="this.data.member === ''">
                                         <label
@@ -263,7 +263,6 @@
                                         />
                                     </div>
                                 </transition>
-
                                 <div>
                                     <label
                                         for="company"
@@ -288,6 +287,7 @@
                                     <input
                                         type="text"
                                         class="w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-1 focus:border-sky-500 block p-2.5"
+                                        required
                                         v-model="this.data.branch"
                                     />
                                 </div>
@@ -579,12 +579,6 @@
                         </div>
                     </div>
 
-                    <transition name="fade" mode="out-in">
-                        <div v-if="textAlert" class="text-red-400 mt-4">
-                            ** กรุณากรอกข้อมูลให้ครบถ้วน **
-                        </div>
-                    </transition>
-
                     <div class="grid grid-cols-2">
                         <div>
                             <router-link to="intro">
@@ -611,8 +605,6 @@
 </template>
 
 <script>
-import Swal from "sweetalert2";
-
 export default {
     mounted() {
         this.getUniList();
@@ -639,7 +631,7 @@ export default {
                 trip: "",
             },
             uniList: "",
-            textAlert: false,
+            textAlert: "",
         };
     },
     methods: {
@@ -653,29 +645,12 @@ export default {
                 .catch((err) => {});
         },
         async send() {
-            this.textAlert = false;
-            if (
-                this.data.reg == '' ||
-                this.data.member == '' ||
-                this.data.dinner == '' ||
-                this.data.tour == '' ||
-                this.data.food == '' ||
-                this.data.trip == ''
-            ) {
-                this.textAlert = true;
+            if (this.data.reg == "" || this.data.member || this.data.dinner || this.data.tour || this.data.food || this.data.comment || this.data.trip) {
+                console.log("555");
             } else {
                 await axios
                     .post("/api/regis", this.data)
-                    .then((response) => {
-                        Swal.fire({
-                            position: "center",
-                            icon: "success",
-                            title: response.data.message,
-                            showConfirmButton: false,
-                            timer: 1500,
-                        });
-                        this.$router.push("/");
-                    })
+                    .then((response) => {})
                     .catch((err) => {});
             }
         },

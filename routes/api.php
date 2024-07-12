@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\UniController;
+use App\Http\Controllers\Api\MemberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +20,9 @@ use App\Http\Controllers\Api\UserController;
 */
 
 Route::post('logout', [AuthController::class, 'logout']);
+Route::get('unilist', [UniController::class, 'unilist']);
+Route::post('regis', [MemberController::class, 'regis']);
+Route::get('memlist', [MemberController::class, 'memlist']);
 
 Route::middleware('guest')->group(function () {
     Route::post('login', [AuthController::class, 'login']);

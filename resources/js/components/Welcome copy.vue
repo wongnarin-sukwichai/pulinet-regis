@@ -1,134 +1,5 @@
 <template>
     <div class="bg-white">
-        <header class="absolute inset-x-0 top-0 z-50">
-            <nav
-                class="flex items-center justify-between p-6 lg:px-8"
-                aria-label="Global"
-            >
-                <div class="flex lg:flex-1">
-                    <a href="#" class="-m-1.5 p-1.5">
-                        <span class="sr-only">Your Company</span>
-                        <img
-                            class="h-8 w-auto"
-                            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                            alt=""
-                        />
-                    </a>
-                </div>
-                <div class="flex lg:hidden">
-                    <button
-                        type="button"
-                        class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 cursor-pointer"
-                        @click="isShowMenu()"
-                    >
-                        <span class="sr-only">Open main menu</span>
-                        <svg
-                            class="h-6 w-6"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            aria-hidden="true"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                            />
-                        </svg>
-                    </button>
-                </div>
-                <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <router-link to="login">
-                        <button
-                            class="flex p-2 bg-indigo-700 hover:bg-indigo-800 cursor-pointer rounded-lg text-normal text-white text-sm shadow-lg"
-                        >
-                            <p class="pr-1">เข้าสู่ระบบ</p>
-                            <box-icon
-                                name="right-arrow"
-                                type="solid"
-                                size="xs"
-                                color="white"
-                                class="flex justify-center items-center"
-                            ></box-icon>
-                        </button>
-                    </router-link>
-                </div>
-            </nav>
-
-            <!-- Mobile menu, show/hide based on menu open state. -->
-            <transition name="fade" mode="out-in">
-                <div
-                    class="lg:hidden"
-                    role="dialog"
-                    aria-modal="true"
-                    v-show="showMenu"
-                >
-                    <!-- Background backdrop, show/hide based on slide-over state. -->
-                    <div class="fixed inset-0 z-50"></div>
-                    <div
-                        class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
-                    >
-                        <div class="flex items-center justify-between">
-                            <a href="#" class="-m-1.5 p-1.5">
-                                <span class="sr-only">Your Company</span>
-                                <img
-                                    class="h-8 w-auto"
-                                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                                    alt=""
-                                />
-                            </a>
-                            <button
-                                type="button"
-                                class="-m-2.5 rounded-md p-2.5 text-gray-700 cursor-pointer"
-                                @click="isShowMenu()"
-                            >
-                                <span class="sr-only">Close menu</span>
-                                <svg
-                                    class="h-6 w-6"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke-width="1.5"
-                                    stroke="currentColor"
-                                    aria-hidden="true"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        d="M6 18L18 6M6 6l12 12"
-                                    />
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="mt-6 flow-root border-t-2 border-gray-300">
-                            <div
-                                class="-my-6 divide-y divide-gray-500/10 mt-0.5"
-                            >
-                                <div class="py-6">
-                                    <router-link
-                                        class="flex grid grid-cols-2 p-3 cursor-pointer text-normal border rounded-full shadow-lg text-white bg-gradient-to-r from-blue-500 to-indigo-600"
-                                        to="login"
-                                    >
-                                        <p class="pl-1 text-sm">เข้าสู่ระบบ</p>
-                                        <div class="flex justify-end">
-                                            <box-icon
-                                                class="mr-4"
-                                                name="chevrons-right"
-                                                type="solid"
-                                                size="xs"
-                                                color="white"
-                                                animation="fade-right"
-                                            ></box-icon>
-                                        </div>
-                                    </router-link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </transition>
-        </header>
-
         <div class="relative isolate px-6 pt-14 lg:px-8">
             <div
                 class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -195,10 +66,10 @@
                         มหาวิทยาลัยแม่ฟ้าหลวง
                     </p>
                     <div class="mt-10 flex items-center justify-center gap-x-6">
-                        <a
-                            href="#"
+                        <router-link
+                            to="intro"
                             class="rounded-md bg-indigo-800 px-3.5 py-2.5 text-sm font-normal text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                            >ลงทะเบียนเข้าร่วมการประชุม</a
+                            >ลงทะเบียนเข้าร่วมการประชุม</router-link
                         >
                     </div>
                 </div>
@@ -342,23 +213,19 @@
                                             <td
                                                 class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
                                             >
-                                                <div>
-                                                    <h2
-                                                        class="font-medium text-gray-800 dark:text-white"
-                                                    >
-                                                        1
-                                                    </h2>
+                                                <div
+                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                >
+                                                    1
                                                 </div>
                                             </td>
                                             <td
                                                 class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
                                             >
-                                                <div>
-                                                    <h2
-                                                        class="font-medium text-gray-800 dark:text-white"
-                                                    >
-                                                        วงศ์นรินทร์ สุขวิชัย
-                                                    </h2>
+                                                <div
+                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                >
+                                                    วงศ์นรินทร์ สุขวิชัย
                                                 </div>
                                             </td>
                                             <td
@@ -478,23 +345,19 @@
                                             <td
                                                 class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
                                             >
-                                                <div>
-                                                    <h2
-                                                        class="font-medium text-gray-800 dark:text-white"
-                                                    >
-                                                        2
-                                                    </h2>
+                                                <div
+                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                >
+                                                    2
                                                 </div>
                                             </td>
                                             <td
                                                 class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
                                             >
-                                                <div>
-                                                    <h2
-                                                        class="font-medium text-gray-800 dark:text-white"
-                                                    >
-                                                        ภาณุวัฒน์ เพียรภายลุน
-                                                    </h2>
+                                                <div
+                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                >
+                                                    ภาณุวัฒน์ เพียรภายลุน
                                                 </div>
                                             </td>
                                             <td
@@ -574,7 +437,8 @@
                                                 >
                                                     <box-icon
                                                         name="arrow-to-bottom"
-                                                        @click="showModal()"
+                                                        color="#f87171"
+                                                        @click="toPayment(2)"
                                                     ></box-icon>
                                                 </button>
                                             </td>
@@ -645,198 +509,35 @@
             <!-- End DataTable-->
         </div>
     </div>
-
-    <!-- Modal Show -->
-    <transition name="fade" mode="out-in">
-        <div
-            class="relative z-10"
-            aria-labelledby="modal-title"
-            role="dialog"
-            aria-modal="true"
-            v-show="isModalShow"
-        >
-            <div
-                class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
-            ></div>
-
-            <div class="fixed inset-0 z-10 overflow-y-auto">
-                <div
-                    class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
-                >
-                    <div
-                        class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
-                    >
-                        <br />
-                        <div class="grid grid-cols-5 bg-white px-4">
-                            <div class="col-span-3 sm:flex sm:items-start">
-                                <div
-                                    class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-lime-100 sm:mx-0 sm:h-10 sm:w-10"
-                                >
-                                    <box-icon name="user"></box-icon>
-                                </div>
-                                <div
-                                    class="mt-0 text-center sm:mt-0 sm:ml-4 sm:text-left w-full"
-                                >
-                                    <label
-                                        id="listbox-label"
-                                        class="block text-sm font-medium leading-6 text-gray-900"
-                                    >
-                                        รหัสนิสิต :</label
-                                    >
-                                    <input
-                                        type="text"
-                                        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                                        required
-                                    />
-                                </div>
-                            </div>
-
-                            <div
-                                class="col-span-2 flex items-left justify-left mx-5 py-5"
-                            >
-                                <div
-                                    class="border-dotted border-2 border-sky-500 rounded-lg p-3 text-xs"
-                                ></div>
-                            </div>
-                        </div>
-
-                        <transition name="fade" mode="out-in">
-                            <div
-                                class="text-rose-500 mx-20"
-                                v-show="showAlertInput"
-                            >
-                                ** กรุณากรอกข้อมูลให้ครบ
-                            </div>
-                        </transition>
-
-                        <div class="bg-white px-4 pb-4 sm:p-4 sm:pb-4">
-                            <div class="sm:flex sm:items-start">
-                                <div
-                                    class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-lime-100 sm:mx-0 sm:h-10 sm:w-10"
-                                >
-                                    <box-icon name="check"></box-icon>
-                                </div>
-                                <div
-                                    class="text-center sm:ml-4 sm:text-left w-full"
-                                >
-                                    <label
-                                        id="listbox-label"
-                                        class="block text-sm font-medium leading-6 text-gray-900"
-                                        >ตรวจสอบรหัสและสิทธิ์ :
-                                    </label>
-
-                                    <div class="text-center w-full pt-2">
-                                        <label
-                                            id="listbox-label"
-                                            class="text-sm font-medium leading-6 text-gray-900"
-                                        >
-                                        </label>
-                                        <button
-                                            class="block w-full items-center justify-center p-4 px-6 py-2 font-medium border-2 border-green-400 rounded-full shadow-md group text-gray-400 hover:text-black hover:bg-green-200"
-                                        >
-                                            <span
-                                                class="flex items-center justify-center w-full h-full text-xs"
-                                                >ตรวจสอบ</span
-                                            >
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="sm:flex sm:items-start">
-                                <div
-                                    class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full"
-                                ></div>
-                            </div>
-                        </div>
-
-                        <div class="bg-white px-4 pt-5 sm:p-4 sm:pb-4">
-                            <div class="sm:flex sm:items-start">
-                                <div
-                                    class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-lime-100 sm:mx-0 sm:h-10 sm:w-10"
-                                >
-                                    <box-icon name="time"></box-icon>
-                                </div>
-                                <div
-                                    class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full"
-                                >
-                                    <label
-                                        id="listbox-label"
-                                        class="block text-sm font-medium leading-6 text-gray-900"
-                                    >
-                                        จองเวลา :</label
-                                    >
-                                    <div
-                                        class="grid grid-cols-4 p-3 border rounded-lg"
-                                    ></div>
-                                    <div></div>
-                                    <transition name="fade" mode="out-in">
-                                        <div
-                                            class="pt-2 text-rose-500"
-                                            v-show="showAlert"
-                                        >
-                                            ** ใช้บริการได้ไม่เกิน 3 ชั่วโมง/วัน
-                                        </div>
-                                    </transition>
-                                    <transition name="fade" mode="out-in">
-                                        <div
-                                            class="pt-2 text-rose-500"
-                                            v-show="showAlertRule"
-                                        >
-                                            **
-                                            ใช้บริการต่อคนได้ไม่เกินสิทธิ์คงเหลือ
-                                        </div>
-                                    </transition>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="pt-3">
-                            <div
-                                class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6"
-                            >
-                                <button
-                                    class="inline-flex w-full justify-center rounded-md bg-green-500 px-3 py-2 text-sm text-white shadow-sm hover:bg-green-600 sm:ml-3 sm:w-auto"
-                                >
-                                    บันทึก
-                                </button>
-                                <button
-                                    type="button"
-                                    class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm text-gray-900 shadow-sm hover:bg-gray-50 ring-1 ring-inset ring-gray-300 sm:mt-0 sm:w-auto"
-                                    @click="close()"
-                                >
-                                    ออก
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </transition>
 </template>
 
 <script>
 import "boxicons";
 
 export default {
-    mounted() {},
+    mounted() {
+        this.getMemList();
+    },
     data() {
         return {
             showMenu: false,
-            isModalShow: false,
+            memList: ""
         };
     },
     methods: {
         isShowMenu() {
             this.showMenu = !this.showMenu;
         },
-        showModal() {
-            this.isModalShow = true;
+        toPayment(id) {
+            this.$router.push("/payment/" + id);
         },
-        close() {
-            this.isModalShow = false;
-        },
+        getMemList() {
+            axios.get('/api/memlist').then((response) => {
+                this.memList = response.data
+            }) .catch((err) => {
+
+            })
+        }
     },
 };
 </script>
