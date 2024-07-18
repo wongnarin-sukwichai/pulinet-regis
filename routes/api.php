@@ -7,6 +7,11 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\UniController;
 use App\Http\Controllers\Api\MemberController;
+use App\Http\Controllers\Api\SearchController;
+use App\Http\Controllers\Api\PeriodController;
+use App\Http\Controllers\Api\SystemController;
+use App\Http\Controllers\Api\UploadController;
+use App\Http\Controllers\Api\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +28,12 @@ Route::post('logout', [AuthController::class, 'logout']);
 Route::get('unilist', [UniController::class, 'unilist']);
 Route::post('regis', [MemberController::class, 'regis']);
 Route::get('memlist', [MemberController::class, 'memlist']);
+Route::post('search', [SearchController::class, 'search']);
+Route::get('getSystem', [SystemController::class, 'getSystem']);
+Route::get('getMember/{id}', [MemberController::class, 'getMember']);
+Route::get('getPeriod', [PeriodController::class, 'getPeriod']);
+Route::post('upload', [UploadController::class, 'upload']);
+Route::post('storePayment', [PaymentController::class, 'storePayment']);
 
 Route::middleware('guest')->group(function () {
     Route::post('login', [AuthController::class, 'login']);
@@ -30,4 +41,6 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('user', UserController::class);
+    Route::resource('period', PeriodController::class);
+    Route::resource('system', SystemController::class);
 });

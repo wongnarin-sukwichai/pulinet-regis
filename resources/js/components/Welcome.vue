@@ -53,17 +53,18 @@
                         การประชุมวิชาการระดับชาติ PULINET ครั้งที่ 15
                     </p>
                     <p class="text-2xl pt-2 text-gray-400">
-                        (The 15th PULINET National Conference – PULINET 2024)
+                        (The 15th PULINET National Conference – PULINET 2025)
                     </p>
                     <p class="mt-6 text-lg text-gray-400">
-                        จัดโดย ศูนย์บรรณสารและสื่อการศึกษา มหาวิทยาลัยแม่ฟ้าหลวง
+                        จัดโดย สำนักวิทยบริการ มหาวิทยาลัยมหาสารคาม
                     </p>
                     <p class="text-lg text-gray-400">
                         ร่วมกับ ข่ายงานห้องสมุดมหาวิทยาลัยส่วนภูมิภาค (PULINET)
                     </p>
                     <p class="text-lg text-gray-400">
-                        ระหว่างวันที่ 10 - 12 มกราคม 2567 ณ
-                        มหาวิทยาลัยแม่ฟ้าหลวง
+                        ระหว่างวันที่ 15 - 17 มกราคม 2568 ณ
+                        อาคารประชุมเฉลิมพระเกียรติ ในโอกาสฉลอง<br />พระชนมายุ 5
+                        รอบ 2 เมษายน 2558 มหาวิทยาลัยมหาสารคาม
                     </p>
                     <div class="mt-10 flex items-center justify-center gap-x-6">
                         <router-link
@@ -138,9 +139,26 @@
                             type="text"
                             placeholder="Search"
                             class="block w-full py-1.5 pr-5 text-gray-700 bg-white border border-gray-200 rounded-lg md:w-80 placeholder-gray-400/70 pl-11 rtl:pr-11 rtl:pl-5 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                            v-model="this.data.search"
                         />
+
+                        <div
+                            class="p-2 ml-1 rounded-lg cursor-pointer bg-blue-700 text-white text-sm hover:bg-blue-800"
+                            @click="getSearch()"
+                        >
+                            ค้นหา
+                        </div>
                     </div>
                 </div>
+
+                <transition name="fade" mode="out-in">
+                    <div
+                        class="flex pt-1 items-end justify-end text-red-600"
+                        v-if="isShowAlert"
+                    >
+                        ** กรุณาใส่ข้อมูลที่ต้องการสืบค้น
+                    </div>
+                </transition>
 
                 <div class="flex flex-col mt-6">
                     <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -216,427 +234,486 @@
                                     <tbody
                                         class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900"
                                     >
-                                        <tr
-                                            v-for="(member, index) in memList"
-                                            :key="index"
+                                        <transition-group
+                                            name="fade"
+                                            mode="out-in"
                                         >
-                                            <td
-                                                class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
+                                            <tr
+                                                v-for="(
+                                                    member, index
+                                                ) in memList.data"
+                                                :key="index"
+                                                v-show="isShowTable"
                                             >
-                                                <div
-                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                <td
+                                                    class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
                                                 >
-                                                    {{ member.id }}
-                                                </div>
-                                            </td>
-                                            <td
-                                                class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
-                                            >
-                                                <div
-                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                    <div
+                                                        class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                    >
+                                                        {{ member.id }}
+                                                    </div>
+                                                </td>
+                                                <td
+                                                    class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
                                                 >
-                                                    {{ member.name }}
-                                                    {{ member.surname }}
-                                                </div>
-                                            </td>
-                                            <td
-                                                class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
-                                            >
-                                                <div
-                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                    <div
+                                                        class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                    >
+                                                        {{ member.name }}
+                                                        {{ member.surname }}
+                                                    </div>
+                                                </td>
+                                                <td
+                                                    class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
                                                 >
-                                                    {{ member.pos }}
-                                                </div>
-                                            </td>
-                                            <td
-                                                class="px-4 py-4 text-sm whitespace-nowrap border-r"
-                                            >
-                                                <div
-                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                    <div
+                                                        class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                    >
+                                                        {{ member.pos }}
+                                                    </div>
+                                                </td>
+                                                <td
+                                                    class="px-4 py-4 text-sm whitespace-nowrap border-r"
                                                 >
-                                                    {{ member.uni }}
-                                                </div>
-                                            </td>
-                                            <td
-                                                class="px-4 py-4 text-sm whitespace-nowrap border-r"
-                                            >
-                                                <div
-                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                    <div
+                                                        class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                    >
+                                                        {{ member.uni }}
+                                                    </div>
+                                                </td>
+                                                <td
+                                                    class="px-4 py-4 text-sm whitespace-nowrap border-r"
                                                 >
-                                                    {{ member.dep }}
-                                                </div>
-                                            </td>
-                                            <td
-                                                class="px-4 py-4 text-sm whitespace-nowrap border-r text-center"
-                                            >
-                                                <div
-                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                    <div
+                                                        class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                    >
+                                                        {{ member.dep }}
+                                                    </div>
+                                                </td>
+                                                <td
+                                                    class="px-4 py-4 text-sm whitespace-nowrap border-r text-center"
                                                 >
-                                                    <p
+                                                    <div
+                                                        class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                    >
+                                                        <p
+                                                            v-if="
+                                                                member.member ===
+                                                                '1'
+                                                            "
+                                                        >
+                                                            ผู้เข้าร่วมประชุม
+                                                        </p>
+                                                        <p
+                                                            class="text-sm"
+                                                            v-else
+                                                        >
+                                                            ผู้เข้าร่วมประชุม<br />และนำเสนอผลงาน
+                                                        </p>
+                                                    </div>
+                                                </td>
+
+                                                <td
+                                                    class="px-4 py-4 text-sm whitespace-nowrap"
+                                                >
+                                                    <div
+                                                        class="flex items-center pr-1"
                                                         v-if="
-                                                            member.member ===
+                                                            member.step_1 ===
                                                             '1'
                                                         "
                                                     >
-                                                        ผู้เข้าร่วมประชุม
-                                                    </p>
-                                                    <p v-else>
-                                                        ผู้เข้าร่วมประชุมและนำเสนอผลงาน
-                                                    </p>
-                                                </div>
-                                            </td>
+                                                        <span
+                                                            class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 text-white bg-blue-600"
+                                                        >
+                                                            1
+                                                        </span>
+                                                        <span
+                                                            class="text-blue-600"
+                                                            >ลงทะเบียน</span
+                                                        >
+                                                        <svg
+                                                            class="w-3 h-3 ms-2 sm:ms-1 text-blue-600"
+                                                            aria-hidden="true"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            fill="none"
+                                                            viewBox="0 0 12 10"
+                                                        >
+                                                            <path
+                                                                stroke="currentColor"
+                                                                stroke-linecap="round"
+                                                                stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="m7 9 4-4-4-4M1 9l4-4-4-4"
+                                                            />
+                                                        </svg>
+                                                    </div>
+                                                </td>
 
-                                            <td
-                                                class="px-4 py-4 text-sm whitespace-nowrap"
-                                            >
-                                                <div
-                                                    class="flex items-center pr-1"
-                                                    v-if="member.step_1 === '1'"
+                                                <td
+                                                    class="px-4 py-4 text-sm whitespace-nowrap"
                                                 >
-                                                    <span
-                                                        class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 bg-gray-200"
-                                                    >
-                                                        1
-                                                    </span>
-                                                    <span class="text-gray-600"
-                                                        >ลงทะเบียน</span
-                                                    >
-                                                    <svg
-                                                        class="w-3 h-3 ms-2 sm:ms-1 text-gray-400"
-                                                        aria-hidden="true"
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        fill="none"
-                                                        viewBox="0 0 12 10"
-                                                    >
-                                                        <path
-                                                            stroke="currentColor"
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                            stroke-width="2"
-                                                            d="m7 9 4-4-4-4M1 9l4-4-4-4"
-                                                        />
-                                                    </svg>
-                                                </div>
-                                            </td>
+                                                    <div
+                                                        class="flex items-center pr-1"
+                                                        v-if="
+                                                            member.step_2 ===
+                                                            null
+                                                        "
+                                                    ></div>
 
-                                            <td
-                                                class="px-4 py-4 text-sm whitespace-nowrap"
-                                            >
-                                                <div
-                                                    class="flex items-center pr-1"
-                                                    v-if="member.step_2 === '1'"
-                                                >
-                                                    <span
-                                                        class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 text-white bg-blue-600"
+                                                    <div
+                                                        class="flex items-center pr-1"
+                                                        v-else
                                                     >
-                                                        2
-                                                    </span>
-                                                    <span class="text-blue-600"
-                                                        >ชำระค่าลงทะเบียน</span
-                                                    >
-                                                    <svg
-                                                        class="w-3 h-3 ms-2 sm:ms-1 text-blue-600"
-                                                        aria-hidden="true"
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        fill="none"
-                                                        viewBox="0 0 12 10"
-                                                    >
-                                                        <path
-                                                            stroke="currentColor"
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                            stroke-width="2"
-                                                            d="m7 9 4-4-4-4M1 9l4-4-4-4"
-                                                        />
-                                                    </svg>
-                                                </div>
-                                            </td>
+                                                        <span
+                                                            class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0"
+                                                            :class="
+                                                                member.step_2 ===
+                                                                '0'
+                                                                    ? 'bg-gray-200'
+                                                                    : 'text-white bg-green-600'
+                                                            "
+                                                        >
+                                                            2
+                                                        </span>
+                                                        <span
+                                                            :class="
+                                                                member.step_2 ===
+                                                                '0'
+                                                                    ? 'text-gray-600'
+                                                                    : 'text-green-600'
+                                                            "
+                                                            >ชำระค่าลงทะเบียน</span
+                                                        >
+                                                        <svg
+                                                            class="w-3 h-3 ms-2 sm:ms-1 text-gray-400"
+                                                            :class="
+                                                                member.step_2 ===
+                                                                '0'
+                                                                    ? 'text-gray-400'
+                                                                    : 'text-green-600'
+                                                            "
+                                                            aria-hidden="true"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            fill="none"
+                                                            viewBox="0 0 12 10"
+                                                        >
+                                                            <path
+                                                                stroke="currentColor"
+                                                                stroke-linecap="round"
+                                                                stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="m7 9 4-4-4-4M1 9l4-4-4-4"
+                                                            />
+                                                        </svg>
+                                                    </div>
+                                                </td>
 
-                                            <td
-                                                class="px-4 py-4 text-sm whitespace-nowrap border-r"
-                                            >
-                                                <div
-                                                    class="flex items-center"
-                                                    v-if="member.step_3 === '1'"
+                                                <td
+                                                    class="px-4 py-4 text-sm whitespace-nowrap border-r"
                                                 >
-                                                    <span
-                                                        class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 text-white bg-green-600"
-                                                    >
-                                                        3
-                                                    </span>
-                                                    <span class="text-green-600"
-                                                        >เสร็จสิ้น</span
-                                                    >
-                                                </div>
-                                            </td>
+                                                    <div
+                                                        class="flex items-center"
+                                                        v-if="
+                                                            member.step_3 ===
+                                                            null
+                                                        "
+                                                    ></div>
 
-                                            <td
-                                                class="flex justify-center px-4 py-4 text-sm whitespace-nowrap"
-                                            >
-                                                <button
-                                                    class="px-1 py-1 text-gray-500 transition-colors duration-200 rounded-lg border-2 border-dotted hover:bg-gray-100"
-                                                v-if="member.step_3 === null"
+                                                    <div
+                                                        class="flex items-center"
+                                                        v-else
                                                     >
-                                                    <box-icon
-                                                        name="arrow-to-bottom"
-                                                        color="#f87171"
-                                                        @click="toPayment(2)"
-                                                    ></box-icon>
-                                                </button>
-                                            </td>
-                                        </tr>
+                                                        <span
+                                                            class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 text-white bg-orange-400"
+                                                            :class="
+                                                                member.step_3 ===
+                                                                '0'
+                                                                    ? 'bg-orange-400'
+                                                                    : 'text-white bg-green-600'
+                                                            "
+                                                        >
+                                                            3
+                                                        </span>
+                                                        <span
+                                                            :class="
+                                                                member.step_3 ===
+                                                                '0'
+                                                                    ? 'text-orange-400'
+                                                                    : 'text-green-600'
+                                                            "
+                                                        >
+                                                            <p
+                                                                v-if="
+                                                                    member.step_3 ===
+                                                                    '0'
+                                                                "
+                                                            >
+                                                                รอการตรวจสอบ
+                                                            </p>
+                                                            <p v-else>
+                                                                เสร็จสิ้น
+                                                            </p>
+                                                        </span>
+                                                    </div>
+                                                </td>
 
-                                        <!-- Fake Data -->
-                                        <tr>
-                                            <td
-                                                class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
-                                            >
-                                                <div
-                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                <td
+                                                    class="flex justify-center px-4 py-4 text-sm whitespace-nowrap"
                                                 >
-                                                    1
-                                                </div>
-                                            </td>
-                                            <td
-                                                class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
-                                            >
-                                                <div
-                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
-                                                >
-                                                    วงศ์นรินทร์ สุขวิชัย
-                                                </div>
-                                            </td>
-                                            <td
-                                                class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
-                                            >
-                                                <div
-                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
-                                                >
-                                                    นักวิชาการคอมพิวเตอร์
-                                                </div>
-                                            </td>
-                                            <td
-                                                class="px-4 py-4 text-sm whitespace-nowrap border-r"
-                                            >
-                                                <div
-                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
-                                                >
-                                                    มหาวิทยาลัยมหาสารคาม
-                                                </div>
-                                            </td>
-                                            <td
-                                                class="px-4 py-4 text-sm whitespace-nowrap border-r"
-                                            >
-                                                <div
-                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
-                                                >
-                                                    สำนักวิทยบริการ
-                                                </div>
-                                            </td>
-                                            <td
-                                                class="px-4 py-4 text-sm whitespace-nowrap border-r"
-                                            >
-                                                <div
-                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
-                                                >
-                                                    ผู้เข้าร่วมการประชุม
-                                                </div>
-                                            </td>
+                                                    <div
+                                                        v-if="
+                                                            this.chkSystem !== 1
+                                                        "
+                                                    >
+                                                        <button
+                                                            class="px-1 py-1 text-gray-500 transition-colors duration-200 rounded-lg border-2 border-dotted hover:bg-gray-100"
+                                                            v-if="
+                                                                member.step_2 ===
+                                                                    '0' &&
+                                                                member.step_3 ===
+                                                                    null
+                                                            "
+                                                        >
+                                                            <box-icon
+                                                                name="arrow-to-bottom"
+                                                                color="#f87171"
+                                                                @click="
+                                                                    toPayment(
+                                                                        member.id
+                                                                    )
+                                                                "
+                                                            ></box-icon>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </transition-group>
 
-                                            <td
-                                                class="px-4 py-4 text-sm whitespace-nowrap"
+                                        <!-- Search -->
+                                        <transition-group
+                                            name="fade"
+                                            mode="out-in"
+                                        >
+                                            <tr
+                                                v-for="(
+                                                    member, index
+                                                ) in memSearch"
+                                                :key="index"
+                                                v-show="isShowSearch"
                                             >
-                                                <div
-                                                    class="flex items-center pr-1"
+                                                <td
+                                                    class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
                                                 >
-                                                    <span
-                                                        class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 bg-gray-200"
+                                                    <div
+                                                        class="inline px-3 py-1 text-sm font-normal rounded-full"
                                                     >
-                                                        1
-                                                    </span>
-                                                    <span class="text-gray-600"
-                                                        >ลงทะเบียน</span
+                                                        {{ member.id }}
+                                                    </div>
+                                                </td>
+                                                <td
+                                                    class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
+                                                >
+                                                    <div
+                                                        class="inline px-3 py-1 text-sm font-normal rounded-full"
                                                     >
-                                                    <svg
-                                                        class="w-3 h-3 ms-2 sm:ms-1 text-gray-400"
-                                                        aria-hidden="true"
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        fill="none"
-                                                        viewBox="0 0 12 10"
+                                                        {{ member.name }}
+                                                        {{ member.surname }}
+                                                    </div>
+                                                </td>
+                                                <td
+                                                    class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
+                                                >
+                                                    <div
+                                                        class="inline px-3 py-1 text-sm font-normal rounded-full"
                                                     >
-                                                        <path
-                                                            stroke="currentColor"
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                            stroke-width="2"
-                                                            d="m7 9 4-4-4-4M1 9l4-4-4-4"
-                                                        />
-                                                    </svg>
-                                                </div>
-                                            </td>
+                                                        {{ member.pos }}
+                                                    </div>
+                                                </td>
+                                                <td
+                                                    class="px-4 py-4 text-sm whitespace-nowrap border-r"
+                                                >
+                                                    <div
+                                                        class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                    >
+                                                        {{ member.uni }}
+                                                    </div>
+                                                </td>
+                                                <td
+                                                    class="px-4 py-4 text-sm whitespace-nowrap border-r"
+                                                >
+                                                    <div
+                                                        class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                    >
+                                                        {{ member.dep }}
+                                                    </div>
+                                                </td>
+                                                <td
+                                                    class="px-4 py-4 text-sm whitespace-nowrap border-r text-center"
+                                                >
+                                                    <div
+                                                        class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                    >
+                                                        <p
+                                                            v-if="
+                                                                member.member ===
+                                                                '1'
+                                                            "
+                                                        >
+                                                            ผู้เข้าร่วมประชุม
+                                                        </p>
+                                                        <p v-else>
+                                                            ผู้เข้าร่วมประชุม<br />และนำเสนอผลงาน555
+                                                        </p>
+                                                    </div>
+                                                </td>
 
-                                            <td
-                                                class="px-4 py-4 text-sm whitespace-nowrap"
-                                            >
-                                                <div
-                                                    class="flex items-center pr-1"
+                                                <td
+                                                    class="px-4 py-4 text-sm whitespace-nowrap"
                                                 >
-                                                    <span
-                                                        class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 text-white bg-blue-600"
+                                                    <div
+                                                        class="flex items-center pr-1"
+                                                        v-if="
+                                                            member.step_1 ===
+                                                            '1'
+                                                        "
                                                     >
-                                                        2
-                                                    </span>
-                                                    <span class="text-blue-600"
-                                                        >ชำระค่าลงทะเบียน</span
-                                                    >
-                                                    <svg
-                                                        class="w-3 h-3 ms-2 sm:ms-1 text-blue-600"
-                                                        aria-hidden="true"
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        fill="none"
-                                                        viewBox="0 0 12 10"
-                                                    >
-                                                        <path
-                                                            stroke="currentColor"
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                            stroke-width="2"
-                                                            d="m7 9 4-4-4-4M1 9l4-4-4-4"
-                                                        />
-                                                    </svg>
-                                                </div>
-                                            </td>
+                                                        <span
+                                                            class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 bg-gray-200"
+                                                        >
+                                                            1
+                                                        </span>
+                                                        <span
+                                                            class="text-gray-600"
+                                                            >ลงทะเบียน</span
+                                                        >
+                                                        <svg
+                                                            class="w-3 h-3 ms-2 sm:ms-1 text-gray-400"
+                                                            aria-hidden="true"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            fill="none"
+                                                            viewBox="0 0 12 10"
+                                                        >
+                                                            <path
+                                                                stroke="currentColor"
+                                                                stroke-linecap="round"
+                                                                stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="m7 9 4-4-4-4M1 9l4-4-4-4"
+                                                            />
+                                                        </svg>
+                                                    </div>
+                                                </td>
 
-                                            <td
-                                                class="px-4 py-4 text-sm whitespace-nowrap border-r"
-                                            >
-                                                <div class="flex items-center">
-                                                    <span
-                                                        class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 text-white bg-green-600"
+                                                <td
+                                                    class="px-4 py-4 text-sm whitespace-nowrap"
+                                                >
+                                                    <div
+                                                        class="flex items-center pr-1"
+                                                        v-if="
+                                                            member.step_2 ===
+                                                            '0'
+                                                        "
                                                     >
-                                                        3
-                                                    </span>
-                                                    <span class="text-green-600"
-                                                        >เสร็จสิ้น</span
+                                                        <span
+                                                            class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 text-white bg-blue-600"
+                                                        >
+                                                            2
+                                                        </span>
+                                                        <span
+                                                            class="text-blue-600"
+                                                            >ชำระค่าลงทะเบียน</span
+                                                        >
+                                                        <svg
+                                                            class="w-3 h-3 ms-2 sm:ms-1 text-blue-600"
+                                                            aria-hidden="true"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            fill="none"
+                                                            viewBox="0 0 12 10"
+                                                        >
+                                                            <path
+                                                                stroke="currentColor"
+                                                                stroke-linecap="round"
+                                                                stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="m7 9 4-4-4-4M1 9l4-4-4-4"
+                                                            />
+                                                        </svg>
+                                                    </div>
+                                                </td>
+
+                                                <td
+                                                    class="px-4 py-4 text-sm whitespace-nowrap border-r"
+                                                >
+                                                    <div
+                                                        class="flex items-center"
+                                                        v-if="
+                                                            member.step_3 ===
+                                                            '1'
+                                                        "
                                                     >
-                                                </div>
-                                            </td>
+                                                        <span
+                                                            class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 text-white bg-red-600"
+                                                        >
+                                                            3
+                                                        </span>
+                                                        <span
+                                                            class="text-red-600"
+                                                            >รอการตรวจสอบ</span
+                                                        >
+                                                    </div>
 
-                                            <td
-                                                class="flex justify-center px-4 py-4 text-sm whitespace-nowrap"
-                                            ></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td
-                                                class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
-                                            >
-                                                <div
-                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
-                                                >
-                                                    2
-                                                </div>
-                                            </td>
-                                            <td
-                                                class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
-                                            >
-                                                <div
-                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
-                                                >
-                                                    ภาณุวัฒน์ เพียรภายลุน
-                                                </div>
-                                            </td>
-                                            <td
-                                                class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
-                                            >
-                                                <div
-                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
-                                                >
-                                                    นักวิชาการคอมพิวเตอร์
-                                                </div>
-                                            </td>
-                                            <td
-                                                class="px-4 py-4 text-sm whitespace-nowrap border-r"
-                                            >
-                                                <div
-                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
-                                                >
-                                                    มหาวิทยาลัยมหาสารคาม
-                                                </div>
-                                            </td>
-                                            <td
-                                                class="px-4 py-4 text-sm whitespace-nowrap border-r"
-                                            >
-                                                <div
-                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
-                                                >
-                                                    สำนักวิทยบริการ
-                                                </div>
-                                            </td>
-                                            <td
-                                                class="px-4 py-4 text-sm whitespace-nowrap border-r"
-                                            >
-                                                <div
-                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
-                                                >
-                                                    ผู้เข้าร่วมการประชุม
-                                                </div>
-                                            </td>
-
-                                            <td
-                                                class="px-4 py-4 text-sm whitespace-nowrap"
-                                            >
-                                                <div
-                                                    class="flex items-center pr-1"
-                                                >
-                                                    <span
-                                                        class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 bg-gray-200"
+                                                    <div
+                                                        class="flex items-center"
+                                                        v-else
                                                     >
-                                                        1
-                                                    </span>
-                                                    <span class="text-gray-600"
-                                                        >ลงทะเบียน</span
-                                                    >
-                                                    <svg
-                                                        class="w-3 h-3 ms-2 sm:ms-1 text-gray-400"
-                                                        aria-hidden="true"
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        fill="none"
-                                                        viewBox="0 0 12 10"
-                                                    >
-                                                        <path
-                                                            stroke="currentColor"
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                            stroke-width="2"
-                                                            d="m7 9 4-4-4-4M1 9l4-4-4-4"
-                                                        />
-                                                    </svg>
-                                                </div>
-                                            </td>
+                                                        <span
+                                                            class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 text-white bg-green-600"
+                                                        >
+                                                            3
+                                                        </span>
+                                                        <span
+                                                            class="text-green-600"
+                                                            >เสร็จสิ้น</span
+                                                        >
+                                                    </div>
+                                                </td>
 
-                                            <td
-                                                class="px-4 py-4 text-sm whitespace-nowrap"
-                                            ></td>
-
-                                            <td
-                                                class="px-4 py-4 text-sm whitespace-nowrap border-r"
-                                            ></td>
-
-                                            <td
-                                                class="flex justify-center px-4 py-4 text-sm whitespace-nowrap"
-                                            >
-                                                <button
-                                                    class="px-1 py-1 text-gray-500 transition-colors duration-200 rounded-lg border-2 border-dotted hover:bg-gray-100"
+                                                <!-- check system -->
+                                                <td
+                                                    class="flex justify-center px-4 py-4 text-sm whitespace-nowrap"
                                                 >
-                                                    <box-icon
-                                                        name="arrow-to-bottom"
-                                                        color="#f87171"
-                                                        @click="toPayment(2)"
-                                                    ></box-icon>
-                                                </button>
-                                            </td>
-                                        </tr>
+                                                    <div
+                                                        v-if="
+                                                            this.chkSystem !== 1
+                                                        "
+                                                    >
+                                                        <button
+                                                            class="px-1 py-1 text-gray-500 transition-colors duration-200 rounded-lg border-2 border-dotted hover:bg-gray-100"
+                                                            v-if="
+                                                                member.step_2 ===
+                                                                    '1' &&
+                                                                member.step_3 ===
+                                                                    '1'
+                                                            "
+                                                        >
+                                                            <box-icon
+                                                                name="arrow-to-top"
+                                                                color="#f87171"
+                                                                animation="tada-hover"
+                                                                @click="
+                                                                    toPayment(
+                                                                        member.id
+                                                                    )
+                                                                "
+                                                            ></box-icon>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                                <!-- End check system -->
+                                            </tr>
+                                        </transition-group>
                                     </tbody>
                                 </table>
                             </div>
@@ -644,60 +721,13 @@
                     </div>
                 </div>
 
-                <div class="mt-6 sm:flex sm:items-center sm:justify-between">
-                    <div class="text-sm text-gray-500">
-                        Page
-                        <span
-                            class="font-medium text-gray-700 dark:text-gray-100"
-                            >1 of 10</span
-                        >
-                    </div>
-
-                    <div class="flex items-center mt-4 gap-x-4 sm:mt-0">
-                        <a
-                            href="#"
-                            class="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md sm:w-auto gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke-width="1.5"
-                                stroke="currentColor"
-                                class="w-5 h-5 rtl:-scale-x-100"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
-                                />
-                            </svg>
-
-                            <span> previous </span>
-                        </a>
-
-                        <a
-                            href="#"
-                            class="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md sm:w-auto gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800"
-                        >
-                            <span> Next </span>
-
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke-width="1.5"
-                                stroke="currentColor"
-                                class="w-5 h-5 rtl:-scale-x-100"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                                />
-                            </svg>
-                        </a>
-                    </div>
+                <!-- Pagination -->
+                <div class="flex justify-end mt-4">
+                    <TailwindPagination
+                        :data="memList"
+                        @pagination-change-page="getMemList"
+                        class="bg-blue-50"
+                    ></TailwindPagination>
                 </div>
             </section>
             <!-- End DataTable-->
@@ -707,32 +737,69 @@
 
 <script>
 import "boxicons";
+import { TailwindPagination } from "laravel-vue-pagination";
 
 export default {
     mounted() {
+        this.getSystem();
         this.getMemList();
     },
     data() {
         return {
+            chkSystem: "",
             showMenu: false,
-            memList: "",
+            isShowTable: true,
+            isShowSearch: false,
+            memList: [],
+            memSearch: [],
+            data: {
+                search: "",
+            },
         };
     },
     methods: {
+        getSystem() {
+            axios
+                .get("/api/getSystem")
+                .then((response) => {
+                    this.chkSystem = response.data;
+                })
+                .catch((err) => {});
+        },
         isShowMenu() {
             this.showMenu = !this.showMenu;
         },
         toPayment(id) {
             this.$router.push("/payment/" + id);
         },
-        getMemList() {
+        getMemList(page = 1) {
             axios
-                .get("/api/memlist")
+                .get("/api/memlist?page=" + page)
                 .then((response) => {
                     this.memList = response.data;
                 })
                 .catch((err) => {});
         },
+        getSearch() {
+            if (this.data.search == "") {
+                this.getMemList();
+                this.isShowTable = true;
+            } else {
+                axios
+                    .post("/api/search", this.data)
+                    .then((response) => {
+                        this.memSearch = response.data;
+                        this.isShowTable = false;
+                        this.isShowSearch = true;
+                    })
+                    .catch((err) => {});
+            }
+        },
+    },
+    components: {
+        TailwindPagination,
     },
 };
 </script>
+
+<style></style>

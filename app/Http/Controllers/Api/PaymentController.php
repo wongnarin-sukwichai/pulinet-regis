@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Member;
+use App\Models\Payment;
+use Illuminate\Http\Request;
 
-class MemberController extends Controller
+class PaymentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,13 +15,6 @@ class MemberController extends Controller
     public function index()
     {
         //
-    }
-
-    public function memlist()
-    {
-        $data = Member::orderBy('id', 'DESC')->paginate(10);
-
-        return response()->json($data);
     }
 
     /**
@@ -39,33 +33,33 @@ class MemberController extends Controller
         //
     }
 
-    public function regis(Request $request)
+    public function storePayment(Request $request)
     {
-        $data = new Member();
+        $data = new Payment();
 
-        $data->reg = $request['reg'];
-        $data->intro = $request['intro'];
-        $data->name = $request['name'];
-        $data->surname = $request['surname'];
-        $data->pos = $request['pos'];
-        $data->email = $request['email'];
-        $data->tel = $request['tel'];
-        $data->member = $request['member'];
-        $data->uni = $request['uni'];
+        $data->ref_id = $request['ref_id'];
+        $data->title = $request['title'];
         $data->dep = $request['dep'];
-        $data->branch = $request['branch'];
-        $data->dinner = $request['dinner'];
-        $data->tour = $request['tour'];
-        $data->food = $request['food'];
+        $data->vat = $request['vat'];
+        $data->address = $request['address'];
+        $data->slip = $request['slip'];
+        $data->bank = $request['bank'];
+        $data->date = $request['date'];
+        $data->time = $request['time'];
+        $data->price = $request['price'];
         $data->comment = $request['comment'];
-        $data->trip = $request['trip'];
-        $data->step_1 = 1;
 
         $data->save();
+
+        $data = Member::find($request['ref_id']);
+        $data->step_2 = 1;
+
+        $data->update();
 
         return response()->json([
             'message' => 'บันทึกข้อมูลเรียบร้อย'
         ]);
+
     }
 
     /**
@@ -74,13 +68,6 @@ class MemberController extends Controller
     public function show(string $id)
     {
         //
-    }
-
-    public function getMember(string $id)
-    {
-        $data = Member::where('id', $id)->select('intro', 'name', 'surname', 'member', 'uni')->get();
-
-        return response()->json($data);
     }
 
     /**

@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>MSU | ระบบลงทะเบียน Pulinet 2025</title>
+    <link rel="icon" href="{{ url('/public/img/favicon.jpg') }}">
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Prompt|Anuphan" rel="stylesheet">
 
     <!-- Scripts -->

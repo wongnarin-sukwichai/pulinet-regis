@@ -11,15 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('slips', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->integer('ref_id');
             $table->string('title');
             $table->string('dep');
-            $table->integer('vat')->nullable();
-            $table->string('address')->comment('ทีอยู่ออกใบกำกับ');
-            $table->integer('recieve')->comment('1:หน้างาน 2:ไปรษณีย์');
-            $table->string('comment')->nullable()->comment('ที่อยู่รับไปรษณีย์');
+            $table->string('vat')->nullable();
+            $table->longText('address');
+            $table->string('slip');
+            $table->string('bank');
+            $table->date('date');
+            $table->string('time');
+            $table->integer('price');
+            $table->string('comment')->nullable();
+
             $table->timestamps();
         });
     }
@@ -29,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('slips');
+        Schema::dropIfExists('payments');
     }
 };

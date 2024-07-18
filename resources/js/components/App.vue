@@ -35,7 +35,7 @@
                 </button>
             </div>
             <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                <router-link to="login" v-if="!user">
+                <router-link to="/login" v-if="!user">
                     <button
                         class="flex p-2 bg-indigo-700 hover:bg-indigo-800 cursor-pointer rounded-lg text-normal text-white text-sm shadow-lg"
                     >
@@ -50,7 +50,9 @@
                     </button>
                 </router-link>
                 <div class="flex items-center" v-else>
-                    <p class="px-2 text-white">@ {{ fullname }} |</p>
+                    <router-link to="/home">
+                        <p class="px-2 text-white">@ {{ fullname }} |</p>
+                    </router-link>
                     <button
                         class="flex p-2 bg-indigo-700 hover:bg-indigo-800 cursor-pointer rounded-lg text-normal text-white text-sm shadow-lg"
                         @click="logout()"
@@ -170,15 +172,16 @@
             <div class="py-4 text-sm text-center dark:text-gray-50">
                 <p>การประชุมวิชาการระดับชาติ PULINET ครั้งที่ 15</p>
                 <p>(The 15th PULINET National Conference – PULINET 2025)</p>
-                <p>
-                    "Better Libraries: Honour Yesterday, Celebrate Today,
-                    Embrace Tomorrow"
-                </p>
+                <p>"Beyond Library : Knowledge Infinity Through the Future"</p>
                 <p>
                     จัดโดย สำนักวิทยบริการ มหาวิทยาลัยมหาสารคาม &
                     ข่ายงานห้องสมุดมหาวิทยาลัยส่วนภูมิภาค (PULINET)
                 </p>
-                <p>ระหว่างวันที่ 10 - 12 มกราคม 2567 ณ มหาวิทยาลัยมหาสารคาม</p>
+                <p>
+                    ระหว่างวันที่ 15 - 17 มกราคม 2568 ณ
+                    อาคารประชุมเฉลิมพระเกียรติ ในโอกาสฉลองพระชนมายุ 5 รอบ 2
+                    เมษายน 2558 มหาวิทยาลัยมหาสารคาม
+                </p>
                 <br />
                 ©2024 Academic Resource Center MSU
             </div>

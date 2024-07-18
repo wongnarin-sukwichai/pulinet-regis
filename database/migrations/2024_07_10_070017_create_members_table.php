@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('intro');
             $table->string('name');
             $table->string('surname');
-            $table->string('pos');
+            $table->string('pos')->nullable();
             $table->string('email')->nullable();
             $table->string('tel')->nullable();
             $table->string('member');
@@ -30,11 +30,8 @@ return new class extends Migration
             $table->string('comment')->nullable();
             $table->integer('trip');
             $table->string('step_1')->nullable()->comment('ลงทะเบียน');
-            $table->string('step_2')->nullable()->comment('ชำระ');
-            $table->integer('price')->nullable()->comment('ยอดเงิน');
-            $table->integer('pay')->nullable()->comment('ชำระเงิน');
-            $table->string('img')->nullable()->comment('รูปถ่าย');
-            $table->integer('step_3')->nullable()->comment('เจ้าหน้าที่ยืนยัน');
+            $table->string('step_2')->nullable()->comment('1=รอชำระ, 2=ชำระแล้ว');
+            $table->string('step_3')->nullable()->comment('1=รอตรวจสอบ, 2=เจ้าหน้าที่ยืนยัน');
             $table->string('confirmed_by')->nullable();
             $table->timestamps();
         });

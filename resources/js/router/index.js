@@ -6,6 +6,9 @@ import Home from "../components/Home.vue";
 import Payment from "../components/Payment.vue";
 import Intro from "../components/Intro.vue";
 import Regis from "../components/Regis.vue";
+import Dashboard from "../components/Dashboard.vue";
+import System from "../components/System.vue";
+import Stat from "../components/Stat.vue";
 
 import store from "../store";
 
@@ -38,7 +41,39 @@ const routes = [
     {
         path: "/home",
         name: "home",
-        component: Home,     
+        component: Home,
+        redirect: {
+            name: "dashboard",
+        },
+        meta: {
+            guard: "auth",
+        },
+        children: [
+            {
+                path: "/dashboard",
+                name: "dashboard",
+                component: Dashboard,
+                meta: {
+                    guard: "auth",
+                },
+            },
+            {
+                path: "/system",
+                name: "system",
+                component: System,
+                meta: {
+                    guard: "auth",
+                },
+            },
+            {
+                path: "/stat",
+                name: "stat",
+                component: Stat,
+                meta: {
+                    guard: "auth",
+                },
+            },
+        ],
     },
 ];
 

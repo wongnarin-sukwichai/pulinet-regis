@@ -22,13 +22,12 @@
                         </div>
                         <div class="mt-6 text-left indent-10">
                             <p>
-                                ศูนย์บรรณสารและสื่อการศึกษา
-                                มหาวิทยาลัยแม่ฟ้าหลวง
+                                สำนักวิทยบริการ มหาวิทยาลัยมหาสารคาม
                                 มีวัตถุประสงค์ในการเก็บรวบรวม
                                 ใช้และเปิดเผยข้อมูลส่วนบุคคลของผู้ลงทะเบียน
                                 เข้าร่วมการประชุมวิชาการระดับชาติ PULINET
-                                ครั้งที่ 14 ได้แก่ คำนำหน้านาม ชื่อ-สกุล ตำแหน่ง
-                                eMail เบอร์โทรศัพท์ สถานที่ทำงาน ภาพถ่าย
+                                ครั้งที่ 15 ได้แก่ คำนำหน้านาม ชื่อ-สกุล ตำแหน่ง
+                                Email เบอร์โทรศัพท์ สถานที่ทำงาน ภาพถ่าย
                                 ภาพเคลื่อนไหว เพื่อมีวัตถุประสงค์ ดังต่อไปนี้
                             </p>
                         </div>
@@ -50,7 +49,7 @@
                                     />
                                 </svg>
                                 เพื่อประชาสัมพันธ์ข่าวสารการจัดประชุมวิชาการระดับชาติ
-                                PULINET ครั้งที่ 14
+                                PULINET ครั้งที่ 15
                             </li>
                             <li class="flex"></li>
                             <li class="flex">
@@ -68,7 +67,7 @@
                                 </svg>
                                 เพื่อใช้ข้อมูลติดต่อประสานงาน
                                 ในระหว่างการจัดการประชุมวิชาการระดับชาติ PULINET
-                                ครั้งที่ 14
+                                ครั้งที่ 15
                             </li>
                             <li class="flex"></li>
                             <li class="flex">
@@ -86,7 +85,7 @@
                                 </svg>
                                 เพื่อสอบถามความคิดเห็น
                                 และประเมินความพึงพอใจต่อการจัดประชุมวิชาการระดับชาติ
-                                PULINET ครั้งที่ 14
+                                PULINET ครั้งที่ 15
                             </li>
                             <li class="flex"></li>
                             <li class="flex">
@@ -103,7 +102,7 @@
                                     />
                                 </svg>
                                 เพื่อนำข้อมูลมาวิเคราะห์และประมวลผลการดำเนินงานการจัดประชุมวิชาการระดับชาติ
-                                PULINET ครั้งที่ 14
+                                PULINET ครั้งที่ 15
                             </li>
                             <li class="flex"></li>
                         </ul>
@@ -160,14 +159,24 @@
                             </div>
                         </fieldset>
 
-                        <div class="mt-6 text-left">
-                            <p>
-                                <font class="text-red-400">**</font> ทั้งนี้
+                        <!-- <div class="mt-6 text-left">
+                            <p class="flex">
+                                <font class="text-red-400 pr-1">**</font> ทั้งนี้
                                 ท่านสามารถอ่านรายละเอียดในประกาศความเป็นส่วนตัว
                                 (Privacy Notice) ของมหาวิทยาลัยได้ทาง
-                                https://pdpa.mfu.ac.th
+                                <box-icon
+                                    name="chevrons-right"
+                                    color="#1d4ed8"
+                                    animation="fade-right"
+                                ></box-icon>
+                                <a
+                                    href="https://library.msu.ac.th/pdpa"
+                                    target="_blank"
+                                    class="text-blue-700 ml-3"
+                                    >https://library.msu.ac.th/pdpa</a
+                                >
                             </p>
-                        </div>
+                        </div> -->
 
                         <button
                             class="flex justify-left mt-8 rounded-xl bg-gradient-to-br from-[#6025F5] to-[#FF5555] px-5 py-3 text-base font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-[#6025F5]/50"

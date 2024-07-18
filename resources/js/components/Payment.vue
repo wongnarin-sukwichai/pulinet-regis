@@ -26,7 +26,7 @@
                         </div>
                         <ul
                             role="list"
-                            class="mt-8 grid grid-cols-1 gap-2 text-sm leading-6 text-gray-600 sm:grid-cols-2 sm:gap-2"
+                            class="mt-8 gap-2 text-sm leading-6 text-gray-600 sm:grid-cols-2 sm:gap-2"
                         >
                             <li class="flex gap-x-3">
                                 <svg
@@ -41,9 +41,8 @@
                                         clip-rule="evenodd"
                                     />
                                 </svg>
-                                สแกน QR Code เพื่อชำระเงิน
+                                ชำระเงินผ่านหมายเลขบัญชี
                             </li>
-                            <li class="flex gap-x-3"></li>
                             <li class="flex gap-x-3">
                                 <svg
                                     class="h-6 w-5 flex-none text-indigo-600"
@@ -59,7 +58,44 @@
                                 </svg>
                                 หลังจากชำระเงินแล้ว คลิกที่ "แจ้งการชำระเงิน"
                             </li>
-                            <li class="flex gap-x-3"></li>
+                            <li class="flex gap-x-3">
+                                <svg
+                                    class="h-6 w-5 flex-none text-indigo-600"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                                        clip-rule="evenodd"
+                                    />
+                                </svg>
+                                ตรวจสอบข้อมูลก่อนบันทึกข้อมูล
+                            </li>
+                            <li class="flex gap-x-3">
+                                <svg
+                                    class="h-6 w-5 flex-none text-indigo-600"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                                        clip-rule="evenodd"
+                                    />
+                                </svg>
+                                กรณีข้อมูลผิดพลาดหลังบันทึกข้อมูล
+                                กรุณาติดต่อเจ้าหน้าที่
+                                <a
+                                    href="https://www.facebook.com/librarymsu"
+                                    target="_blank"
+                                    class="text-blue-600"
+                                >
+                                    Click...
+                                </a>
+                            </li>
                         </ul>
                         <button
                             class="mt-8 rounded-xl bg-gradient-to-br from-[#6025F5] to-[#FF5555] px-5 py-3 text-base font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-[#6025F5]/50"
@@ -78,22 +114,28 @@
                                 <p
                                     class="bg-gradient-to-r from-blue-800 to-indigo-900 p-2 text-white rounded-lg"
                                 >
-                                    QR CODE Payment
+                                    Payment
                                 </p>
-                                <span
-                                    class="mt-6 flex items-baseline justify-center gap-x-2"
-                                >
-                                    <img :src="qr" />
-                                </span>
                                 <div
-                                    class="grid grid-cols-2 border-2 border-dotted rounded-lg py-2 px-4 mt-6 text-left text-md text-gray-500"
+                                    class="grid grid-cols-2 py-2 px-1 mt-6 text-left text-md text-gray-500 border-2 border-dotted rounded-lg"
                                 >
-                                    <p>Ref. 1</p>
-                                    <p class="text-right">2001010290</p>
-                                    <p>Ref. 2</p>
-                                    <p class="text-right">101</p>
+                                    <img :src="scb" class="w-20" />
+                                    <p class="flex items-center text-right">
+                                        xxx-x-xxxxx-x
+                                    </p>
+                                </div>
+                                <div
+                                    class="text-right border-2 border-dotted rounded-lg py-2 px-4 mt-6 text-md text-gray-500"
+                                >
+                                    <p>{{ this.data.title }}</p>
+                                </div>
+                                <div
+                                    class="grid grid-cols-2 border-2 border-dotted rounded-lg py-2 px-4 mt-2 text-left text-md text-gray-500"
+                                >
                                     <p>จำนวนเงิน</p>
-                                    <p class="text-right">2,000 บาท</p>
+                                    <p class="text-right">
+                                        {{ this.chkPrice(this.typeMem) }} บาท
+                                    </p>
                                 </div>
                                 <p class="mt-4 text-sm leading-5 text-gray-600">
                                     ชำระผ่าน Mobile Banking ได้ทุกธนาคาร
@@ -126,20 +168,24 @@
                                             <th
                                                 scope="col"
                                                 class="py-3.5 px-4 text-sm font-normal text-gray-800 border-r"
-                                                colspan="2"
+                                                colspan="3"
                                             >
-                                                <p>ชำระเงินระหว่างวันที่</p>
                                                 <p>
-                                                    1 ตุลาคม - 30 พฤศจิกายน 2566
+                                                    ชำระค่าลงทะเบียน (ช่วงที่ 1)
+                                                </p>
+                                                <p>
+                                                    1 ตุลาคม - 10 ธันวาคม 2567
                                                 </p>
                                             </th>
                                             <th
                                                 scope="col"
                                                 class="py-3.5 px-4 text-sm font-normal text-gray-800"
-                                                colspan="2"
+                                                colspan="3"
                                             >
-                                                <p>ชำระเงินระหว่างวันที่</p>
-                                                <p>1 - 15 ธันวาคม 2566</p>
+                                                <p>
+                                                    ชำระค่าลงทะเบียน (ช่วงที่ 2)
+                                                </p>
+                                                <p>11 - 20 ธันวาคม 2567</p>
                                             </th>
                                         </tr>
                                     </thead>
@@ -168,6 +214,15 @@
                                                 </div>
                                             </td>
                                             <td
+                                                class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
+                                            >
+                                                <div
+                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                >
+                                                    นิสิต/นักศึกษา
+                                                </div>
+                                            </td>
+                                            <td
                                                 class="px-12 py-4 text-sm font-medium whitespace-nowrap border-r"
                                             >
                                                 <div
@@ -178,13 +233,22 @@
                                                 </div>
                                             </td>
                                             <td
-                                                class="px-4 py-4 text-sm whitespace-nowrap"
+                                                class="px-4 py-4 text-sm whitespace-nowrap border-r"
                                             >
                                                 <div
                                                     class="inline px-3 py-1 text-sm font-normal rounded-full"
                                                 >
                                                     ไม่ใช่สมาชิก<br />
                                                     PULINET/PULINET PLUS
+                                                </div>
+                                            </td>
+                                            <td
+                                                class="px-4 py-4 text-sm font-medium whitespace-nowrap"
+                                            >
+                                                <div
+                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                >
+                                                    นิสิต/นักศึกษา
                                                 </div>
                                             </td>
                                         </tr>
@@ -213,6 +277,17 @@
                                                 </div>
                                             </td>
                                             <td
+                                                class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
+                                            >
+                                                <div>
+                                                    <h2
+                                                        class="font-medium text-gray-800"
+                                                    >
+                                                        600 บาท
+                                                    </h2>
+                                                </div>
+                                            </td>
+                                            <td
                                                 class="px-12 py-4 text-sm font-medium whitespace-nowrap border-r"
                                             >
                                                 <div
@@ -222,12 +297,23 @@
                                                 </div>
                                             </td>
                                             <td
-                                                class="px-4 py-4 text-sm whitespace-nowrap"
+                                                class="px-4 py-4 text-sm whitespace-nowrap border-r"
                                             >
                                                 <div
                                                     class="inline px-3 py-1 text-sm font-normal rounded-full"
                                                 >
                                                     3,500 บาท
+                                                </div>
+                                            </td>
+                                            <td
+                                                class="px-4 py-4 text-sm font-medium whitespace-nowrap"
+                                            >
+                                                <div>
+                                                    <h2
+                                                        class="font-medium text-gray-800"
+                                                    >
+                                                        700 บาท
+                                                    </h2>
                                                 </div>
                                             </td>
                                         </tr>
@@ -261,128 +347,135 @@
                     <div
                         class="relative transform overflow-hidden rounded-lg bg-white shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
                     >
-                        <div class="pb-3">
-                            <div class="bg-gray-50 px-4 py-3 sm:px-6">
+                        <div
+                            class="pt-32 text-white shadow-lg bg-gradient-to-r from-blue-800 to-indigo-900"
+                        >
+                            <div class="0 px-4 py-3 sm:px-6">
                                 แจ้งการชำระเงิน
                             </div>
                         </div>
-                        <br />
-                        <div class="bg-white px-4 pb-4">
-                            <div class="col-span-3 sm:flex sm:items-start">
-                                <div
-                                    class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 sm:mx-0 sm:h-10 sm:w-10"
-                                >
-                                    <box-icon
-                                        name="user"
-                                        color="white"
-                                    ></box-icon>
-                                </div>
-                                <div
-                                    class="text-center sm:mt-0 sm:ml-4 sm:text-left w-full"
-                                >
-                                    <label
-                                        id="listbox-label"
-                                        class="block text-sm font-medium leading-6 text-gray-900"
+                        <br /><br />
+
+                        <form @submit.prevent="send()">
+                            <div class="bg-white px-4 pb-4">
+                                <div class="col-span-3 sm:flex sm:items-start">
+                                    <div
+                                        class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 sm:mx-0 sm:h-10 sm:w-10"
                                     >
-                                        ออกใบเสร็จในนาม :</label
+                                        <box-icon
+                                            name="user"
+                                            color="white"
+                                        ></box-icon>
+                                    </div>
+                                    <div
+                                        class="text-center sm:mt-0 sm:ml-4 sm:text-left w-full"
                                     >
-                                    <input
-                                        type="text"
-                                        class="mt-2 form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                                        required
-                                        v-model="this.data.title"
-                                    />
+                                        <label
+                                            id="listbox-label"
+                                            class="block text-sm font-medium leading-6 text-gray-900"
+                                        >
+                                            <font class="text-red-400">** </font
+                                            >ออกใบเสร็จในนาม :</label
+                                        >
+                                        <input
+                                            type="text"
+                                            class="mt-2 form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                            required
+                                            v-model="this.data.title"
+                                        />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="bg-white px-4 pb-4">
-                            <div class="col-span-3 sm:flex sm:items-start">
-                                <div
-                                    class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 sm:mx-0 sm:h-10 sm:w-10"
-                                >
-                                    <box-icon
-                                        name="building-house"
-                                        color="white"
-                                    ></box-icon>
-                                </div>
-                                <div
-                                    class="mt-0 text-center sm:mt-0 sm:ml-4 sm:text-left w-full"
-                                >
-                                    <label
-                                        id="listbox-label"
-                                        class="block text-sm font-medium leading-6 text-gray-900"
+                            <div class="bg-white px-4 pb-4">
+                                <div class="col-span-3 sm:flex sm:items-start">
+                                    <div
+                                        class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 sm:mx-0 sm:h-10 sm:w-10"
                                     >
-                                        หน่วยงาน :</label
+                                        <box-icon
+                                            name="building-house"
+                                            color="white"
+                                        ></box-icon>
+                                    </div>
+                                    <div
+                                        class="mt-0 text-center sm:mt-0 sm:ml-4 sm:text-left w-full"
                                     >
-                                    <input
-                                        type="text"
-                                        class="mt-2 form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                                        required
-                                        v-model="this.data.dep"
-                                    />
+                                        <label
+                                            id="listbox-label"
+                                            class="block text-sm font-medium leading-6 text-gray-900"
+                                        >
+                                            <font class="text-red-400">** </font
+                                            >หน่วยงาน :</label
+                                        >
+                                        <input
+                                            type="text"
+                                            class="mt-2 form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                            required
+                                            v-model="this.data.dep"
+                                        />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="bg-white px-4 pb-4">
-                            <div class="col-span-3 sm:flex sm:items-start">
-                                <div
-                                    class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 sm:mx-0 sm:h-10 sm:w-10"
-                                >
-                                    <box-icon
-                                        name="barcode"
-                                        color="white"
-                                    ></box-icon>
-                                </div>
-                                <div
-                                    class="mt-0 text-center sm:mt-0 sm:ml-4 sm:text-left w-full"
-                                >
-                                    <label
-                                        id="listbox-label"
-                                        class="block text-sm font-medium leading-6 text-gray-900"
+                            <div class="bg-white px-4 pb-4">
+                                <div class="col-span-3 sm:flex sm:items-start">
+                                    <div
+                                        class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 sm:mx-0 sm:h-10 sm:w-10"
                                     >
-                                        เลขกำกับภาษี (ถ้ามี)* :</label
+                                        <box-icon
+                                            name="barcode"
+                                            color="white"
+                                        ></box-icon>
+                                    </div>
+                                    <div
+                                        class="mt-0 text-center sm:mt-0 sm:ml-4 sm:text-left w-full"
                                     >
-                                    <input
-                                        type="text"
-                                        class="mt-2 form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                                        v-model="this.data.vat"
-                                    />
+                                        <label
+                                            id="listbox-label"
+                                            class="block text-sm font-medium leading-6 text-gray-900"
+                                        >
+                                            เลขกำกับภาษี (ถ้ามี)* :</label
+                                        >
+                                        <input
+                                            type="text"
+                                            class="mt-2 form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                            v-model="this.data.vat"
+                                        />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="bg-white px-4 pb-4">
-                            <div class="col-span-3 sm:flex sm:items-start">
-                                <div
-                                    class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 sm:mx-0 sm:h-10 sm:w-10"
-                                >
-                                    <box-icon
-                                        name="pin"
-                                        color="white"
-                                    ></box-icon>
-                                </div>
-                                <div
-                                    class="mt-0 text-center sm:mt-0 sm:ml-4 sm:text-left w-full"
-                                >
-                                    <label
-                                        id="listbox-label"
-                                        class="block text-sm font-medium leading-6 text-gray-900"
+                            <div class="bg-white px-4 pb-4">
+                                <div class="col-span-3 sm:flex sm:items-start">
+                                    <div
+                                        class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 sm:mx-0 sm:h-10 sm:w-10"
                                     >
-                                        ที่อยู่สำหรับออกใบเสร็จ :</label
+                                        <box-icon
+                                            name="pin"
+                                            color="white"
+                                        ></box-icon>
+                                    </div>
+                                    <div
+                                        class="mt-0 text-center sm:mt-0 sm:ml-4 sm:text-left w-full"
                                     >
-                                    <textarea
-                                        type="text"
-                                        class="mt-2 form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                                        required
-                                        v-model="this.data.address"
-                                    ></textarea>
+                                        <label
+                                            id="listbox-label"
+                                            class="block text-sm font-medium leading-6 text-gray-900"
+                                        >
+                                            <font class="text-red-400">** </font
+                                            >ที่อยู่สำหรับออกใบเสร็จ :</label
+                                        >
+                                        <textarea
+                                            type="text"
+                                            class="mt-2 form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                            required
+                                            v-model="this.data.address"
+                                        ></textarea>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="bg-white px-4 pb-4">
+                            <!-- <div class="bg-white px-4 pb-4">
                             <div class="col-span-3 sm:flex sm:items-start">
                                 <div
                                     class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 sm:mx-0 sm:h-10 sm:w-10"
@@ -447,80 +540,233 @@
                                     </transition>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
-                        <div class="bg-white px-4 pb-4">
-                            <div class="col-span-3 sm:flex sm:items-start">
-                                <div
-                                    class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 sm:mx-0 sm:h-10 sm:w-10"
-                                >
-                                    <box-icon
-                                        name="upload"
-                                        color="white"
-                                    ></box-icon>
-                                </div>
-                                <div
-                                    class="mt-0 text-center sm:mt-0 sm:ml-4 sm:text-left w-full"
-                                >
-                                    <label
-                                        id="listbox-label"
-                                        class="block text-sm font-medium leading-6 text-gray-900"
+                            <div class="bg-white px-4 pb-4">
+                                <div class="col-span-3 sm:flex sm:items-start">
+                                    <div
+                                        class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 sm:mx-0 sm:h-10 sm:w-10"
                                     >
-                                        แนบสลิป</label
+                                        <box-icon
+                                            name="upload"
+                                            color="white"
+                                        ></box-icon>
+                                    </div>
+                                    <div
+                                        class="mt-0 text-center sm:mt-0 sm:ml-4 sm:text-left w-full"
                                     >
-                                    <label
-                                        for="uploadFile1"
-                                        class="bg-white text-gray-500 font-semibold text-base rounded max-w-md h-auto p-4 flex flex-col items-center justify-center cursor-pointer border-2 border-gray-300 border-dotted mx-auto"
-                                    >
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="w-8 mb-2 fill-gray-500"
-                                            viewBox="0 0 32 32"
+                                        <label
+                                            id="listbox-label"
+                                            class="block text-sm font-medium leading-6 text-gray-900"
                                         >
-                                            <path
-                                                d="M23.75 11.044a7.99 7.99 0 0 0-15.5-.009A8 8 0 0 0 9 27h3a1 1 0 0 0 0-2H9a6 6 0 0 1-.035-12 1.038 1.038 0 0 0 1.1-.854 5.991 5.991 0 0 1 11.862 0A1.08 1.08 0 0 0 23 13a6 6 0 0 1 0 12h-3a1 1 0 0 0 0 2h3a8 8 0 0 0 .75-15.956z"
-                                                data-original="#000000"
+                                            <font class="text-red-400">** </font
+                                            >แนบสลิป</label
+                                        >
+                                        <div class="flex">
+                                            <input
+                                                class="relative m-0 block w-full min-w-0 flex-auto cursor-pointer rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] text-xs font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:cursor-pointer file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:file:bg-neutral-700 dark:file:text-neutral-100 dark:focus:border-primary mr-2"
+                                                ref="fileInput"
+                                                type="file"
+                                                @input="pickFile"
                                             />
-                                            <path
-                                                d="M20.293 19.707a1 1 0 0 0 1.414-1.414l-5-5a1 1 0 0 0-1.414 0l-5 5a1 1 0 0 0 1.414 1.414L15 16.414V29a1 1 0 0 0 2 0V16.414z"
-                                                data-original="#000000"
-                                            />
-                                        </svg>
-                                        <p class="font-semibold">Upload File</p>
+                                            <button
+                                                type="button"
+                                                class="rounded-md bg-white px-2.5 text-sm text-gray-400 shadow-sm ring-1 ring-inset ring-gray-300 hover:text-gray-500 hover:bg-gray-50"
+                                                @click="resetFile()"
+                                            >
+                                                <box-icon
+                                                    name="trash"
+                                                    size="xs"
+                                                    color="#f87171"
+                                                    class=""
+                                                ></box-icon>
+                                            </button>
+                                        </div>
+                                        <transition name="fade" mode="out-in">
+                                            <div
+                                                class="text-red-500 text-sm"
+                                                v-show="chkPic === false"
+                                            >
+                                                ** กรุณาเลือกรูป
+                                            </div>
+                                        </transition>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <div class="flex px-4 pb-4 justify-center">
+                                <transition name="fade" mode="out-in">
+                                    <div
+                                        v-if="previewImage"
+                                        class="imagePreviewWrapper"
+                                        :style="{
+                                            'background-image': `url(${previewImage})`,
+                                        }"
+                                        @click="selectImage"
+                                    ></div>
+                                </transition>
+                            </div>
+
+                            <div class="bg-white px-4 pb-4">
+                                <div class="col-span-3 sm:flex sm:items-start">
+                                    <div
+                                        class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 sm:mx-0 sm:h-10 sm:w-10"
+                                    >
+                                        <box-icon
+                                            name="credit-card"
+                                            color="white"
+                                        ></box-icon>
+                                    </div>
+                                    <div
+                                        class="mt-0 text-center sm:mt-0 sm:ml-4 sm:text-left w-full"
+                                    >
+                                        <label
+                                            id="listbox-label"
+                                            class="block text-sm font-medium leading-6 text-gray-900"
+                                        >
+                                            <font class="text-red-400">** </font
+                                            >โอนจากธนาคาร :</label
+                                        >
                                         <input
-                                            type="file"
-                                            id="uploadFile1"
-                                            class="hidden"
+                                            type="text"
+                                            class="mt-2 form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                            required
+                                            v-model="this.data.bank"
                                         />
-                                        <p
-                                            class="text-xs font-medium text-gray-400 mt-2"
-                                        >
-                                            PNG & JPG
-                                        </p>
-                                    </label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="pt-3">
-                            <div
-                                class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6"
-                            >
-                                <button
-                                    class="inline-flex w-full justify-center rounded-md bg-gradient-to-br from-[#6025F5] to-[#FF5555] px-3 py-2 text-sm text-white sm:ml-3 sm:w-auto hover:shadow-lg hover:shadow-[#6025F5]/50"
-                                >
-                                    บันทึก
-                                </button>
-                                <button
-                                    type="button"
-                                    class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 sm:mt-0 sm:w-auto hover:shadow-lg hover:bg-gray-50"
-                                    @click="showModal()"
-                                >
-                                    ออก
-                                </button>
+                            <div class="bg-white px-4 pb-4">
+                                <div class="col-span-3 sm:flex sm:items-start">
+                                    <div
+                                        class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 sm:mx-0 sm:h-10 sm:w-10"
+                                    >
+                                        <box-icon
+                                            name="time"
+                                            color="white"
+                                        ></box-icon>
+                                    </div>
+                                    <div
+                                        class="mt-0 text-center sm:mt-0 sm:ml-4 sm:text-left w-full"
+                                    >
+                                        <label
+                                            id="listbox-label"
+                                            class="block text-sm font-medium leading-6 text-gray-900"
+                                        >
+                                            <font class="text-red-400">** </font
+                                            >วันเวลาที่โอน :</label
+                                        >
+                                        <div class="grid grid-cols-2 gap-2">
+                                            <Datepicker
+    
+                                                type="text"
+                                                class="mt-2 form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                                required
+                                                v-model="this.data.date"
+                                            />
+                                            <input
+                                                type="text"
+                                                class="mt-2 form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                                placeholder="08.00"
+                                                required
+                                                v-model="this.data.time"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+
+                            <div class="bg-white px-4 pb-4">
+                                <div class="col-span-3 sm:flex sm:items-start">
+                                    <div
+                                        class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 sm:mx-0 sm:h-10 sm:w-10"
+                                    >
+                                        <box-icon
+                                            name="bitcoin"
+                                            color="white"
+                                        ></box-icon>
+                                    </div>
+                                    <div
+                                        class="mt-0 text-center sm:mt-0 sm:ml-4 sm:text-left w-full"
+                                    >
+                                        <label
+                                            id="listbox-label"
+                                            class="block text-sm font-medium leading-6 text-gray-900"
+                                        >
+                                            <font class="text-red-400">** </font
+                                            >จำนวนเงินที่โอน :</label
+                                        >
+                                        <div class="flex">
+                                            <input
+                                                type="number"
+                                                class="mt-2 form-control block w-full lg:w-52 px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                                required
+                                                v-model="this.data.price"
+                                            />
+
+                                            <p
+                                                class="flex items-center pt-2 text-gray-400 pl-2 text-lg"
+                                            >
+                                                บาท
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white px-4 pb-4">
+                                <div class="col-span-3 sm:flex sm:items-start">
+                                    <div
+                                        class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 sm:mx-0 sm:h-10 sm:w-10"
+                                    >
+                                        <box-icon
+                                            name="message-rounded-dots"
+                                            color="white"
+                                        ></box-icon>
+                                    </div>
+                                    <div
+                                        class="mt-0 text-center sm:mt-0 sm:ml-4 sm:text-left w-full"
+                                    >
+                                        <label
+                                            id="listbox-label"
+                                            class="block text-sm font-medium leading-6 text-gray-900"
+                                        >
+                                            อื่นๆ :</label
+                                        >
+                                        <textarea
+                                            type="text"
+                                            class="mt-2 form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                            v-model="this.data.comment"
+                                        ></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div v-if="showAlert">
+                                <p class="text-red-600">{{ this.textAlert }}</p>
+                            </div>
+
+                            <div class="pt-3">
+                                <div
+                                    class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6"
+                                >
+                                    <button
+                                        type="submit"
+                                        class="inline-flex w-full justify-center rounded-md bg-gradient-to-br from-[#6025F5] to-[#FF5555] px-3 py-2 text-sm text-white sm:ml-3 sm:w-auto hover:shadow-lg hover:shadow-[#6025F5]/50"
+                                    >
+                                        บันทึก
+                                    </button>
+                                    <button
+                                        type="button"
+                                        class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 sm:mt-0 sm:w-auto hover:shadow-lg hover:bg-gray-50"
+                                        @click="showModal()"
+                                    >
+                                        ออก
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -529,27 +775,166 @@
 </template>
 
 <script>
+import "boxicons";
+import Datepicker from "vue3-datepicker";
+import moment from "moment";
+import Swal from "sweetalert2";
+
 export default {
-    mounted() {},
+    async mounted() {
+        await this.getMember();
+        this.getPeriod();
+    },
     data() {
         return {
+            scb: "/img/scb5.png",
             qr: "/img/qr.png",
+            picked: new Date(),
             isShowModal: false,
+            previewImage: "",
+            file: null,
+            chkPic: true,
+            showAlert: false,
+            textAlert: "",
             data: {
+                ref_id: this.$route.params.id,
                 title: "",
                 dep: "",
                 vat: "",
                 address: "",
-                recieve: "",
-                comment: "",
                 slip: "",
+                bank: "",
+                date: "",
+                time: "",
+                price: "",
+                comment: "",
             },
+            typeMem: "",
+            periodList: "",
+            priceMem: "",
+            moment: moment,
         };
     },
     methods: {
+        getMember() {
+            axios
+                .get("/api/getMember/" + this.$route.params.id)
+                .then((response) => {
+                    this.data.title =
+                        response.data[0].intro +
+                        response.data[0].name +
+                        " " +
+                        response.data[0].surname;
+                    this.data.dep = response.data[0].uni;
+                    this.typeMem = response.data[0].member;
+                })
+                .catch((err) => {});
+        },
+        getPeriod() {
+            axios
+                .get("/api/getPeriod")
+                .then((response) => {
+                    this.periodList = response.data;
+                })
+                .catch((err) => {});
+        },
         showModal() {
             this.isShowModal = !this.isShowModal;
         },
+        resetFile() {
+            this.$refs.fileInput.value = null; //clear ช่อง choose
+            this.previewImage = "";
+            this.file = "";
+        },
+        //image upload and preview methods
+        selectImage() {
+            this.$refs.fileInput.click();
+        },
+        pickFile() {
+            let input = this.$refs.fileInput;
+            this.file = input.files; //เอาไฟล์รูปเข้าตัวแปร file
+            //console.log(this.file[0])
+            if (this.file && this.file[0]) {
+                let reader = new FileReader();
+                reader.onload = (e) => {
+                    this.previewImage = e.target.result;
+                    //this.file = e.target.files[0];
+                };
+                reader.readAsDataURL(this.file[0]);
+                this.$emit("input", this.file[0]);
+            }
+        },
+        chkPrice(id) {
+            if (id == 1) {
+                return this.formatPrice(this.periodList.p_1);
+            } else if (id == 2) {
+                return this.formatPrice(this.periodList.p_2);
+            } else {
+                return this.formatPrice(this.periodList.p_3);
+            }
+        },
+        formatPrice(id) {
+            let val = (id / 1).toFixed(0).replace();
+            return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        },
+        async send() {
+            this.showAlert = false;
+
+            if (this.file == null) {
+                this.showAlert = true;
+                return (this.textAlert = "** กรุณาแนบ Slip การโอน **");
+            } else if (this.data.date == "") {
+                this.showAlert = true;
+                return (this.textAlert = "** กรุณาใส่วันที่โอน **");
+            } else {
+                this.showAlert = false;
+
+                let formData = new FormData(); //สร้าง FromData เพื่อรองรับข้อมูลประเภท File
+                formData.append("file", this.file[0]);
+                // console.log(formData);
+
+                await this.$store.dispatch("upload", formData);
+                this.data.slip = await this.$store.getters.picName;
+
+                await this.formatDate(this.data.date)
+
+                axios
+                    .post("/api/storePayment", this.data)
+                    .then((response) => {
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: response.data.message,
+                            showConfirmButton: false,
+                            timer: 1500,
+                        });
+                        this.$router.push("/");
+                    })
+                    .catch((err) => {});
+            }
+        },
+        formatDate(id) {
+            this.data.date = moment(id).format('YYYY-MM-DD');
+        }
+    },
+    components: {
+        Datepicker,
     },
 };
 </script>
+
+<style>
+.imagePreviewWrapper {
+    width: 250px;
+    height: 250px;
+    display: block;
+    cursor: pointer;
+    margin: 0 auto;
+    background-size: cover;
+    background-position: center center;
+}
+
+.ck-editor__editable {
+    max-height: 400px;
+}
+</style>

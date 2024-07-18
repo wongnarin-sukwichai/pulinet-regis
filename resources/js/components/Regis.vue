@@ -114,13 +114,11 @@
                                     <label
                                         for="company"
                                         class="block text-md mb-2 text-left"
-                                        ><font class="text-red-400">** </font
                                         >ตำแหน่ง</label
                                     >
                                     <input
                                         type="text"
-                                        class="w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-1 focus:border-sky-500 block p-2.5"
-                                        required
+                                        class="w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-1 focus:border-sky-500 block p-2.5"                                       
                                         v-model="this.data.pos"
                                     />
                                 </div>
@@ -184,6 +182,22 @@
                                         class="text-md text-gray-900 ml-2 block"
                                     >
                                         ไม่ใช่สมาชิก PULINET/PULINET PLUS
+                                    </label>
+                                </div>
+
+                                <div class="flex items-center">
+                                    <input
+                                        type="radio"
+                                        value="3"
+                                        class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 cursor-pointer"
+                                        aria-labelledby="country-option-2"
+                                        aria-describedby="country-option-2"
+                                        v-model="this.data.member"
+                                    />
+                                    <label
+                                        class="text-md text-gray-900 ml-2 block"
+                                    >
+                                        นิสิต/นักศึกษา
                                     </label>
                                 </div>
                             </fieldset>
