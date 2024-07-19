@@ -426,7 +426,7 @@
                                                         v-else
                                                     >
                                                         <span
-                                                            class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 text-white bg-orange-400"
+                                                            class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 text-white"
                                                             :class="
                                                                 member.step_3 ===
                                                                 '0'
@@ -479,6 +479,7 @@
                                                             <box-icon
                                                                 name="arrow-to-bottom"
                                                                 color="#f87171"
+                                                                animation="tada-hover"
                                                                 @click="
                                                                     toPayment(
                                                                         member.id
@@ -613,20 +614,42 @@
                                                         class="flex items-center pr-1"
                                                         v-if="
                                                             member.step_2 ===
-                                                            '0'
+                                                            null
                                                         "
+                                                    ></div>
+
+                                                    <div
+                                                        class="flex items-center pr-1"
+                                                        v-else
                                                     >
                                                         <span
-                                                            class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 text-white bg-blue-600"
+                                                            class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0"
+                                                            :class="
+                                                                member.step_2 ===
+                                                                '0'
+                                                                    ? 'bg-gray-200'
+                                                                    : 'text-white bg-green-600'
+                                                            "
                                                         >
                                                             2
                                                         </span>
                                                         <span
-                                                            class="text-blue-600"
+                                                            :class="
+                                                                member.step_2 ===
+                                                                '0'
+                                                                    ? 'text-gray-600'
+                                                                    : 'text-green-600'
+                                                            "
                                                             >ชำระค่าลงทะเบียน</span
                                                         >
                                                         <svg
-                                                            class="w-3 h-3 ms-2 sm:ms-1 text-blue-600"
+                                                            class="w-3 h-3 ms-2 sm:ms-1 text-gray-400"
+                                                            :class="
+                                                                member.step_2 ===
+                                                                '0'
+                                                                    ? 'text-gray-400'
+                                                                    : 'text-green-600'
+                                                            "
                                                             aria-hidden="true"
                                                             xmlns="http://www.w3.org/2000/svg"
                                                             fill="none"
@@ -650,33 +673,45 @@
                                                         class="flex items-center"
                                                         v-if="
                                                             member.step_3 ===
-                                                            '1'
+                                                            null
                                                         "
-                                                    >
-                                                        <span
-                                                            class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 text-white bg-red-600"
-                                                        >
-                                                            3
-                                                        </span>
-                                                        <span
-                                                            class="text-red-600"
-                                                            >รอการตรวจสอบ</span
-                                                        >
-                                                    </div>
+                                                    ></div>
 
                                                     <div
                                                         class="flex items-center"
                                                         v-else
                                                     >
                                                         <span
-                                                            class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 text-white bg-green-600"
+                                                            class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 text-white"
+                                                            :class="
+                                                                member.step_3 ===
+                                                                '0'
+                                                                    ? 'bg-orange-400'
+                                                                    : 'text-white bg-green-600'
+                                                            "
                                                         >
                                                             3
                                                         </span>
                                                         <span
-                                                            class="text-green-600"
-                                                            >เสร็จสิ้น</span
+                                                            :class="
+                                                                member.step_3 ===
+                                                                '0'
+                                                                    ? 'text-orange-400'
+                                                                    : 'text-green-600'
+                                                            "
                                                         >
+                                                            <p
+                                                                v-if="
+                                                                    member.step_3 ===
+                                                                    '0'
+                                                                "
+                                                            >
+                                                                รอการตรวจสอบ
+                                                            </p>
+                                                            <p v-else>
+                                                                เสร็จสิ้น
+                                                            </p>
+                                                        </span>
                                                     </div>
                                                 </td>
 
@@ -782,8 +817,8 @@ export default {
         },
         getSearch() {
             if (this.data.search == "") {
-                this.getMemList();
                 this.isShowTable = true;
+                this.isShowSearch = false;
             } else {
                 axios
                     .post("/api/search", this.data)

@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('time');
             $table->integer('price');
             $table->string('comment')->nullable();
-
+            $table->string('confirmed_by')->nullable();
             $table->timestamps();
         });
     }

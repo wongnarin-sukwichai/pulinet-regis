@@ -732,7 +732,7 @@
                                             id="listbox-label"
                                             class="block text-sm font-medium leading-6 text-gray-900"
                                         >
-                                            อื่นๆ :</label
+                                        รายการอื่นๆ ที่ต้องการให้แสดง :</label
                                         >
                                         <textarea
                                             type="text"

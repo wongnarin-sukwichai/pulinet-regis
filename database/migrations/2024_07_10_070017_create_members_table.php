@@ -31,8 +31,7 @@ return new class extends Migration
             $table->integer('trip');
             $table->string('step_1')->nullable()->comment('ลงทะเบียน');
             $table->string('step_2')->nullable()->comment('1=รอชำระ, 2=ชำระแล้ว');
-            $table->string('step_3')->nullable()->comment('1=รอตรวจสอบ, 2=เจ้าหน้าที่ยืนยัน');
-            $table->string('confirmed_by')->nullable();
+            $table->string('step_3')->nullable()->comment('1=รอตรวจสอบ, 2=เจ้าหน้าที่ยืนยัน');       
             $table->timestamps();
         });
     }

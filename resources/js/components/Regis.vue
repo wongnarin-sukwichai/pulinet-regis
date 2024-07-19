@@ -576,14 +576,14 @@
                                 <div class="flex items-center">
                                     <input
                                         type="radio"
-                                        value="2"
+                                        value="3"
                                         class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 cursor-pointer"
-                                        aria-labelledby="country-option-2"
-                                        aria-describedby="country-option-2"
+                                        aria-labelledby="country-option-3"
+                                        aria-describedby="country-option-3"
                                         v-model="this.data.trip"
                                     />
                                     <label
-                                        for="country-option-2"
+                                        for="country-option-3"
                                         class="text-md font-medium text-gray-900 ml-2 block"
                                     >
                                         ไม่ประสงค์เข้าร่วม

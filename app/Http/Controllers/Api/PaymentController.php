@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Member;
 use App\Models\Payment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
@@ -14,7 +16,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+       //
     }
 
     /**
@@ -53,6 +55,7 @@ class PaymentController extends Controller
 
         $data = Member::find($request['ref_id']);
         $data->step_2 = 1;
+        $data->step_3 = 0;
 
         $data->update();
 
@@ -67,7 +70,14 @@ class PaymentController extends Controller
      */
     public function show(string $id)
     {
-        //
+
+        $data = DB::table('members')
+        ->where('members.id', $id)
+        ->join('payments', 'members.id', 'payments.ref_id')
+        ->select('members.name', 'members.surname', 'members.email', 'members.tel', 'members.uni', 'members.dep', 'members.step_3', 'payments.title', 'payments.dep AS department', 'payments.address', 'payments.slip', 'payments.bank', 'payments.date', 'payments.time', 'payments.price', 'payments.comment')
+        ->get();
+
+        return response()->json($data);
     }
 
     /**
@@ -83,7 +93,22 @@ class PaymentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $data = Member::find($id);
+
+        $data->step_3 = $request['step_3'];
+
+        $data->update();
+
+        $data = Payment::where('ref_id', $id)->first();
+
+        $data->confirmed_by = Auth::user()->name . ' ' . Auth::user()->surname;
+
+        $data->update();
+
+        return response()->json([
+            'message' => 'บันทึกข้อมูลเรียบร้อย'
+        ]);
     }
 
     /**

@@ -46,11 +46,11 @@ class UploadController extends Controller
         $thumbnail = $manager->read($image)->resize(319, 319);                           //Resize รูปภาพ
         $image_name = uniqid() . '.' . $image->getClientOriginalExtension();            //ตั้งชื่อใหม่ให้รูปภาพ / ข้างหลังคือการดึงชื่อนามสกุลไฟล์เดิมมาต่อท้าย
 
-        $serv_path = "app/public/slips/";                                                 //สร้าง Path สำหรับ save file 
-        $serv_thumb = "app/public/slips/thumbnails/";
+        $serv_path = "slips/";                                                 //สร้าง Path สำหรับ save file 
+        $serv_thumb = "slips/thumbnails/";
 
-        $chkPath = storage_path($serv_path);                                             //public_path ตือ folder public
-        $chkThumb = storage_path($serv_thumb);
+        $chkPath = public_path($serv_path);                                             //public_path ตือ folder public
+        $chkThumb = public_path($serv_thumb);
 
         if (!File::exists($chkPath)) File::makeDirectory($chkPath, 0777, true);         //Check ว่ามี folder ไหม ถ้าไม่มีให้สร้าง folder ขึ้นมาใหม่
         if (!File::exists($chkThumb)) File::makeDirectory($chkThumb, 0777, true);

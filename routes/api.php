@@ -43,4 +43,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('user', UserController::class);
     Route::resource('period', PeriodController::class);
     Route::resource('system', SystemController::class);
+    Route::resource('member', MemberController::class);
+    Route::resource('payment', PaymentController::class);
 });

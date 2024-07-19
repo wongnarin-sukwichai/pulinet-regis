@@ -189,7 +189,7 @@
                                                 <p v-if="member.member === '1'">
                                                     ผู้เข้าร่วมประชุม
                                                 </p>
-                                                <p v-else>
+                                                <p class="text-sm" v-else>
                                                     ผู้เข้าร่วมประชุม<br />และนำเสนอผลงาน
                                                 </p>
                                             </div>
@@ -203,15 +203,15 @@
                                                 v-if="member.step_1 === '1'"
                                             >
                                                 <span
-                                                    class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 bg-gray-200"
+                                                    class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 text-white bg-blue-600"
                                                 >
                                                     1
                                                 </span>
-                                                <span class="text-gray-600"
+                                                <span class="text-blue-600"
                                                     >ลงทะเบียน</span
                                                 >
                                                 <svg
-                                                    class="w-3 h-3 ms-2 sm:ms-1 text-gray-400"
+                                                    class="w-3 h-3 ms-2 sm:ms-1 text-blue-600"
                                                     aria-hidden="true"
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     fill="none"
@@ -233,18 +233,38 @@
                                         >
                                             <div
                                                 class="flex items-center pr-1"
-                                                v-if="member.step_2 === '1'"
+                                                v-if="member.step_2 === null"
+                                            ></div>
+
+                                            <div
+                                                class="flex items-center pr-1"
+                                                v-else
                                             >
                                                 <span
-                                                    class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 text-white bg-blue-600"
+                                                    class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0"
+                                                    :class="
+                                                        member.step_2 === '0'
+                                                            ? 'bg-gray-200'
+                                                            : 'text-white bg-green-600'
+                                                    "
                                                 >
                                                     2
                                                 </span>
-                                                <span class="text-blue-600"
+                                                <span
+                                                    :class="
+                                                        member.step_2 === '0'
+                                                            ? 'text-gray-600'
+                                                            : 'text-green-600'
+                                                    "
                                                     >ชำระค่าลงทะเบียน</span
                                                 >
                                                 <svg
-                                                    class="w-3 h-3 ms-2 sm:ms-1 text-blue-600"
+                                                    class="w-3 h-3 ms-2 sm:ms-1 text-gray-400"
+                                                    :class="
+                                                        member.step_2 === '0'
+                                                            ? 'text-gray-400'
+                                                            : 'text-green-600'
+                                                    "
                                                     aria-hidden="true"
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     fill="none"
@@ -266,16 +286,40 @@
                                         >
                                             <div
                                                 class="flex items-center"
-                                                v-if="member.step_3 === '1'"
+                                                v-if="member.step_3 === null"
+                                            ></div>
+
+                                            <div
+                                                class="flex items-center"
+                                                v-else
                                             >
                                                 <span
-                                                    class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 text-white bg-green-600"
+                                                    class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 text-white"
+                                                    :class="
+                                                        member.step_3 === '0'
+                                                            ? 'bg-orange-400'
+                                                            : 'text-white bg-green-600'
+                                                    "
                                                 >
                                                     3
                                                 </span>
-                                                <span class="text-green-600"
-                                                    >เสร็จสิ้น</span
+                                                <span
+                                                    :class="
+                                                        member.step_3 === '0'
+                                                            ? 'text-orange-400'
+                                                            : 'text-green-600'
+                                                    "
                                                 >
+                                                    <p
+                                                        v-if="
+                                                            member.step_3 ===
+                                                            '0'
+                                                        "
+                                                    >
+                                                        รอการตรวจสอบ
+                                                    </p>
+                                                    <p v-else>เสร็จสิ้น</p>
+                                                </span>
                                             </div>
                                         </td>
 
@@ -284,12 +328,21 @@
                                         >
                                             <button
                                                 class="px-1 py-1 text-gray-500 transition-colors duration-200 rounded-lg border-2 border-dotted hover:bg-gray-100"
-                                                v-if="member.step_3 === null"
+                                                @click="toCheck(member.id)"
                                             >
                                                 <box-icon
-                                                    name="arrow-to-bottom"
-                                                    color="#f87171"
-                                                    @click="toPayment(2)"
+                                                    name="coffee"
+                                                    color="#a16207"
+                                                    animation="tada-hover"
+                                                    v-if="member.step_3 === '0'"
+                                                ></box-icon>
+                                                <box-icon
+                                                    name="check-circle"
+                                                    color="#65a30d"
+                                                    animation="tada-hover"
+                                                    v-else-if="
+                                                        member.step_3 === '1'
+                                                    "
                                                 ></box-icon>
                                             </button>
                                         </td>
@@ -359,7 +412,7 @@
                                                     ผู้เข้าร่วมประชุม
                                                 </p>
                                                 <p v-else>
-                                                    ผู้เข้าร่วมประชุม<br />และนำเสนอผลงาน
+                                                    ผู้เข้าร่วมประชุม<br />และนำเสนอผลงาน555
                                                 </p>
                                             </div>
                                         </td>
@@ -402,18 +455,38 @@
                                         >
                                             <div
                                                 class="flex items-center pr-1"
-                                                v-if="member.step_2 === '1'"
+                                                v-if="member.step_2 === null"
+                                            ></div>
+
+                                            <div
+                                                class="flex items-center pr-1"
+                                                v-else
                                             >
                                                 <span
-                                                    class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 text-white bg-blue-600"
+                                                    class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0"
+                                                    :class="
+                                                        member.step_2 === '0'
+                                                            ? 'bg-gray-200'
+                                                            : 'text-white bg-green-600'
+                                                    "
                                                 >
                                                     2
                                                 </span>
-                                                <span class="text-blue-600"
+                                                <span
+                                                    :class="
+                                                        member.step_2 === '0'
+                                                            ? 'text-gray-600'
+                                                            : 'text-green-600'
+                                                    "
                                                     >ชำระค่าลงทะเบียน</span
                                                 >
                                                 <svg
-                                                    class="w-3 h-3 ms-2 sm:ms-1 text-blue-600"
+                                                    class="w-3 h-3 ms-2 sm:ms-1 text-gray-400"
+                                                    :class="
+                                                        member.step_2 === '0'
+                                                            ? 'text-gray-400'
+                                                            : 'text-green-600'
+                                                    "
                                                     aria-hidden="true"
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     fill="none"
@@ -435,172 +508,70 @@
                                         >
                                             <div
                                                 class="flex items-center"
-                                                v-if="member.step_3 === '1'"
+                                                v-if="member.step_3 === null"
+                                            ></div>
+
+                                            <div
+                                                class="flex items-center"
+                                                v-else
                                             >
                                                 <span
-                                                    class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 text-white bg-green-600"
+                                                    class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 text-white"
+                                                    :class="
+                                                        member.step_3 === '0'
+                                                            ? 'bg-orange-400'
+                                                            : 'text-white bg-green-600'
+                                                    "
                                                 >
                                                     3
                                                 </span>
-                                                <span class="text-green-600"
-                                                    >เสร็จสิ้น</span
+                                                <span
+                                                    :class="
+                                                        member.step_3 === '0'
+                                                            ? 'text-orange-400'
+                                                            : 'text-green-600'
+                                                    "
                                                 >
+                                                    <p
+                                                        v-if="
+                                                            member.step_3 ===
+                                                            '0'
+                                                        "
+                                                    >
+                                                        รอการตรวจสอบ
+                                                    </p>
+                                                    <p v-else>เสร็จสิ้น</p>
+                                                </span>
                                             </div>
                                         </td>
 
+                                        <!-- check system -->
                                         <td
                                             class="flex justify-center px-4 py-4 text-sm whitespace-nowrap"
                                         >
                                             <button
                                                 class="px-1 py-1 text-gray-500 transition-colors duration-200 rounded-lg border-2 border-dotted hover:bg-gray-100"
-                                                v-if="member.step_3 === null"
+                                                @click="toCheck(member.id)"
                                             >
                                                 <box-icon
-                                                    name="arrow-to-bottom"
-                                                    color="#f87171"
-                                                    @click="toPayment(2)"
+                                                    name="coffee"
+                                                    color="#a16207"
+                                                    animation="tada-hover"
+                                                    v-if="member.step_3 === '0'"
+                                                ></box-icon>
+                                                <box-icon
+                                                    name="check-circle"
+                                                    color="#65a30d"
+                                                    animation="tada-hover"
+                                                    v-else-if="
+                                                        member.step_3 === '1'
+                                                    "
                                                 ></box-icon>
                                             </button>
                                         </td>
+                                        <!-- End check system -->
                                     </tr>
                                 </transition-group>
-
-                                <!-- Fake Data -->
-                                <tr>
-                                    <td
-                                        class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
-                                    >
-                                        <div
-                                            class="inline px-3 py-1 text-sm font-normal rounded-full"
-                                        >
-                                            1
-                                        </div>
-                                    </td>
-                                    <td
-                                        class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
-                                    >
-                                        <div
-                                            class="inline px-3 py-1 text-sm font-normal rounded-full"
-                                        >
-                                            วงศ์นรินทร์ สุขวิชัย
-                                        </div>
-                                    </td>
-                                    <td
-                                        class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
-                                    >
-                                        <div
-                                            class="inline px-3 py-1 text-sm font-normal rounded-full"
-                                        >
-                                            นักวิชาการคอมพิวเตอร์
-                                        </div>
-                                    </td>
-                                    <td
-                                        class="px-4 py-4 text-sm whitespace-nowrap border-r"
-                                    >
-                                        <div
-                                            class="inline px-3 py-1 text-sm font-normal rounded-full"
-                                        >
-                                            มหาวิทยาลัยมหาสารคาม
-                                        </div>
-                                    </td>
-                                    <td
-                                        class="px-4 py-4 text-sm whitespace-nowrap border-r"
-                                    >
-                                        <div
-                                            class="inline px-3 py-1 text-sm font-normal rounded-full"
-                                        >
-                                            สำนักวิทยบริการ
-                                        </div>
-                                    </td>
-                                    <td
-                                        class="px-4 py-4 text-sm whitespace-nowrap border-r"
-                                    >
-                                        <div
-                                            class="inline px-3 py-1 text-sm font-normal rounded-full"
-                                        >
-                                            ผู้เข้าร่วมการประชุม
-                                        </div>
-                                    </td>
-
-                                    <td
-                                        class="px-4 py-4 text-sm whitespace-nowrap"
-                                    >
-                                        <div class="flex items-center pr-1">
-                                            <span
-                                                class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 bg-gray-200"
-                                            >
-                                                1
-                                            </span>
-                                            <span class="text-gray-600"
-                                                >ลงทะเบียน</span
-                                            >
-                                            <svg
-                                                class="w-3 h-3 ms-2 sm:ms-1 text-gray-400"
-                                                aria-hidden="true"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="none"
-                                                viewBox="0 0 12 10"
-                                            >
-                                                <path
-                                                    stroke="currentColor"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    stroke-width="2"
-                                                    d="m7 9 4-4-4-4M1 9l4-4-4-4"
-                                                />
-                                            </svg>
-                                        </div>
-                                    </td>
-
-                                    <td
-                                        class="px-4 py-4 text-sm whitespace-nowrap"
-                                    >
-                                        <div class="flex items-center pr-1">
-                                            <span
-                                                class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 text-white bg-blue-600"
-                                            >
-                                                2
-                                            </span>
-                                            <span class="text-blue-600"
-                                                >ชำระค่าลงทะเบียน</span
-                                            >
-                                            <svg
-                                                class="w-3 h-3 ms-2 sm:ms-1 text-blue-600"
-                                                aria-hidden="true"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="none"
-                                                viewBox="0 0 12 10"
-                                            >
-                                                <path
-                                                    stroke="currentColor"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    stroke-width="2"
-                                                    d="m7 9 4-4-4-4M1 9l4-4-4-4"
-                                                />
-                                            </svg>
-                                        </div>
-                                    </td>
-
-                                    <td
-                                        class="px-4 py-4 text-sm whitespace-nowrap border-r"
-                                    >
-                                        <div class="flex items-center">
-                                            <span
-                                                class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 text-white bg-green-600"
-                                            >
-                                                3
-                                            </span>
-                                            <span class="text-green-600"
-                                                >เสร็จสิ้น</span
-                                            >
-                                        </div>
-                                    </td>
-
-                                    <td
-                                        class="flex justify-center px-4 py-4 text-sm whitespace-nowrap"
-                                    ></td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -621,6 +592,9 @@
 </template>
 
 <script>
+import "boxicons";
+import { TailwindPagination } from "laravel-vue-pagination";
+
 export default {
     mounted() {
         this.getMemList();
@@ -639,7 +613,7 @@ export default {
     methods: {
         getMemList(page = 1) {
             axios
-                .get("/api/memlist?page=" + page)
+                .get("/api/member?page=" + page)
                 .then((response) => {
                     this.memList = response.data;
                 })
@@ -647,8 +621,8 @@ export default {
         },
         getSearch() {
             if (this.data.search == "") {
-                this.getMemList();
                 this.isShowTable = true;
+                this.isShowSearch = false;
             } else {
                 axios
                     .post("/api/search", this.data)
@@ -660,6 +634,12 @@ export default {
                     .catch((err) => {});
             }
         },
+        toCheck(id) {
+            this.$router.push("/detail/" + id);
+        },
+    },
+    components: {
+        TailwindPagination,
     },
 };
 </script>

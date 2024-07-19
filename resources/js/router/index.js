@@ -9,6 +9,7 @@ import Regis from "../components/Regis.vue";
 import Dashboard from "../components/Dashboard.vue";
 import System from "../components/System.vue";
 import Stat from "../components/Stat.vue";
+import Detail from "../components/Detail.vue";
 
 import store from "../store";
 
@@ -69,6 +70,14 @@ const routes = [
                 path: "/stat",
                 name: "stat",
                 component: Stat,
+                meta: {
+                    guard: "auth",
+                },
+            },
+            {
+                path: "/detail/:id",
+                name: "detail",
+                component: Detail,
                 meta: {
                     guard: "auth",
                 },

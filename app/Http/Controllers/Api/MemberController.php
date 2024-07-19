@@ -13,7 +13,9 @@ class MemberController extends Controller
      */
     public function index()
     {
-        //
+        $data = Member::orderBy('step_3', 'DESC')->paginate(10);
+
+        return response()->json($data);
     }
 
     public function memlist()
@@ -60,6 +62,7 @@ class MemberController extends Controller
         $data->comment = $request['comment'];
         $data->trip = $request['trip'];
         $data->step_1 = 1;
+        $data->step_2 = 0;
 
         $data->save();
 
