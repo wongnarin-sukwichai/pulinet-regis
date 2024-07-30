@@ -22,7 +22,9 @@ return new class extends Migration
             $table->string('bank');
             $table->date('date');
             $table->string('time');
-            $table->integer('price');
+            $table->integer('regprice')->nullable()->comment('ค่าลงทะเบียนที่ต้องจ่าย');
+            $table->integer('tourprice')->nullable()->comment('ค่าทัศนศึกษาที่ต้องจ่าย');
+            $table->integer('price')->comment('จ่ายจริง');
             $table->string('comment')->nullable();
             $table->string('confirmed_by')->nullable();
             $table->timestamps();

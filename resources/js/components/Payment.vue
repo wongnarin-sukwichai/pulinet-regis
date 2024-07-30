@@ -132,8 +132,39 @@
                                 <div
                                     class="grid grid-cols-2 border-2 border-dotted rounded-lg py-2 px-4 mt-2 text-left text-md text-gray-500"
                                 >
-                                    <p>จำนวนเงิน</p>
+                                    <p class="text-sm">ค่าลงทะเบียน</p>
                                     <p class="text-right">
+                                        {{ this.chkPrice(this.typeMem) }} บาท
+                                    </p>
+                                </div>
+                                <div
+                                    class="grid grid-cols-3 border-2 border-dotted rounded-lg py-2 px-4 mt-2 text-left text-md text-gray-500"
+                                    v-if="this.tour !== 0"
+                                >
+                                    <p class="col-span-2 text-sm">
+                                        เข้าร่วมทัศนศึกษา
+                                    </p>
+                                    <p class="text-right">
+                                        {{ this.data.tourprice }} บาท
+                                    </p>
+                                </div>
+                                <div
+                                    class="grid grid-cols-2 border-2 border-dotted rounded-lg py-2 px-4 mt-2 text-left text-md text-gray-500"
+                                >
+                                    <p class="text-sm">ทั้งหมด</p>
+                                    <p
+                                        class="text-right"
+                                        v-if="this.tour !== 0"
+                                    >
+                                        {{
+                                            formatPrice(
+                                                Number(this.data.regprice) +
+                                                    Number(this.data.tourprice)
+                                            )
+                                        }}
+                                        บาท
+                                    </p>
+                                    <p class="text-right" v-else>
                                         {{ this.chkPrice(this.typeMem) }} บาท
                                     </p>
                                 </div>
@@ -659,7 +690,6 @@
                                         >
                                         <div class="grid grid-cols-2 gap-2">
                                             <Datepicker
-    
                                                 type="text"
                                                 class="mt-2 form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                                 required
@@ -732,7 +762,8 @@
                                             id="listbox-label"
                                             class="block text-sm font-medium leading-6 text-gray-900"
                                         >
-                                        รายการอื่นๆ ที่ต้องการให้แสดง :</label
+                                            รายการอื่นๆ ที่ต้องการให้แสดง
+                                            :</label
                                         >
                                         <textarea
                                             type="text"
@@ -806,18 +837,21 @@ export default {
                 bank: "",
                 date: "",
                 time: "",
+                regprice: "",
+                tourprice: "",
                 price: "",
                 comment: "",
             },
             typeMem: "",
+            tour: "",
             periodList: "",
             priceMem: "",
             moment: moment,
         };
     },
     methods: {
-        getMember() {
-            axios
+        async getMember() {
+            await axios
                 .get("/api/getMember/" + this.$route.params.id)
                 .then((response) => {
                     this.data.title =
@@ -827,8 +861,18 @@ export default {
                         response.data[0].surname;
                     this.data.dep = response.data[0].uni;
                     this.typeMem = response.data[0].member;
+                    this.tour = response.data[0].tour;
                 })
                 .catch((err) => {});
+
+            if (this.tour != 0) {
+                axios
+                    .get("/api/showTour/" + this.tour)
+                    .then((response) => {
+                        this.data.tourprice = response.data.price;
+                    })
+                    .catch((err) => {});
+            }
         },
         getPeriod() {
             axios
@@ -838,6 +882,14 @@ export default {
                 })
                 .catch((err) => {});
         },
+        // getTour() {
+        //     axios
+        //         .get("/api/getTour")
+        //         .then((response) => {
+        //             this.data.tourpriceList = response.data;
+        //         })
+        //         .catch((err) => {});
+        // },
         showModal() {
             this.isShowModal = !this.isShowModal;
         },
@@ -866,10 +918,13 @@ export default {
         },
         chkPrice(id) {
             if (id == 1) {
+                this.data.regprice = this.periodList.p_1;
                 return this.formatPrice(this.periodList.p_1);
             } else if (id == 2) {
+                this.data.regprice = this.periodList.p_2;
                 return this.formatPrice(this.periodList.p_2);
             } else {
+                this.data.regprice = this.periodList.p_3;
                 return this.formatPrice(this.periodList.p_3);
             }
         },
@@ -877,6 +932,7 @@ export default {
             let val = (id / 1).toFixed(0).replace();
             return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         },
+        total(id) {},
         async send() {
             this.showAlert = false;
 
@@ -896,7 +952,7 @@ export default {
                 await this.$store.dispatch("upload", formData);
                 this.data.slip = await this.$store.getters.picName;
 
-                await this.formatDate(this.data.date)
+                await this.formatDate(this.data.date);
 
                 axios
                     .post("/api/storePayment", this.data)
@@ -914,8 +970,8 @@ export default {
             }
         },
         formatDate(id) {
-            this.data.date = moment(id).format('YYYY-MM-DD');
-        }
+            this.data.date = moment(id).format("YYYY-MM-DD");
+        },
     },
     components: {
         Datepicker,

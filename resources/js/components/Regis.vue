@@ -181,7 +181,7 @@
                                     <label
                                         class="text-md text-gray-900 ml-2 block"
                                     >
-                                        ไม่ใช่สมาชิก PULINET/PULINET PLUS
+                                        ทั่วไป (ไม่ใช่สมาชิก PULINET/PULINET PLUS)
                                     </label>
                                 </div>
 
@@ -320,11 +320,11 @@
                             >
                                 <p class="font-semibold text-lg">
                                     <font class="text-red-400">** </font
-                                    >การเข้าร่วมงานเลี้ยงรับรอง
+                                    >เข้าร่วมงานเลี้ยงรับรอง
                                 </p>
                                 <p class="text-sm text-gray-600">
-                                    (วันที่ 10 มกราคม 2566 เวลา 18.30 – 21.00
-                                    น.)
+                                    ( วันที่ 17 มกราคม 2568 เวลา 18.30 – 21.00
+                                    น. )
                                 </p>
                             </label>
 
@@ -376,10 +376,10 @@
                             >
                                 <p class="font-semibold text-lg">
                                     <font class="text-red-400">** </font
-                                    >การศึกษาดูงานศูนย์บรรณสารฯ
+                                    >ศึกษาดูงาน ณ สำนักวิทยบริการ มหาวิทยาลัยมหาสารคาม
                                 </p>
                                 <p class="text-sm text-gray-600">
-                                    (วันที่ 10 มกราคม 2566 เวลา 18.00-18.30 น.)
+                                    ( วันที่ 14 มกราคม 2568 เวลา 18.00-20.00 น. )
                                 </p>
                             </label>
 
@@ -391,7 +391,7 @@
                                         class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 cursor-pointer"
                                         aria-labelledby="country-option-1"
                                         aria-describedby="country-option-1"
-                                        v-model="this.data.tour"
+                                        v-model="this.data.trip"
                                     />
                                     <label
                                         for="country-option-1"
@@ -408,7 +408,7 @@
                                         class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 cursor-pointer"
                                         aria-labelledby="country-option-2"
                                         aria-describedby="country-option-2"
-                                        v-model="this.data.tour"
+                                        v-model="this.data.trip"
                                     />
                                     <label
                                         for="country-option-2"
@@ -525,62 +525,56 @@
                             >
                                 <p class="font-semibold text-lg">
                                     <font class="text-red-400">** </font
-                                    >การเข้าร่วมทัศนศึกษา (วันที่ 12 มกราคม
-                                    2567)
+                                    >เข้าร่วมทัศนศึกษา (วันที่ 17 มกราคม
+                                    2568)
                                 </p>
                                 <p class="text-sm text-gray-600">
-                                    (โปรแกรมไม่รวมอยู่ในค่าลงทะเบียนการเข้าร่วมประชุมฯ
-                                    โปรดศึกษารายละเอียดเพิ่มเติม)
+                                    ( โปรแกรมไม่รวมอยู่ในค่าลงทะเบียนการเข้าร่วมประชุมฯ
+                                    โปรดศึกษารายละเอียดการทัศนศึกษาเพิ่มเติม
+                                    <box-icon
+                                    name="chevrons-right"
+                                    size="xs"
+                                    color="#1d4ed8"
+                                    animation="fade-right"
+                                ></box-icon>
+                                    <a
+                                    href="https://pulinet2025.pulinet.org/?page_id=1300"
+                                    target="_blank"
+                                    class="text-blue-700 ml-4"
+                                    >Click...</a
+                                > )
                                 </p>
                             </label>
 
                             <fieldset class="mt-6">
-                                <div class="flex items-center mr-4">
+                                <div class="flex items-center mr-4"
+                                v-for="(tour, index) in tourList"
+                                :key="index"
+                                >
                                     <input
                                         type="radio"
-                                        value="1"
+                                        :value="index+1"
                                         class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 cursor-pointer"
                                         aria-labelledby="country-option-1"
                                         aria-describedby="country-option-1"
-                                        v-model="this.data.trip"
+                                        v-model="this.data.tour"
                                     />
                                     <label
                                         for="country-option-1"
                                         class="text-md font-medium text-gray-900 ml-2 block"
                                     >
-                                        โปรแกรม A - 1,950 บาท เต็มวัน:
-                                        วัดร่องขุ่น - ไร่สิงห์ปาร์ค -
-                                        วัดห้วยปลากั้ง - วัดร่องเสือเต้น
+                                        {{  tour.title }}
                                     </label>
-                                </div>
+                                </div>                            
 
                                 <div class="flex items-center">
                                     <input
                                         type="radio"
-                                        value="2"
-                                        class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 cursor-pointer"
-                                        aria-labelledby="country-option-2"
-                                        aria-describedby="country-option-2"
-                                        v-model="this.data.trip"
-                                    />
-                                    <label
-                                        for="country-option-2"
-                                        class="text-md font-medium text-gray-900 ml-2 block"
-                                    >
-                                        โปรแกรม B - 1,950 บาท เต็มวัน:
-                                        ไร่ชาฉุยฟง - ขุนน้ำนางนอน,ถ้ำหลวง -
-                                        ตลาดดอยเวา - ร้านของฝาก
-                                    </label>
-                                </div>
-
-                                <div class="flex items-center">
-                                    <input
-                                        type="radio"
-                                        value="3"
+                                        value="0"
                                         class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 cursor-pointer"
                                         aria-labelledby="country-option-3"
                                         aria-describedby="country-option-3"
-                                        v-model="this.data.trip"
+                                        v-model="this.data.tour"
                                     />
                                     <label
                                         for="country-option-3"
@@ -626,10 +620,12 @@
 
 <script>
 import Swal from "sweetalert2";
+import "boxicons";
 
 export default {
     mounted() {
         this.getUniList();
+        this.getTour();
     },
     data() {
         return {
@@ -654,6 +650,7 @@ export default {
             },
             uniList: "",
             textAlert: false,
+            tourList: "",
         };
     },
     methods: {
@@ -663,6 +660,14 @@ export default {
                 .then((response) => {
                     this.uniList = response.data;
                     // console.log(this.uniList);
+                })
+                .catch((err) => {});
+        },
+        getTour() {
+            axios
+                .get("/api/getTour")
+                .then((response) => {
+                    this.tourList = response.data;
                 })
                 .catch((err) => {});
         },

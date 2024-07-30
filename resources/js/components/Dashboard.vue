@@ -19,7 +19,7 @@
                         viewBox="0 0 24 24"
                         stroke-width="1.5"
                         stroke="currentColor"
-                        class="w-5 h-5 mx-3 text-gray-400 dark:text-gray-600"
+                        class="w-5 h-5 mx-3 text-gray-400"
                     >
                         <path
                             stroke-linecap="round"
@@ -32,7 +32,7 @@
                 <input
                     type="text"
                     placeholder="Search"
-                    class="block w-full py-1.5 pr-5 text-gray-700 bg-white border border-gray-200 rounded-lg md:w-80 placeholder-gray-400/70 pl-11 rtl:pr-11 rtl:pl-5 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                    class="block w-full py-1.5 pr-5 text-gray-700 bg-white border border-gray-200 rounded-lg md:w-80 placeholder-gray-400/70 pl-11 rtl:pr-11 rtl:pl-5 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                     v-model="this.data.search"
                 />
 
@@ -60,12 +60,12 @@
                     class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8"
                 >
                     <div
-                        class="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg"
+                        class="overflow-hidden border border-gray-200 md:rounded-lg"
                     >
                         <table
-                            class="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
+                            class="min-w-full divide-y divide-gray-200"
                         >
-                            <thead class="bg-gray-50 dark:bg-gray-800">
+                            <thead class="bg-gray-50">
                                 <tr>
                                     <th
                                         scope="col"
@@ -126,7 +126,7 @@
                                 </tr>
                             </thead>
                             <tbody
-                                class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900"
+                                class="bg-white divide-y divide-gray-200"
                             >
                                 <transition-group name="fade" mode="out-in">
                                     <tr

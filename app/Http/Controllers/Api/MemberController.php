@@ -57,10 +57,10 @@ class MemberController extends Controller
         $data->dep = $request['dep'];
         $data->branch = $request['branch'];
         $data->dinner = $request['dinner'];
-        $data->tour = $request['tour'];
+        $data->trip = $request['trip'];
         $data->food = $request['food'];
         $data->comment = $request['comment'];
-        $data->trip = $request['trip'];
+        $data->tour = $request['tour'];
         $data->step_1 = 1;
         $data->step_2 = 0;
 
@@ -81,7 +81,7 @@ class MemberController extends Controller
 
     public function getMember(string $id)
     {
-        $data = Member::where('id', $id)->select('intro', 'name', 'surname', 'member', 'uni')->get();
+        $data = Member::where('id', $id)->select('intro', 'name', 'surname', 'member', 'uni', 'tour')->get();
 
         return response()->json($data);
     }

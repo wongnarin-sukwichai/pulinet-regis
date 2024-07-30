@@ -48,6 +48,8 @@ class PaymentController extends Controller
         $data->bank = $request['bank'];
         $data->date = $request['date'];
         $data->time = $request['time'];
+        $data->regprice = $request['regprice'];
+        $data->tourprice = $request['tourprice'];
         $data->price = $request['price'];
         $data->comment = $request['comment'];
 
@@ -74,7 +76,7 @@ class PaymentController extends Controller
         $data = DB::table('members')
         ->where('members.id', $id)
         ->join('payments', 'members.id', 'payments.ref_id')
-        ->select('members.name', 'members.surname', 'members.email', 'members.tel', 'members.uni', 'members.dep', 'members.step_3', 'payments.title', 'payments.dep AS department', 'payments.address', 'payments.slip', 'payments.bank', 'payments.date', 'payments.time', 'payments.price', 'payments.comment')
+        ->select('members.name', 'members.surname', 'members.email', 'members.tel', 'members.uni', 'members.dep', 'members.step_3', 'payments.title', 'payments.dep AS department', 'payments.address', 'payments.slip', 'payments.bank', 'payments.date', 'payments.time', 'payments.regprice', 'payments.tourprice', 'payments.price', 'payments.comment')
         ->get();
 
         return response()->json($data);

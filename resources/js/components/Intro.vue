@@ -159,7 +159,7 @@
                             </div>
                         </fieldset>
 
-                        <!-- <div class="mt-6 text-left">
+                        <div class="mt-6 text-left">
                             <p class="flex">
                                 <font class="text-red-400 pr-1">**</font> ทั้งนี้
                                 ท่านสามารถอ่านรายละเอียดในประกาศความเป็นส่วนตัว
@@ -170,13 +170,13 @@
                                     animation="fade-right"
                                 ></box-icon>
                                 <a
-                                    href="https://library.msu.ac.th/pdpa"
+                                    href="https://pdpa.msu.ac.th/"
                                     target="_blank"
                                     class="text-blue-700 ml-3"
-                                    >https://library.msu.ac.th/pdpa</a
+                                    >https://pdpa.msu.ac.th/</a
                                 >
                             </p>
-                        </div> -->
+                        </div>
 
                         <button
                             class="flex justify-left mt-8 rounded-xl bg-gradient-to-br from-[#6025F5] to-[#FF5555] px-5 py-3 text-base font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-[#6025F5]/50"
@@ -194,6 +194,7 @@
 
 <script>
 import Swal from "sweetalert2";
+import "boxicons";
 
 export default {
     mounted() {},

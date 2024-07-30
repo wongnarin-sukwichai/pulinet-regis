@@ -63,7 +63,7 @@
                     </p>
                     <p class="text-lg text-gray-400">
                         ระหว่างวันที่ 15 - 17 มกราคม 2568 ณ
-                        อาคารประชุมเฉลิมพระเกียรติ ในโอกาสฉลอง<br />พระชนมายุ 5
+                        อาคารเฉลิมพระเกียรติ ในโอกาสฉลอง<br />พระชนมายุ 5
                         รอบ 2 เมษายน 2558 มหาวิทยาลัยมหาสารคาม
                     </p>
                     <div class="mt-10 flex items-center justify-center gap-x-6">
@@ -104,6 +104,94 @@
                 ></div>
             </div>
 
+            <!-- Information -->
+            <div
+                class="flex justify-center px-4 overflow-x-auto sm:-mx-6 lg:-mx-8"
+            >
+                <div class="inline-block pb-4 align-middle md:px-6 lg:px-8">
+                    <div
+                        class="overflow-hidden border border-gray-200 md:rounded-lg"
+                    >
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th
+                                        scope="col"
+                                        class="py-2 px-2 text-xs font-normal text-gray-800 border-r"
+                                    >
+                                        <p>ลงทะเบียนเข้าร่วมงาน</p>
+                                    </th>
+                                    <th
+                                        scope="col"
+                                        class="py-2 px-2 text-xs font-normal text-gray-800 border-r"
+                                    >
+                                        <p>ลงทะเบียนนำเสนอผลงาน</p>
+                                    </th>
+                                    <th
+                                        scope="col"
+                                        class="py-2 px-2 text-xs font-normal text-gray-800 border-r"
+                                        colspan="2"
+                                    >
+                                        <p>
+                                            ชำระค่าลงทะเบียนผู้เข้าร่วมและ
+                                            & ผู้นำเสนอผลงาน
+                                        </p>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td
+                                        class="px-3 py-3 text-xs font-medium whitespace-nowrap border-r"
+                                    >
+                                        <div
+                                            class="inline px-3 py-1 font-normal rounded-full"
+                                        >
+                                            <br />
+                                            วันที่ 1 สิงหาคม – 15 ธันวาคม 2567
+                                        </div>
+                                    </td>                               
+                                    <td
+                                        class="px-3 py-3 text-xs font-medium whitespace-nowrap border-r"
+                                    >
+                                        <div
+                                            class="inline px-3 py-1 font-normal rounded-full"
+                                        >
+                                            <br />
+                                            วันที่ 1 สิงหาคม – 15 พฤศจิกายน 2567
+                                        </div>
+                                    </td>
+                                    <td
+                                        class="px-3 py-3 text-xs font-medium whitespace-nowrap border-r text-center"
+                                    >
+                                        <div
+                                            class="inline px-3 py-1 font-normal rounded-full"
+                                        >
+                                            <font class="text-blue-400"
+                                                >( ช่วงที่ 1 )</font
+                                            ><br />
+                                            วันที่ 1 ตุลาคม – 10 ธันวาคม 2567
+                                        </div>
+                                    </td>
+                                    <td
+                                        class="px-3 py-3 text-xs font-medium whitespace-nowrap border-r text-center"
+                                    >
+                                        <div
+                                            class="inline px-3 py-1 font-normal rounded-full"
+                                        >
+                                            <font class="text-blue-400"
+                                                >( ช่วงที่ 2 )</font
+                                            ><br />
+                                            วันที่ 11-20 ธันวาคม 2567
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
             <!-- DataTable-->
             <section class="container px-4 mx-auto">
                 <div class="mt-6 md:flex md:items-center md:justify-between">
@@ -125,7 +213,7 @@
                                 viewBox="0 0 24 24"
                                 stroke-width="1.5"
                                 stroke="currentColor"
-                                class="w-5 h-5 mx-3 text-gray-400 dark:text-gray-600"
+                                class="w-5 h-5 mx-3 text-gray-400"
                             >
                                 <path
                                     stroke-linecap="round"
@@ -138,7 +226,7 @@
                         <input
                             type="text"
                             placeholder="Search"
-                            class="block w-full py-1.5 pr-5 text-gray-700 bg-white border border-gray-200 rounded-lg md:w-80 placeholder-gray-400/70 pl-11 rtl:pr-11 rtl:pl-5 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                            class="block w-full py-1.5 pr-5 text-gray-700 bg-white border border-gray-200 rounded-lg md:w-80 placeholder-gray-400/70 pl-11 rtl:pr-11 rtl:pl-5 focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                             v-model="this.data.search"
                         />
 
@@ -165,59 +253,57 @@
                         <div
                             class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8"
                         >
-                            <div
-                                class="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg"
-                            >
+                            <div class="overflow-hidden border border-gray-200">
                                 <table
-                                    class="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
+                                    class="min-w-full divide-y divide-gray-200"
                                 >
-                                    <thead class="bg-gray-50 dark:bg-gray-800">
+                                    <thead class="bg-gray-50">
                                         <tr>
                                             <th
                                                 scope="col"
-                                                class="py-3.5 px-4 text-sm font-normal text-gray-500 border-r"
+                                                class="py-2 px-4 text-sm font-normal text-gray-500 border-r"
                                             >
                                                 <span>#</span>
                                             </th>
 
                                             <th
                                                 scope="col"
-                                                class="py-3.5 px-4 text-sm font-normal text-gray-500 border-r"
+                                                class="py-2 px-4 text-sm font-normal text-gray-500 border-r"
                                             >
                                                 <span>ชื่อ-นามสกุล</span>
                                             </th>
 
                                             <th
                                                 scope="col"
-                                                class="px-12 py-3.5 text-sm font-normal text-gray-500 border-r"
+                                                class="px-12 py-2 text-sm font-normal text-gray-500 border-r"
                                             >
                                                 ตำแหน่ง
                                             </th>
 
                                             <th
                                                 scope="col"
-                                                class="px-4 py-3.5 text-sm font-normal text-gray-500 border-r"
+                                                class="px-4 py-2 text-sm font-normal text-gray-500 border-r"
                                             >
                                                 มหาวิทยาลัย
                                             </th>
 
                                             <th
                                                 scope="col"
-                                                class="px-4 py-3.5 text-sm font-normal text-gray-500 border-r"
+                                                class="px-4 py-2 text-sm font-normal text-gray-500 border-r"
                                             >
                                                 หน่วยงาน
                                             </th>
 
                                             <th
                                                 scope="col"
-                                                class="px-4 py-3.5 text-sm font-normal text-gray-500 border-r"
+                                                class="px-4 py-2 text-sm font-normal text-gray-500 border-r"
                                             >
                                                 ประเภท
                                             </th>
 
                                             <th
                                                 scope="col"
-                                                class="px-4 py-3.5 text-sm font-normal text-gray-500 border-r"
+                                                class="px-4 py-2 text-sm font-normal text-gray-500 border-r"
                                                 colspan="3"
                                             >
                                                 สถานะการชำระเงิน
@@ -225,14 +311,14 @@
 
                                             <th
                                                 scope="col"
-                                                class="px-4 py-3.5 text-sm font-normal text-gray-500"
+                                                class="px-4 py-2 text-sm font-normal text-gray-500"
                                             >
                                                 ชำระค่าลงทะเบียน
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody
-                                        class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900"
+                                        class="bg-white divide-y divide-gray-200"
                                     >
                                         <transition-group
                                             name="fade"

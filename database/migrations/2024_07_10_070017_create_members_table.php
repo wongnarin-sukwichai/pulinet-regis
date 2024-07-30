@@ -25,10 +25,10 @@ return new class extends Migration
             $table->string('dep');
             $table->string('branch')->nullable();
             $table->integer('dinner');
-            $table->integer('tour');
+            $table->integer('trip');
             $table->integer('food');
             $table->string('comment')->nullable();
-            $table->integer('trip');
+            $table->integer('tour')->comment('0=ไม่เข้าร่วม');
             $table->string('step_1')->nullable()->comment('ลงทะเบียน');
             $table->string('step_2')->nullable()->comment('1=รอชำระ, 2=ชำระแล้ว');
             $table->string('step_3')->nullable()->comment('1=รอตรวจสอบ, 2=เจ้าหน้าที่ยืนยัน');       

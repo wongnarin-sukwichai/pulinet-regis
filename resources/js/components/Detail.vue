@@ -28,6 +28,12 @@
                 <div class="text-left">{{ this.data.email }}</div>
                 <div class="text-right text-blue-900">โทรศัพท์ :</div>
                 <div class="text-left">{{ this.data.tel }}</div>
+                <div class="text-right text-blue-900">ค่าลงทะเบียน :</div>
+                <div class="text-left">{{ formatPrice(this.data.regprice) }} บาท</div>
+                <div class="text-right text-blue-900">เข้าร่วมทัศนศึกษา :</div>
+                <div class="text-left">{{ formatPrice(this.data.tourprice) }} บาท</div>
+                <div class="text-right text-blue-900">รวมทั้งหมด :</div>
+                <div class="text-left">{{ formatPrice(this.data.regprice + this.data.tourprice) }} บาท</div>
             </div>
             <div class="text-gray-400">
                 รายการที่ต้องการแสดงบนใบเสร็จ ** Detail of Receipt **
@@ -69,7 +75,7 @@ import Swal from "sweetalert2";
 
 export default {
     mounted() {
-        this.getMember();
+        this.getPayment();
     },
     data() {
         return {
@@ -79,12 +85,12 @@ export default {
         };
     },
     methods: {
-        getMember() {
+        getPayment() {
             axios
                 .get("/api/payment/" + this.$route.params.id)
                 .then((response) => {
                     this.data = response.data[0];
-                    console.log(this.data.step_3);
+                    // console.log(this.data.step_3);
                 })
                 .catch((err) => {});
         },
