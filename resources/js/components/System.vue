@@ -43,7 +43,7 @@
         <div
             class="overflow-hidden mx-auto mt-4 max-w-2xl rounded-3xl border-2 border-dotted border-gray-200 lg:mx-0 lg:max-w-none bg-white"
         >
-            <p class="text-left px-4 pt-4">อัตราค่าบริการ :</p>
+            <p class="text-left px-4 pt-4">อัตราค่าลงทะเบียน :</p>
             <br />
             <div class="px-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div
@@ -71,133 +71,135 @@
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
-                                <tr class="bg-gray-50">
-                                    <td
-                                        class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
+                            <tbody
+                                        class="bg-white divide-y divide-gray-200"
                                     >
-                                        <div
-                                            class="inline px-3 py-1 text-sm font-normal rounded-full"
-                                        >
-                                            สมาชิก<br />
-                                            PULINET/PULINET PLUS
-                                        </div>
-                                    </td>
-                                    <td
-                                        class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
-                                    >
-                                        <div
-                                            class="inline px-3 py-1 text-sm font-normal rounded-full"
-                                        >
-                                            ไม่ใช่สมาชิก<br />
-                                            PULINET/PULINET PLUS
-                                        </div>
-                                    </td>
-                                    <td
-                                        class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
-                                    >
-                                        <div
-                                            class="inline px-3 py-1 text-sm font-normal rounded-full"
-                                        >
-                                            นิสิต/นักศึกษา
-                                        </div>
-                                    </td>
-                                    <td
-                                        class="px-12 py-4 text-sm font-medium whitespace-nowrap border-r"
-                                    >
-                                        <div
-                                            class="inline px-3 py-1 text-sm font-normal rounded-full"
-                                        >
-                                            สมาชิก<br />
-                                            PULINET/PULINET PLUS
-                                        </div>
-                                    </td>
-                                    <td
-                                        class="px-4 py-4 text-sm whitespace-nowrap border-r"
-                                    >
-                                        <div
-                                            class="inline px-3 py-1 text-sm font-normal rounded-full"
-                                        >
-                                            ไม่ใช่สมาชิก<br />
-                                            PULINET/PULINET PLUS
-                                        </div>
-                                    </td>
-                                    <td
-                                        class="px-4 py-4 text-sm font-medium whitespace-nowrap"
-                                    >
-                                        <div
-                                            class="inline px-3 py-1 text-sm font-normal rounded-full"
-                                        >
-                                            นิสิต/นักศึกษา
-                                        </div>
-                                    </td>
-                                </tr>
+                                        <tr class="bg-gray-50">
+                                            <td
+                                                class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
+                                            >
+                                                <div
+                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                >
+                                                    ทั่วไป<br/> <font class="text-xs">( ไม่ใช่สมาชิก
+                                                    PULINET/PULINET PLUS )</font>
+                                                </div>
+                                            </td>
+                                            <td
+                                                class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
+                                            >
+                                                <div
+                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                >
+                                                    สมาชิก<br />
+                                                    <font class="text-xs">PULINET/PULINET PLUS</font>
+                                                </div>
+                                            </td>                                        
+                                            <td
+                                                class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
+                                            >
+                                                <div
+                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                >
+                                                    นิสิต/นักศึกษา
+                                                </div>
+                                            </td>
+                                            <td
+                                                class="px-4 py-4 text-sm whitespace-nowrap border-r"
+                                            >
+                                                <div
+                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                >
+                                                ทั่วไป<br /><font class="text-xs">( ไม่ใช่สมาชิก
+                                                    PULINET/PULINET PLUS )</font>
+                                                </div>
+                                            </td>
+                                            <td
+                                                class="px-12 py-4 text-sm font-medium whitespace-nowrap border-r"
+                                            >
+                                                <div
+                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                >
+                                                    สมาชิก<br />
+                                                    <font class="text-xs">PULINET/PULINET PLUS</font>
+                                                </div>
+                                            </td>                                       
+                                            <td
+                                                class="px-4 py-4 text-sm font-medium whitespace-nowrap"
+                                            >
+                                                <div
+                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                >
+                                                    นิสิต/นักศึกษา
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                <tr>
-                                    <td
-                                        class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
-                                    >
-                                        <div>
-                                            <h2
-                                                class="font-medium text-gray-800"
+                                        <tr>
+                                            <td
+                                                class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
                                             >
-                                                2,000 บาท
-                                            </h2>
-                                        </div>
-                                    </td>
-                                    <td
-                                        class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
-                                    >
-                                        <div>
-                                            <h2
-                                                class="font-medium text-gray-800"
+                                                <div>
+                                                    <h2
+                                                        class="font-medium text-gray-800"
+                                                    >
+                                                        2,500 บาท
+                                                    </h2>
+                                                </div>
+                                            </td>
+                                            <td
+                                                class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
                                             >
-                                                2,500 บาท
-                                            </h2>
-                                        </div>
-                                    </td>
-                                    <td
-                                        class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
-                                    >
-                                        <div>
-                                            <h2
-                                                class="font-medium text-gray-800"
+                                                <div>
+                                                    <h2
+                                                        class="font-medium text-gray-800"
+                                                    >
+                                                        2,000 บาท
+                                                    </h2>
+                                                </div>
+                                            </td>                                         
+                                            <td
+                                                class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
                                             >
-                                                600 บาท
-                                            </h2>
-                                        </div>
-                                    </td>
-                                    <td
-                                        class="px-12 py-4 text-sm font-medium whitespace-nowrap border-r"
-                                    >
-                                        <div
-                                            class="inline px-3 py-1 text-sm font-normal rounded-full"
-                                        >
-                                            3,000 บาท
-                                        </div>
-                                    </td>
-                                    <td
-                                        class="px-4 py-4 text-sm whitespace-nowrap border-r"
-                                    >
-                                        <div
-                                            class="inline px-3 py-1 text-sm font-normal rounded-full"
-                                        >
-                                            3,500 บาท
-                                        </div>
-                                    </td>
-                                    <td
-                                        class="px-4 py-4 text-sm font-medium whitespace-nowrap"
-                                    >
-                                        <div>
-                                            <h2
-                                                class="font-medium text-gray-800"
+                                                <div>
+                                                    <h2
+                                                        class="font-medium text-gray-800"
+                                                    >
+                                                        600 บาท
+                                                    </h2>
+                                                </div>
+                                            </td>
+                                            <td
+                                                class="px-4 py-4 text-sm whitespace-nowrap border-r"
                                             >
-                                                700 บาท
-                                            </h2>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
+                                                <div
+                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                >
+                                                    3,500 บาท
+                                                </div>
+                                            </td>
+                                            <td
+                                                class="px-12 py-4 text-sm font-medium whitespace-nowrap border-r"
+                                            >
+                                                <div
+                                                    class="inline px-3 py-1 text-sm font-normal rounded-full"
+                                                >
+                                                    3,000 บาท
+                                                </div>
+                                            </td>                                          
+                                            <td
+                                                class="px-4 py-4 text-sm font-medium whitespace-nowrap"
+                                            >
+                                                <div>
+                                                    <h2
+                                                        class="font-medium text-gray-800"
+                                                    >
+                                                        700 บาท
+                                                    </h2>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
                         </table>
                     </div>
                 </div>
