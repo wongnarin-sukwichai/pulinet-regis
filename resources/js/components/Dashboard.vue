@@ -186,7 +186,7 @@
                                             <div
                                                 class="inline px-3 py-1 text-sm font-normal rounded-full"
                                             >
-                                                <p v-if="member.member === '1'">
+                                                <p v-if="member.reg === '1'">
                                                     ผู้เข้าร่วมประชุม
                                                 </p>
                                                 <p class="text-sm" v-else>
@@ -408,7 +408,7 @@
                                             <div
                                                 class="inline px-3 py-1 text-sm font-normal rounded-full"
                                             >
-                                                <p v-if="member.member === '1'">
+                                                <p v-if="member.reg === '1'">
                                                     ผู้เข้าร่วมประชุม
                                                 </p>
                                                 <p v-else>

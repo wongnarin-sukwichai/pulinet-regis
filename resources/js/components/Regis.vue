@@ -118,7 +118,7 @@
                                     >
                                     <input
                                         type="text"
-                                        class="w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-1 focus:border-sky-500 block p-2.5"                                       
+                                        class="w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-1 focus:border-sky-500 block p-2.5"
                                         v-model="this.data.pos"
                                     />
                                 </div>
@@ -181,7 +181,8 @@
                                     <label
                                         class="text-md text-gray-900 ml-2 block"
                                     >
-                                        ทั่วไป (ไม่ใช่สมาชิก PULINET/PULINET PLUS)
+                                        ทั่วไป (ไม่ใช่สมาชิก PULINET/PULINET
+                                        PLUS)
                                     </label>
                                 </div>
 
@@ -376,10 +377,12 @@
                             >
                                 <p class="font-semibold text-lg">
                                     <font class="text-red-400">** </font
-                                    >ศึกษาดูงาน ณ สำนักวิทยบริการ มหาวิทยาลัยมหาสารคาม
+                                    >ศึกษาดูงาน ณ สำนักวิทยบริการ
+                                    มหาวิทยาลัยมหาสารคาม
                                 </p>
                                 <p class="text-sm text-gray-600">
-                                    ( วันที่ 14 มกราคม 2568 เวลา 18.00-20.00 น. )
+                                    ( วันที่ 14 มกราคม 2568 เวลา 18.00-20.00 น.
+                                    )
                                 </p>
                             </label>
 
@@ -525,35 +528,37 @@
                             >
                                 <p class="font-semibold text-lg">
                                     <font class="text-red-400">** </font
-                                    >เข้าร่วมทัศนศึกษา (วันที่ 17 มกราคม
-                                    2568)
+                                    >เข้าร่วมทัศนศึกษา (วันที่ 17 มกราคม 2568)
                                 </p>
                                 <p class="text-sm text-gray-600">
-                                    ( โปรแกรมไม่รวมอยู่ในค่าลงทะเบียนการเข้าร่วมประชุมฯ
+                                    (
+                                    โปรแกรมไม่รวมอยู่ในค่าลงทะเบียนการเข้าร่วมประชุมฯ
                                     โปรดศึกษารายละเอียดการทัศนศึกษาเพิ่มเติม
                                     <box-icon
-                                    name="chevrons-right"
-                                    size="xs"
-                                    color="#1d4ed8"
-                                    animation="fade-right"
-                                ></box-icon>
+                                        name="chevrons-right"
+                                        size="xs"
+                                        color="#1d4ed8"
+                                        animation="fade-right"
+                                    ></box-icon>
                                     <a
-                                    href="https://pulinet2025.pulinet.org/?page_id=1300"
-                                    target="_blank"
-                                    class="text-blue-700 ml-4"
-                                    >Click...</a
-                                > )
+                                        href="https://pulinet2025.pulinet.org/?page_id=1300"
+                                        target="_blank"
+                                        class="text-blue-700 ml-4"
+                                        >Click...</a
+                                    >
+                                    )
                                 </p>
                             </label>
 
                             <fieldset class="mt-6">
-                                <div class="flex items-center mr-4"
-                                v-for="(tour, index) in tourList"
-                                :key="index"
+                                <div
+                                    class="flex items-center mr-4"
+                                    v-for="(tour, index) in tourList"
+                                    :key="index"
                                 >
                                     <input
                                         type="radio"
-                                        :value="index+1"
+                                        :value="index + 1"
                                         class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 cursor-pointer"
                                         aria-labelledby="country-option-1"
                                         aria-describedby="country-option-1"
@@ -563,9 +568,9 @@
                                         for="country-option-1"
                                         class="text-md font-medium text-gray-900 ml-2 block"
                                     >
-                                        {{  tour.title }}
+                                        {{ tour.title }}
                                     </label>
-                                </div>                            
+                                </div>
 
                                 <div class="flex items-center">
                                     <input
@@ -674,12 +679,12 @@ export default {
         async send() {
             this.textAlert = false;
             if (
-                this.data.reg == '' ||
-                this.data.member == '' ||
-                this.data.dinner == '' ||
-                this.data.tour == '' ||
-                this.data.food == '' ||
-                this.data.trip == ''
+                this.data.reg == "" ||
+                this.data.member == "" ||
+                this.data.dinner == "" ||
+                this.data.tour == "" ||
+                this.data.food == "" ||
+                this.data.trip == ""
             ) {
                 this.textAlert = true;
             } else {
