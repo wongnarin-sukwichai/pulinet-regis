@@ -29,6 +29,7 @@ return new class extends Migration
             $table->integer('food');
             $table->string('comment')->nullable();
             $table->integer('tour')->comment('0=ไม่เข้าร่วม');
+            $table->string('size')->nullable()->comment('0=ไม่ประสงค์รับเสื้อ, size เสื้อ');
             $table->string('step_1')->nullable()->comment('ลงทะเบียน');
             $table->string('step_2')->nullable()->comment('1=รอชำระ, 2=ชำระแล้ว');
             $table->string('step_3')->nullable()->comment('1=รอตรวจสอบ, 2=เจ้าหน้าที่ยืนยัน');       

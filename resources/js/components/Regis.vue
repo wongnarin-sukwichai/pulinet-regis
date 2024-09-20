@@ -592,9 +592,120 @@
                         </div>
                     </div>
 
+                    <div
+                        class="mx-auto max-w-2xl rounded-3xl border-2 border-dotted border-gray-200 lg:mx-0 lg:flex lg:max-w-none mt-6 bg-gray-50"
+                    >
+                        <div class="p-8 lg:flex-auto">
+                            <label
+                                for="company"
+                                class="block text-md text-left"
+                            >
+                                <p class="font-semibold text-lg">
+                                    <font class="text-red-400">** </font
+                                    >แจ้งความประสงค์รับเสื้อ Pulinet 2025
+                                </p>
+                                <p class="text-sm text-gray-600">
+                                    ( รายละเอียดเสื้อ Pulinet 2025
+                                    <box-icon
+                                        name="chevrons-right"
+                                        size="xs"
+                                        color="#1d4ed8"
+                                        animation="fade-right"
+                                    ></box-icon>
+                                    <span
+                                        class="text-blue-700 ml-4 cursor-pointer"
+                                        @click="showModal()"
+                                        >Click...</span
+                                    >
+                                    )
+                                </p>
+                            </label>
+
+                            <fieldset class="mt-6">
+                                <div class="flex items-center">
+                                    <input
+                                        type="radio"
+                                        value="1"
+                                        class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 cursor-pointer"
+                                        aria-labelledby="country-option-3"
+                                        aria-describedby="country-option-3"
+                                        v-model="this.chkShirt"
+                                    />
+                                    <label
+                                        for="country-option-3"
+                                        class="text-md font-medium text-gray-900 ml-2 block"
+                                    >
+                                        ประสงค์รับเสื้อ
+                                    </label>
+                                </div>
+
+                                <transition name="fade" mode="out-in">
+                                    <div
+                                        v-if="this.chkShirt === '1'"
+                                        class="relative py-4 px-4"
+                                    >
+                                        <select
+                                            class="w-40 text-sm p-3 cursor-pointer block appearance-none bg-white border border-gray-200 text-gray-700 rounded-lg leading-tight focus:outline-none focus:bg-white focus:border-sky-500"
+                                            v-model="this.data.size"
+                                        >
+                                            <option disabled value="">
+                                                กรุณาระบุ Size ...
+                                            </option>
+                                            <option
+                                                v-for="(
+                                                    size, index
+                                                ) in sizeList"
+                                                :key="index"
+                                                :value="size.title"
+                                            >
+                                                {{ size.title }}
+                                            </option>
+                                        </select>
+                                        <div
+                                            class="pointer-events-none absolute inset-y-0 left-36 flex items-center px-2 text-gray-700"
+                                        >
+                                            <svg
+                                                class="fill-current h-4 w-4"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 20 20"
+                                            >
+                                                <path
+                                                    d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                                                />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </transition>
+
+                                <div class="flex items-center">
+                                    <input
+                                        type="radio"
+                                        value="0"
+                                        class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 cursor-pointer"
+                                        aria-labelledby="country-option-3"
+                                        aria-describedby="country-option-3"
+                                        v-model="this.chkShirt"
+                                    />
+                                    <label
+                                        for="country-option-3"
+                                        class="text-md font-medium text-gray-900 ml-2 block"
+                                    >
+                                        ไม่ประสงค์รับเสื้อ
+                                    </label>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+
                     <transition name="fade" mode="out-in">
                         <div v-if="textAlert" class="text-red-400 mt-4">
                             ** กรุณากรอกข้อมูลให้ครบถ้วน **
+                        </div>
+                    </transition>
+
+                    <transition name="fade" mode="out-in">
+                        <div v-if="sizeAlert" class="text-red-400 mt-4">
+                            ** กรุณาเลือก Size เสื้อ Pulinet 2025 **
                         </div>
                     </transition>
 
@@ -621,6 +732,36 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Shirt Picture -->
+    <transition name="fade" mode="out-in">
+        <div
+            class="relative z-10"
+            aria-labelledby="modal-title"
+            role="dialog"
+            aria-modal="true"
+            v-show="modalPic"
+        >
+            <div
+                class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+            ></div>
+
+            <div class="fixed inset-0 z-10 overflow-y-auto">
+                <div
+                    class="flex min-h-full justify-center p-4 text-center items-center sm:items-center lg:items-center sm:p-0"
+                >
+                    <box-icon
+                        name="x-circle"
+                        color="white"
+                        size="lg"
+                        class="absolute top-1/3 md:top-1/4 lg:top-20 scale-100 hover:scale-105 cursor-pointer"
+                        @click="closeModal()"
+                    ></box-icon>
+                    <img :src="shirtPic" class="lg:w-1/2" />
+                </div>
+            </div>
+        </div>
+    </transition>
 </template>
 
 <script>
@@ -631,10 +772,12 @@ export default {
     mounted() {
         this.getUniList();
         this.getTour();
+        this.getSize();
     },
     data() {
         return {
             isShowFood: false,
+            shirtPic: "/img/shirt.jpg",
             data: {
                 reg: "",
                 intro: "",
@@ -652,13 +795,24 @@ export default {
                 food: "",
                 comment: "",
                 trip: "",
+                size: "",
             },
             uniList: "",
             textAlert: false,
             tourList: "",
+            sizeList: "",
+            modalPic: false,
+            chkShirt: "",
+            sizeAlert: false,
         };
     },
     methods: {
+        showModal() {
+            this.modalPic = true;
+        },
+        closeModal() {
+            this.modalPic = false;
+        },
         getUniList() {
             axios
                 .get("/api/unilist")
@@ -676,17 +830,29 @@ export default {
                 })
                 .catch((err) => {});
         },
+        getSize() {
+            axios
+                .get("/api/getSize")
+                .then((response) => {
+                    this.sizeList = response.data;
+                })
+                .catch((err) => {});
+        },
         async send() {
             this.textAlert = false;
+            this.sizeAlert = false;
             if (
                 this.data.reg == "" ||
                 this.data.member == "" ||
                 this.data.dinner == "" ||
                 this.data.tour == "" ||
                 this.data.food == "" ||
-                this.data.trip == ""
+                this.data.trip == "" ||
+                this.chkShirt == ""
             ) {
                 this.textAlert = true;
+            } else if (this.chkShirt == "1" && this.data.size == "") {
+                this.sizeAlert = true;
             } else {
                 await axios
                     .post("/api/regis", this.data)

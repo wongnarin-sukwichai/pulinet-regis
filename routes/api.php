@@ -13,6 +13,7 @@ use App\Http\Controllers\Api\SystemController;
 use App\Http\Controllers\Api\UploadController;
 use App\Http\Controllers\Api\PaymentController;
 use App\Http\Controllers\Api\TourController;
+use App\Http\Controllers\Api\SizeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,7 @@ Route::post('upload', [UploadController::class, 'upload']);
 Route::post('storePayment', [PaymentController::class, 'storePayment']);
 Route::get('getTour', [TourController::class, 'getTour']);
 Route::get('showTour/{id}', [TourController::class, 'showTour']);
+Route::get('getSize', [SizeController::class, 'getSize']);
 
 Route::middleware('guest')->group(function () {
     Route::post('login', [AuthController::class, 'login']);

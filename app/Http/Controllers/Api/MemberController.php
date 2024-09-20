@@ -61,6 +61,7 @@ class MemberController extends Controller
         $data->food = $request['food'];
         $data->comment = $request['comment'];
         $data->tour = $request['tour'];
+        $data->size = $request['size'];
         $data->step_1 = 1;
         $data->step_2 = 0;
 
