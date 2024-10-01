@@ -324,7 +324,7 @@
                                     >เข้าร่วมงานเลี้ยงรับรอง
                                 </p>
                                 <p class="text-sm text-gray-600">
-                                    ( วันที่ 17 มกราคม 2568 เวลา 18.30 – 21.00
+                                    ( วันที่ 15 มกราคม 2568 เวลา 18.30 – 21.00
                                     น. )
                                 </p>
                             </label>
@@ -367,7 +367,7 @@
                         </div>
                     </div>
 
-                    <div
+                    <!-- <div
                         class="mx-auto max-w-2xl rounded-3xl border-2 border-dotted border-gray-200 lg:mx-0 lg:flex lg:max-w-none mt-6 bg-gray-50"
                     >
                         <div class="p-8 lg:flex-auto">
@@ -422,7 +422,7 @@
                                 </div>
                             </fieldset>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div
                         class="mx-auto max-w-2xl rounded-3xl border-2 border-dotted border-gray-200 lg:mx-0 lg:flex lg:max-w-none mt-6 bg-gray-50"
@@ -602,7 +602,7 @@
                             >
                                 <p class="font-semibold text-lg">
                                     <font class="text-red-400">** </font
-                                    >แจ้งความประสงค์รับเสื้อ Pulinet 2025
+                                    >แจ้งขนาดเสื้อที่ระลึกการจัดงาน Pulinet 2025 ( ** ไม่มีค่าใช้จ่ายเพิ่มเติม )
                                 </p>
                                 <p class="text-sm text-gray-600">
                                     ( รายละเอียดเสื้อ Pulinet 2025
@@ -635,7 +635,7 @@
                                         for="country-option-3"
                                         class="text-md font-medium text-gray-900 ml-2 block"
                                     >
-                                        ประสงค์รับเสื้อ
+                                        แจ้งขนาดเสื้อ
                                     </label>
                                 </div>
 
@@ -677,7 +677,7 @@
                                     </div>
                                 </transition>
 
-                                <div class="flex items-center">
+                                <!-- <div class="flex items-center">
                                     <input
                                         type="radio"
                                         value="0"
@@ -692,7 +692,7 @@
                                     >
                                         ไม่ประสงค์รับเสื้อ
                                     </label>
-                                </div>
+                                </div> -->
                             </fieldset>
                         </div>
                     </div>
@@ -794,7 +794,7 @@ export default {
                 tour: "",
                 food: "",
                 comment: "",
-                trip: "",
+                // trip: "",
                 size: "",
             },
             uniList: "",
@@ -847,7 +847,7 @@ export default {
                 this.data.dinner == "" ||
                 this.data.tour == "" ||
                 this.data.food == "" ||
-                this.data.trip == "" ||
+                // this.data.trip == "" ||
                 this.chkShirt == ""
             ) {
                 this.textAlert = true;

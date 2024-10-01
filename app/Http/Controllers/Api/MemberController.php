@@ -57,7 +57,7 @@ class MemberController extends Controller
         $data->dep = $request['dep'];
         $data->branch = $request['branch'];
         $data->dinner = $request['dinner'];
-        $data->trip = $request['trip'];
+        // $data->trip = $request['trip'];
         $data->food = $request['food'];
         $data->comment = $request['comment'];
         $data->tour = $request['tour'];
