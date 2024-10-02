@@ -35,7 +35,10 @@
                         class="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20"
                     >
                         ติดตามความเคลื่อนไหวการจัดประชุมได้ที่ :
-                        <a href="#" class="font-semibold text-indigo-600"
+                        <a
+                            href="https://pulinet2025.pulinet.org/"
+                            target="_blank"
+                            class="font-semibold text-indigo-600"
                             ><span
                                 class="absolute inset-0"
                                 aria-hidden="true"
@@ -62,9 +65,9 @@
                         ร่วมกับ ข่ายงานห้องสมุดมหาวิทยาลัยส่วนภูมิภาค (PULINET)
                     </p>
                     <p class="text-lg text-gray-400">
-                        ระหว่างวันที่ 15 - 17 มกราคม 2568 ณ
-                        อาคารเฉลิมพระเกียรติ ในโอกาสฉลอง<br />พระชนมายุ 5
-                        รอบ 2 เมษายน 2558 มหาวิทยาลัยมหาสารคาม
+                        ระหว่างวันที่ 15 - 17 มกราคม 2568 ณ อาคารเฉลิมพระเกียรติ
+                        ในโอกาสฉลอง<br />พระชนมายุ 5 รอบ 2 เมษายน 2558
+                        มหาวิทยาลัยมหาสารคาม
                     </p>
                     <div class="mt-10 flex items-center justify-center gap-x-6">
                         <router-link
@@ -133,8 +136,8 @@
                                         colspan="2"
                                     >
                                         <p>
-                                            ชำระค่าลงทะเบียนผู้เข้าร่วมและ
-                                            & ผู้นำเสนอผลงาน
+                                            ชำระค่าลงทะเบียนผู้เข้าร่วมและ &
+                                            ผู้นำเสนอผลงาน
                                         </p>
                                     </th>
                                 </tr>
@@ -150,7 +153,7 @@
                                             <br />
                                             วันที่ 1 สิงหาคม – 20 ธันวาคม 2567
                                         </div>
-                                    </td>                               
+                                    </td>
                                     <td
                                         class="px-3 py-3 text-xs font-medium whitespace-nowrap border-r"
                                     >
@@ -557,7 +560,7 @@
                                                             class="px-1 py-1 text-gray-500 transition-colors duration-200 rounded-lg border-2 border-dotted hover:bg-gray-100"
                                                             v-if="
                                                                 member.step_2 ===
-                                                                    '0'
+                                                                '0'
                                                             "
                                                         >
                                                             <box-icon
@@ -812,7 +815,7 @@
                                                             class="px-1 py-1 text-gray-500 transition-colors duration-200 rounded-lg border-2 border-dotted hover:bg-gray-100"
                                                             v-if="
                                                                 member.step_2 ===
-                                                                    '0'
+                                                                '0'
                                                             "
                                                         >
                                                             <box-icon
@@ -846,8 +849,20 @@
                         class="bg-blue-50"
                     ></TailwindPagination>
                 </div>
+                <!-- End DataTable-->
+
+                <!-- Information -->
+                <div
+                    class="flex justify-left px-4 overflow-x-auto sm:-mx-6 lg:-mx-8"
+                >
+                    <div class="flex p-2 border-2 border-dotted border-blue-400 rounded-lg">
+                        <div>
+                            <box-icon name="data" class="pr-2"></box-icon>
+                        </div>
+                        <div>จำนวนผู้ลงทะเบียนทั้งหมด : <font class="text-blue-800">{{ this.sum }}</font> ท่าน</div>
+                    </div>
+                </div>
             </section>
-            <!-- End DataTable-->
         </div>
     </div>
 </template>
@@ -860,6 +875,7 @@ export default {
     mounted() {
         this.getSystem();
         this.getMemList();
+        this.getSum();
     },
     data() {
         return {
@@ -872,6 +888,7 @@ export default {
             data: {
                 search: "",
             },
+            sum: "",
         };
     },
     methods: {
@@ -880,6 +897,14 @@ export default {
                 .get("/api/getSystem")
                 .then((response) => {
                     this.chkSystem = response.data;
+                })
+                .catch((err) => {});
+        },
+        getSum() {
+            axios
+                .get("/api/getSum")
+                .then((response) => {
+                    this.sum = response.data
                 })
                 .catch((err) => {});
         },

@@ -72,6 +72,13 @@ class MemberController extends Controller
         ]);
     }
 
+    public function getSum()
+    {
+        $data = Member::count();
+
+        return response()->json($data);
+    }
+
     /**
      * Display the specified resource.
      */

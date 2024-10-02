@@ -39,6 +39,7 @@ Route::post('storePayment', [PaymentController::class, 'storePayment']);
 Route::get('getTour', [TourController::class, 'getTour']);
 Route::get('showTour/{id}', [TourController::class, 'showTour']);
 Route::get('getSize', [SizeController::class, 'getSize']);
+Route::get('getSum', [MemberController::class, 'getSum']);
 
 Route::middleware('guest')->group(function () {
     Route::post('login', [AuthController::class, 'login']);
