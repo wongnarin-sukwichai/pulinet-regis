@@ -602,8 +602,12 @@
                             >
                                 <p class="font-semibold text-lg">
                                     <font class="text-red-400">** </font
-                                    >แจ้งขนาดเสื้อที่ระลึกการจัดงาน Pulinet 2025 ( ** ไม่มีค่าใช้จ่ายเพิ่มเติม )
+                                    >แจ้งขนาดเสื้อที่ระลึกการจัดงาน Pulinet 2025
+                                    ( ** ไม่มีค่าใช้จ่ายเพิ่มเติม )
                                 </p>
+                                <p class="text-sm text-gray-600">
+                                     ** เพื่อให้ทันการผลิต ผู้ที่ลงทะเบียนหลังวันที่ 30 พ.ย. 2567 ทางเจ้าภาพขอสงวนสิทธิ์ในการแจ้งขนาดเสื้อ โดยท่านจะได้รับเสื้อไซต์ที่เจ้าภาพกำหนดให้ดังนี้ : ญ(L) - ช(XL) **
+                                    </p>
                                 <p class="text-sm text-gray-600">
                                     ( รายละเอียดเสื้อ Pulinet 2025
                                     <box-icon
@@ -615,9 +619,9 @@
                                     <span
                                         class="text-blue-700 ml-4 cursor-pointer"
                                         @click="showModal()"
-                                        >Click...</span
+                                        >Click</span
                                     >
-                                    )
+                                    )                                 
                                 </p>
                             </label>
 
@@ -697,6 +701,85 @@
                         </div>
                     </div>
 
+                    <div
+                        class="mx-auto max-w-2xl rounded-3xl border-2 border-dotted border-gray-200 lg:mx-0 lg:flex lg:max-w-none mt-6 "
+                    >
+                        <div class="p-8 lg:flex-auto">
+                            <label
+                                for="company"
+                                class="block text-md text-left"
+                            >
+                                <p class="font-semibold text-lg">
+                                    บริการสำหรับการเดินทาง และที่พัก
+                                </p>
+
+                                <div class="mt-4">
+                                    <ul>
+                                        <li class="flex items-center">
+                                            <box-icon
+                                                name="check-circle"
+                                                color="blue"
+                                                class="mr-4"
+                                            ></box-icon>
+                                            รถรับส่งจาก สนามบินขอนแก่น,
+                                            สนามบินร้อยเอ็ด
+                                            และสถานีขนส่งจังหวัดมหาสารคาม
+                                            มายังที่โรงแรมที่พักที่เจ้าภาพแนะนำ
+                                            ในวันอังคารที่ 14 มกราคม 2568
+                                        </li>
+                                        <li class="flex items-center mt-2">
+                                            <box-icon
+                                                name="check-circle"
+                                                color="blue"
+                                                class="mr-4"
+                                            ></box-icon>
+                                            รถรับส่งจาก สถานที่ประชุม,
+                                            โรงแรมที่พักที่เจ้าภาพแนะนำ ไปยัง
+                                            สนามบินและสถานีขนส่งจังหวัดมหาสารคาม
+                                            ในวันที่ 16-17 มกราคม 2568
+                                        </li>
+                                        <li class="flex items-center mt-2">
+                                            <box-icon
+                                                name="check-circle"
+                                                color="blue"
+                                                class="mr-4"
+                                            ></box-icon>
+                                            รถรับส่ง ไป-กลับ
+                                            จากโรงแรมที่พักที่เจ้าภาพแนะนำ ไปยัง
+                                            สถานที่ประชุม ตามกำหนดการเดินทาง
+                                        </li>
+                                        <li class="flex items-center mt-2">
+                                            <box-icon
+                                                name="exit"
+                                                color="green"
+                                                class="mr-4"
+                                            ></box-icon>
+                                            กรุณาเข้าร่วมกลุ่มไลน์ "PULINET
+                                            2025"
+                                            เพื่อแจ้งความประสงค์ในการเข้ารับบริการ
+                                            และช่องทางติดต่อสื่อสาร
+                                            ขอบคุณค่ะ/ครับ :
+                                            <font class="text-green-600 pl-1">
+                                                @LINE</font
+                                            >
+                                            <box-icon
+                                                name="chevrons-right"
+                                                size="md"
+                                                color="#1d4ed8"
+                                                animation="fade-right"
+                                            ></box-icon>
+                                            <span
+                                                class="text-blue-700 ml-4 cursor-pointer"
+                                                @click="showModalLine()"
+                                                >Click...</span
+                                            >
+                                        </li>
+                                    </ul>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
                     <transition name="fade" mode="out-in">
                         <div v-if="textAlert" class="text-red-400 mt-4">
                             ** กรุณากรอกข้อมูลให้ครบถ้วน **
@@ -762,6 +845,36 @@
             </div>
         </div>
     </transition>
+
+    <!-- Modal Line -->
+    <transition name="fade" mode="out-in">
+        <div
+            class="relative z-10"
+            aria-labelledby="modal-title"
+            role="dialog"
+            aria-modal="true"
+            v-show="modalLine"
+        >
+            <div
+                class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+            ></div>
+
+            <div class="fixed inset-0 z-10 overflow-y-auto">
+                <div
+                    class="flex min-h-full justify-center p-4 text-center items-center sm:items-center lg:items-center sm:p-0"
+                >
+                    <box-icon
+                        name="x-circle"
+                        color="white"
+                        size="lg"
+                        class="absolute top-1/3 md:top-1/4 lg:top-20 scale-100 hover:scale-105 cursor-pointer"
+                        @click="closeModalLine()"
+                    ></box-icon>
+                    <img :src="linePic" class="w-1/4" />                          
+                </div>
+            </div>
+        </div>
+    </transition>
 </template>
 
 <script>
@@ -778,6 +891,7 @@ export default {
         return {
             isShowFood: false,
             shirtPic: "/img/shirt.jpg",
+            linePic: "/img/line.png",
             data: {
                 reg: "",
                 intro: "",
@@ -804,6 +918,7 @@ export default {
             modalPic: false,
             chkShirt: "",
             sizeAlert: false,
+            modalLine: false,
         };
     },
     methods: {
@@ -812,6 +927,12 @@ export default {
         },
         closeModal() {
             this.modalPic = false;
+        },
+        showModalLine() {
+            this.modalLine = true;
+        },
+        closeModalLine() {
+            this.modalLine = false;
         },
         getUniList() {
             axios
