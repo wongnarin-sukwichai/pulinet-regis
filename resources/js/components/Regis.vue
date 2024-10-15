@@ -701,6 +701,85 @@
                         </div>
                     </div>
 
+                    <div
+                        class="mx-auto max-w-2xl rounded-3xl border-2 border-dotted border-gray-200 lg:mx-0 lg:flex lg:max-w-none mt-6 "
+                    >
+                        <div class="p-8 lg:flex-auto">
+                            <label
+                                for="company"
+                                class="block text-md text-left"
+                            >
+                                <p class="font-semibold text-lg">
+                                    บริการสำหรับการเดินทาง
+                                </p>
+
+                                <div class="mt-4">
+                                    <ul>
+                                        <li class="flex items-center">
+                                            <box-icon
+                                                name="check-circle"
+                                                color="blue"
+                                                class="mr-4"
+                                            ></box-icon>
+                                            รถรับส่งจาก สนามบินขอนแก่น,
+                                            สนามบินร้อยเอ็ด
+                                            และสถานีขนส่งจังหวัดมหาสารคาม
+                                            มายังที่โรงแรมที่พักที่เจ้าภาพแนะนำ
+                                            ในวันอังคารที่ 14 มกราคม 2568
+                                        </li>
+                                        <li class="flex items-center mt-2">
+                                            <box-icon
+                                                name="check-circle"
+                                                color="blue"
+                                                class="mr-4"
+                                            ></box-icon>
+                                            รถรับส่งจาก สถานที่ประชุม,
+                                            โรงแรมที่พักที่เจ้าภาพแนะนำ ไปยัง
+                                            สนามบินและสถานีขนส่งจังหวัดมหาสารคาม
+                                            ในวันที่ 16-17 มกราคม 2568
+                                        </li>
+                                        <li class="flex items-center mt-2">
+                                            <box-icon
+                                                name="check-circle"
+                                                color="blue"
+                                                class="mr-4"
+                                            ></box-icon>
+                                            รถรับส่ง ไป-กลับ
+                                            จากโรงแรมที่พักที่เจ้าภาพแนะนำ ไปยัง
+                                            สถานที่ประชุม ตามกำหนดการเดินทาง
+                                        </li>
+                                        <li class="flex items-center mt-2">
+                                            <box-icon
+                                                name="exit"
+                                                color="green"
+                                                class="mr-4"
+                                            ></box-icon>
+                                            กรุณาเข้าร่วมกลุ่มไลน์ "PULINET
+                                            2025"
+                                            เพื่อแจ้งความประสงค์ในการเข้ารับบริการ
+                                            และช่องทางติดต่อสื่อสาร
+                                            ขอบคุณค่ะ/ครับ :
+                                            <font class="text-green-600 pl-1">
+                                                @LINE</font
+                                            >
+                                            <box-icon
+                                                name="chevrons-right"
+                                                size="md"
+                                                color="#1d4ed8"
+                                                animation="fade-right"
+                                            ></box-icon>
+                                            <span
+                                                class="text-blue-700 ml-4 cursor-pointer"
+                                                @click="showModalLine()"
+                                                >Click...</span
+                                            >
+                                        </li>
+                                    </ul>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
                     <transition name="fade" mode="out-in">
                         <div v-if="textAlert" class="text-red-400 mt-4">
                             ** กรุณากรอกข้อมูลให้ครบถ้วน **
