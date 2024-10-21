@@ -290,12 +290,12 @@
                                                 มหาวิทยาลัย
                                             </th>
 
-                                            <th
+                                            <!-- <th
                                                 scope="col"
                                                 class="px-4 py-2 text-sm font-normal text-gray-500 border-r"
                                             >
                                                 หน่วยงาน
-                                            </th>
+                                            </th> -->
 
                                             <th
                                                 scope="col"
@@ -371,7 +371,7 @@
                                                         {{ member.uni }}
                                                     </div>
                                                 </td>
-                                                <td
+                                                <!-- <td
                                                     class="px-4 py-4 text-sm whitespace-nowrap border-r"
                                                 >
                                                     <div
@@ -379,7 +379,7 @@
                                                     >
                                                         {{ member.dep }}
                                                     </div>
-                                                </td>
+                                                </td> -->
                                                 <td
                                                     class="px-4 py-4 text-sm whitespace-nowrap border-r text-center"
                                                 >

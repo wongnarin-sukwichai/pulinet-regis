@@ -185,7 +185,7 @@
                         <font class="text-red-400">**</font> อัตราค่าลงทะเบียน
                     </p>
                     <br />
-                    <div class="px-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div class="px-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div
                             class="inline-block min-w-full pb-4 align-middle md:px-6 lg:px-8"
                         >
