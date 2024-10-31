@@ -335,7 +335,7 @@
                                                 v-show="isShowTable"
                                             >
                                                 <td
-                                                    class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
+                                                    class="px-2 py-4 text-sm font-medium whitespace-nowrap border-r"
                                                 >
                                                     <div
                                                         class="inline px-3 py-1 text-sm font-normal rounded-full"
@@ -344,7 +344,7 @@
                                                     </div>
                                                 </td>
                                                 <td
-                                                    class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
+                                                    class="px-2 py-4 text-sm font-medium whitespace-nowrap border-r"
                                                 >
                                                     <div
                                                         class="inline px-3 py-1 text-sm font-normal rounded-full"
@@ -354,7 +354,7 @@
                                                     </div>
                                                 </td>
                                                 <td
-                                                    class="px-4 py-4 text-sm font-medium whitespace-nowrap border-r"
+                                                    class="px-1 py-4 text-sm font-medium whitespace-nowrap border-r"
                                                 >
                                                     <div
                                                         class="inline px-3 py-1 text-sm font-normal rounded-full"
@@ -363,7 +363,7 @@
                                                     </div>
                                                 </td>
                                                 <td
-                                                    class="px-4 py-4 text-sm whitespace-nowrap border-r"
+                                                    class="px-2 py-4 text-sm whitespace-nowrap border-r"
                                                 >
                                                     <div
                                                         class="inline px-3 py-1 text-sm font-normal rounded-full"
@@ -404,7 +404,7 @@
                                                 </td>
 
                                                 <td
-                                                    class="px-4 py-4 text-sm whitespace-nowrap"
+                                                    class="pl-2 py-4 text-sm whitespace-nowrap"
                                                 >
                                                     <div
                                                         class="flex items-center pr-1"
@@ -414,7 +414,7 @@
                                                         "
                                                     >
                                                         <span
-                                                            class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 text-white bg-blue-600"
+                                                            class="flex items-center justify-center w-5 h-5 me-1 text-xs border rounded-full shrink-0 text-white bg-blue-600"
                                                         >
                                                             1
                                                         </span>
@@ -441,7 +441,7 @@
                                                 </td>
 
                                                 <td
-                                                    class="px-4 py-4 text-sm whitespace-nowrap"
+                                                    class="py-4 text-sm whitespace-nowrap"
                                                 >
                                                     <div
                                                         class="flex items-center pr-1"
@@ -456,7 +456,7 @@
                                                         v-else
                                                     >
                                                         <span
-                                                            class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0"
+                                                            class="flex items-center justify-center w-5 h-5 me-1 text-xs border rounded-full shrink-0"
                                                             :class="
                                                                 member.step_2 ===
                                                                 '0'
@@ -500,7 +500,7 @@
                                                 </td>
 
                                                 <td
-                                                    class="px-4 py-4 text-sm whitespace-nowrap border-r"
+                                                    class="pr-1 py-4 text-sm whitespace-nowrap border-r"
                                                 >
                                                     <div
                                                         class="flex items-center"
@@ -515,7 +515,7 @@
                                                         v-else
                                                     >
                                                         <span
-                                                            class="flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 text-white"
+                                                            class="flex items-center justify-center w-5 h-5 me-1 text-xs border rounded-full shrink-0 text-white"
                                                             :class="
                                                                 member.step_3 ===
                                                                 '0'
