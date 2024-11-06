@@ -186,7 +186,7 @@
                                             <div
                                                 class="inline px-3 py-1 text-sm font-normal rounded-full"
                                             >
-                                                <p v-if="member.reg === '1'">
+                                                <p v-if="member.reg === 1">
                                                     ผู้เข้าร่วมประชุม
                                                 </p>
                                                 <p class="text-sm" v-else>
@@ -393,7 +393,7 @@
                                                 {{ member.uni }}
                                             </div>
                                         </td>
-                                        <td
+                                        <!-- <td
                                             class="px-4 py-4 text-sm whitespace-nowrap border-r"
                                         >
                                             <div
@@ -401,14 +401,14 @@
                                             >
                                                 {{ member.dep }}
                                             </div>
-                                        </td>
+                                        </td> -->
                                         <td
                                             class="px-4 py-4 text-sm whitespace-nowrap border-r text-center"
                                         >
                                             <div
                                                 class="inline px-3 py-1 text-sm font-normal rounded-full"
                                             >
-                                                <p v-if="member.reg === '1'">
+                                                <p v-if="member.reg === 1">
                                                     ผู้เข้าร่วมประชุม
                                                 </p>
                                                 <p v-else>

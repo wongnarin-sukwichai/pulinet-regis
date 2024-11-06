@@ -389,7 +389,7 @@
                                                         <p
                                                             v-if="
                                                                 member.reg ===
-                                                                '1'
+                                                                1
                                                             "
                                                         >
                                                             ผู้เข้าร่วมประชุม
@@ -628,7 +628,7 @@
                                                         {{ member.uni }}
                                                     </div>
                                                 </td>
-                                                <td
+                                                <!-- <td
                                                     class="px-4 py-4 text-sm whitespace-nowrap border-r"
                                                 >
                                                     <div
@@ -636,7 +636,7 @@
                                                     >
                                                         {{ member.dep }}
                                                     </div>
-                                                </td>
+                                                </td> -->
                                                 <td
                                                     class="px-4 py-4 text-sm whitespace-nowrap border-r text-center"
                                                 >
@@ -646,7 +646,7 @@
                                                         <p
                                                             v-if="
                                                                 member.reg ===
-                                                                '1'
+                                                                1
                                                             "
                                                         >
                                                             ผู้เข้าร่วมประชุม
