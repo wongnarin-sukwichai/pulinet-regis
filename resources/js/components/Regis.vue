@@ -541,7 +541,7 @@
                                         animation="fade-right"
                                     ></box-icon>
                                     <a
-                                        href="https://pulinet2025.pulinet.org/?page_id=1300"
+                                        href="https://pulinet2025.pulinet.org/?page_id=1212"
                                         target="_blank"
                                         class="text-blue-700 ml-4"
                                         >Click...</a
