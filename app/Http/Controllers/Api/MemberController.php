@@ -13,7 +13,16 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $data = Member::orderBy('step_3', 'DESC')->paginate(10);
+        // $data = Member::orderBy('step_3', 'ASC')
+        // ->paginate(10);
+
+        $data = Member::orderByRaw("
+            CASE 
+                WHEN step_3 IS NULL THEN 2
+                ELSE step_3
+            END ASC
+        ")
+        ->paginate(10);
 
         return response()->json($data);
     }
